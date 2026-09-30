@@ -1,11 +1,5 @@
 package net.chronoshield.iaapp.ai
 
-/**
- * Registro normalizado de inteligencia de amenazas.
- *
- * El registro distingue información confirmada de
- * información reportada o no verificada.
- */
 data class ThreatIntelRecord(
     val actor: String = "",
     val aliases: List<String> = emptyList(),
@@ -37,4 +31,4 @@ enum class ConfidenceLevel {
     MEDIUM,
     LOW,
     UNKNOWN
-)
+}

@@ -3,7 +3,8 @@ package net.chronoshield.iaapp
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
+import net.chronoshield.iaapp.ai.KnowledgeAIEngine
 import net.chronoshield.iaapp.ai.ThreatIntelCollector
 import net.chronoshield.iaapp.ai.ThreatIntelStore
 import net.chronoshield.iaapp.ai.WebResearchEngine
@@ -14,7 +15,7 @@ import net.chronoshield.iaapp.bridge.AIWebBridge
  *
  * Interfaz Android para el asistente local.
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     private lateinit var threatIntelStore: ThreatIntelStore
     private lateinit var threatIntelCollector: ThreatIntelCollector
@@ -22,10 +23,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /*
-         * La inteligencia de amenazas utiliza almacenamiento
-         * persistente local mediante SQLite.
-         */
         threatIntelStore = ThreatIntelStore(applicationContext)
 
         threatIntelCollector = ThreatIntelCollector(
@@ -40,7 +37,10 @@ class MainActivity : AppCompatActivity() {
         webView.webViewClient = WebViewClient()
 
         webView.addJavascriptInterface(
-            AIWebBridge(),
+            AIWebBridge(
+                engine = KnowledgeAIEngine(),
+                threatIntelCollector = threatIntelCollector
+            ),
             "CSNIA"
         )
 

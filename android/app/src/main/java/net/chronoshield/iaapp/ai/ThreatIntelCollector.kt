@@ -64,6 +64,7 @@ class ThreatIntelCollector(
 
         return ThreatIntelRecord(
             threatType = result.threatType,
+            cves = result.cves,
             sourceName = result.sourceName,
             sourceUrl = result.sourceUrl,
             updatedAt = result.updatedAt,
