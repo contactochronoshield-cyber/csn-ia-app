@@ -9,10 +9,10 @@ android {
 
     defaultConfig {
         applicationId "net.chronoshield.iaapp"
-        minSdk 24
+        minSdk 26
         targetSdk 34
         versionCode 1
-        versionName "0.1.0"
+        versionName "0.2.0"
     }
 
     buildTypes {
@@ -33,4 +33,6 @@ android {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.core:core-ktx:1.12.0'
+    // Motor de IA local (on-device), sin servidor, sin nube:
+    implementation 'com.google.mediapipe:tasks-genai:0.10.14'
 }
