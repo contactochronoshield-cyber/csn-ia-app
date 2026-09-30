@@ -1,39 +1,74 @@
 package net.chronoshield.iaapp.ai
 
 /**
- * Motor local de respaldo.
+ * Motor de conocimiento local de CSN IA.
  *
- * No necesita Internet ni un modelo LLM.
- * Utiliza conocimiento integrado en la aplicación.
+ * Funciona completamente sin Internet.
+ *
+ * Flujo:
+ *
+ * pregunta
+ *    ↓
+ * QueryRouter
+ *    ↓
+ * KnowledgeBase
+ *    ↓
+ * respuesta local
  */
 class KnowledgeAIEngine : LocalAIEngine {
+
+    private val router = QueryRouter()
 
     override fun generate(
         prompt: String,
         context: String
     ): String {
 
-        val text = prompt.lowercase()
+        val text = prompt
+            .trim()
+            .lowercase()
 
-        return when {
-            text.contains("sentinel") ->
-                "Sentinel es la plataforma de monitoreo y prevención de CSN orientada a redes, dispositivos e infraestructura."
+        if (text.isBlank()) {
+            return "Escribe una pregunta para que pueda ayudarte."
+        }
 
-            text.contains("mesh") ->
-                "Chrono Mesh permite crear conectividad privada y segura entre dispositivos y redes."
+        val type = router.classify(text)
 
-            text.contains("red privada") ->
-                "Una red privada permite conectar dispositivos y servicios de forma controlada y protegida."
+        /*
+         * Primero buscamos coincidencias específicas
+         * dentro de la base de conocimiento.
+         */
+        val matches = KnowledgeBase.entries.filter { entry ->
+            entry.category == type &&
+            entry.keywords.any { keyword ->
+                text.contains(keyword)
+            }
+        }
 
-            text.contains("soberanía") ->
-                "La soberanía digital busca mantener el control sobre datos, infraestructura y servicios tecnológicos."
+        if (matches.isNotEmpty()) {
+            return matches.first().answer
+        }
 
-            text.contains("hola") ||
-            text.contains("buenas") ->
-                "Hola. Soy CSN IA, el asistente local de Chrono Shield Networks."
+        /*
+         * Si no encontramos una entrada específica,
+         * ofrecemos una respuesta controlada.
+         */
+        return when (type) {
 
-            else ->
-                "Todavía estoy aprendiendo sobre ese tema. Puedo ayudarte con Sentinel, Mesh, redes privadas y soberanía digital."
+            QueryType.CSN ->
+                "No tengo todavía información específica sobre ese aspecto de Chrono Shield Networks en mi base local."
+
+            QueryType.PROJECT ->
+                "Conozco algunos proyectos de CSN, pero todavía no tengo información suficiente sobre ese proyecto específico."
+
+            QueryType.CYBERSECURITY ->
+                "Puedo explicar conceptos de ciberseguridad, pero todavía no tengo una entrada específica para esa pregunta."
+
+            QueryType.GENERAL ->
+                "Puedo ayudarte con información sobre Chrono Shield, sus proyectos y conceptos generales de ciberseguridad."
+
+            QueryType.UNKNOWN ->
+                "No pude determinar el tema de la pregunta."
         }
     }
 }
