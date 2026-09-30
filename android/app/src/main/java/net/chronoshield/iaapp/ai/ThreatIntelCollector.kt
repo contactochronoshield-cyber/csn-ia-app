@@ -3,13 +3,14 @@ package net.chronoshield.iaapp.ai
 /**
  * Coordina investigaciones de inteligencia de amenazas.
  *
- * Importante:
- * Este componente recopila información.
- * No convierte automáticamente cualquier resultado
- * encontrado en Internet en conocimiento confiable.
+ * Recopila, normaliza y almacena resultados.
+ *
+ * La información encontrada en Internet no se considera
+ * automáticamente verdadera.
  */
 class ThreatIntelCollector(
-    private val researchEngine: WebResearchEngine
+    private val researchEngine: WebResearchEngine,
+    private val store: ThreatIntelStore
 ) {
 
     fun research(
@@ -22,9 +23,39 @@ class ThreatIntelCollector(
             type = type
         )
 
-        return rawResults.map { result ->
+        val normalized = rawResults.map { result ->
             normalize(result)
         }
+
+        store.saveAll(normalized)
+
+        return normalized
+    }
+
+    fun searchLocal(
+        query: String,
+        type: ResearchType
+    ): List<ThreatIntelRecord> {
+
+        return when (type) {
+
+            ResearchType.THREAT_ACTOR ->
+                store.findByActor(query)
+
+            ResearchType.MALWARE ->
+                store.findByMalware(query)
+
+            ResearchType.CVE,
+            ResearchType.VULNERABILITY ->
+                store.findByCve(query)
+
+            else ->
+                store.findByType(query)
+        }
+    }
+
+    fun allLocal(): List<ThreatIntelRecord> {
+        return store.all()
     }
 
     private fun normalize(
