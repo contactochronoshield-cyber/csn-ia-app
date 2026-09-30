@@ -1,3 +1,10 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# fix_workflow.sh
+# Corrige el workflow de GitHub Actions para que no dependa de gradlew
+# y sube el cambio al repo.
+set -e
+
+cat > .github/workflows/build-apk.yml << 'EOF'
 name: Build APK
 
 on:
@@ -43,3 +50,12 @@ jobs:
           files: android/app/build/outputs/apk/debug/app-debug.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+EOF
+
+echo "Archivo corregido."
+git add .
+git commit -m "Corregir workflow para no depender de gradlew"
+git push
+
+echo ""
+echo "Listo. Ve a GitHub -> pestaña Actions para ver el build corriendo."
