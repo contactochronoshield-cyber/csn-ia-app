@@ -3,6 +3,9 @@ name: Build APK
 permissions:
   contents: write
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [ "main" ]
