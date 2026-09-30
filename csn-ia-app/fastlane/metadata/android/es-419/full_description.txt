@@ -1,0 +1,12 @@
+CSN IA es el asistente educativo de Chrono Shield Networks (CSN). Responde en lenguaje
+sencillo preguntas como "¿qué es una red privada?", "¿para qué sirve un nodo mesh?" o
+"¿cómo empiezo con mi Chrono Mesh Node?".
+
+La app se conecta a un backend con IA que corre en infraestructura propia (self-hosted,
+sin depender de servicios de terceros), en línea con la filosofía de soberanía digital
+de CSN.
+
+- 100% software libre
+- Sin trackers ni analytics
+- Sin SDKs propietarios
+- El backend puede correr en tu propio servidor
