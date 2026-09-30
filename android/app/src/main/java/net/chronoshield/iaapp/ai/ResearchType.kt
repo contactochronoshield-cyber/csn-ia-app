@@ -1,12 +1,17 @@
 package net.chronoshield.iaapp.ai
 
+/**
+ * Tipos de investigación que puede realizar CSN IA.
+ */
 enum class ResearchType {
-    GENERAL_CYBER,
-    VULNERABILITY,
+    THREAT_ACTOR,
     MALWARE,
     RANSOMWARE,
-    THREAT_ACTOR,
+    CVE,
+    VULNERABILITY,
     CAMPAIGN,
     INCIDENT,
+    TTP,
+    GENERAL_CYBER,
     UNKNOWN
 }
