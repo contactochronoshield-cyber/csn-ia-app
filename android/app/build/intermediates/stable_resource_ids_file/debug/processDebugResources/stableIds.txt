@@ -1,0 +1,3 @@
+net.chronoshield.iaapp:style/Theme.CSNIA = 0x7f030000
+net.chronoshield.iaapp:string/app_name = 0x7f020000
+net.chronoshield.iaapp:drawable/ic_launcher = 0x7f010000

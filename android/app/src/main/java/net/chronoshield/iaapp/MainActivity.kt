@@ -1,51 +1,68 @@
 package net.chronoshield.iaapp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.app.Activity
-import net.chronoshield.iaapp.ai.KnowledgeAIEngine
-import net.chronoshield.iaapp.ai.ThreatIntelCollector
-import net.chronoshield.iaapp.ai.ThreatIntelStore
-import net.chronoshield.iaapp.ai.WebResearchEngine
-import net.chronoshield.iaapp.bridge.AIWebBridge
+import androidx.appcompat.app.AppCompatActivity
 
-/**
- * CSN IA
- *
- * Interfaz Android para el asistente local.
- */
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
 
-    private lateinit var threatIntelStore: ThreatIntelStore
-    private lateinit var threatIntelCollector: ThreatIntelCollector
+    private lateinit var webView: WebView
+    private lateinit var llm: ChronoLLM
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        threatIntelStore = ThreatIntelStore(applicationContext)
+        llm = ChronoLLM(applicationContext)
 
-        threatIntelCollector = ThreatIntelCollector(
-            researchEngine = WebResearchEngine(),
-            store = threatIntelStore
-        )
-
-        val webView = WebView(this)
-
+        webView = WebView(this)
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
         webView.webViewClient = WebViewClient()
-
-        webView.addJavascriptInterface(
-            AIWebBridge(
-                engine = KnowledgeAIEngine(),
-                threatIntelCollector = threatIntelCollector
-            ),
-            "CSNIA"
-        )
-
+        webView.addJavascriptInterface(Bridge(), "AndroidBridge")
         webView.loadUrl("file:///android_asset/chat.html")
 
         setContentView(webView)
+    }
+
+    inner class Bridge {
+
+        @JavascriptInterface
+        fun isModelReady(): Boolean = llm.isModelDownloaded()
+
+        @JavascriptInterface
+        fun downloadModel() {
+            llm.downloadModel(
+                onProgress = { pct ->
+                    runOnUiThread { webView.evaluateJavascript("onDownloadProgress($pct)", null) }
+                },
+                onDone = { success ->
+                    runOnUiThread {
+                        var ok = success
+                        if (success) {
+                            try { llm.load() } catch (e: Exception) { ok = false }
+                        }
+                        webView.evaluateJavascript("onDownloadDone($ok)", null)
+                    }
+                }
+            )
+        }
+
+        @JavascriptInterface
+        fun askQuestion(question: String, requestId: String) {
+            Thread {
+                val answer = try {
+                    if (!llm.isLoaded()) llm.load()
+                    llm.generate(question)
+                } catch (e: Exception) {
+                    "Hubo un error generando la respuesta local: " + (e.message ?: "desconocido")
+                }
+                val safe = answer.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "\\n")
+                runOnUiThread { webView.evaluateJavascript("onAnswer('$requestId', '$safe')", null) }
+            }.start()
+        }
     }
 }

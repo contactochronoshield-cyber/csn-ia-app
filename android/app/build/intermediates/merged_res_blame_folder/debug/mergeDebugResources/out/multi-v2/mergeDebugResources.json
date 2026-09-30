@@ -1,0 +1,45 @@
+{
+    "logs": [
+        {
+            "outputFile": "net.chronoshield.iaapp-debug-4:/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/storage/emulated/0/Download/csn-ia-app/android/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "43",
+                        "endOffsets": "55"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "43",
+                        "endOffsets": "94"
+                    }
+                },
+                {
+                    "source": "/storage/emulated/0/Download/csn-ia-app/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endLines": "3",
+                        "endColumns": "12",
+                        "endOffsets": "185"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "99",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "268"
+                    }
+                }
+            ]
+        }
+    ]
+}

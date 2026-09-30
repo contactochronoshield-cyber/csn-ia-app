@@ -1,0 +1,7 @@
+net.chronoshield.iaapp-pngs-0 /storage/emulated/0/Download/csn-ia-app/android/app/build/generated/res/pngs/debug
+net.chronoshield.iaapp-resValues-1 /storage/emulated/0/Download/csn-ia-app/android/app/build/generated/res/resValues/debug
+net.chronoshield.iaapp-packageDebugResources-2 /storage/emulated/0/Download/csn-ia-app/android/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+net.chronoshield.iaapp-packageDebugResources-3 /storage/emulated/0/Download/csn-ia-app/android/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+net.chronoshield.iaapp-debug-4 /storage/emulated/0/Download/csn-ia-app/android/app/build/intermediates/merged_res/debug/mergeDebugResources
+net.chronoshield.iaapp-debug-5 /storage/emulated/0/Download/csn-ia-app/android/app/src/debug/res
+net.chronoshield.iaapp-main-6 /storage/emulated/0/Download/csn-ia-app/android/app/src/main/res
