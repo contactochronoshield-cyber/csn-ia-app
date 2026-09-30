@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import net.chronoshield.iaapp.ai.ThreatIntelCollector
+import net.chronoshield.iaapp.ai.ThreatIntelStore
+import net.chronoshield.iaapp.ai.WebResearchEngine
 import net.chronoshield.iaapp.bridge.AIWebBridge
 
 /**
@@ -13,8 +16,22 @@ import net.chronoshield.iaapp.bridge.AIWebBridge
  */
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var threatIntelStore: ThreatIntelStore
+    private lateinit var threatIntelCollector: ThreatIntelCollector
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        /*
+         * La inteligencia de amenazas utiliza almacenamiento
+         * persistente local mediante SQLite.
+         */
+        threatIntelStore = ThreatIntelStore(applicationContext)
+
+        threatIntelCollector = ThreatIntelCollector(
+            researchEngine = WebResearchEngine(),
+            store = threatIntelStore
+        )
 
         val webView = WebView(this)
 
