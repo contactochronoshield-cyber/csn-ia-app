@@ -52,12 +52,24 @@
   const FALLBACK = "No tengo informacion especifica sobre eso todavia, pero puedo contarte sobre nuestra red privada, el Mesh Node, Chrono Sentinel, o nuestra filosofia de soberania digital. Que te interesa?";
 
   function findAnswer(text) {
+    // Motor Android local
+    if (window.CSNIA && typeof window.CSNIA.ask === 'function') {
+      try {
+        const response = window.CSNIA.ask(text);
+        if (response) return response;
+      } catch (error) {
+        console.error('CSN IA local engine error:', error);
+      }
+    }
+
+    // Respaldo para navegador/WebView sin puente nativo
     const lower = text.toLowerCase();
     for (const item of KB) {
       for (const key of item.keys) {
         if (lower.includes(key)) return item.answer;
       }
     }
+
     return FALLBACK;
   }
 

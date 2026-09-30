@@ -4,17 +4,12 @@ import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import net.chronoshield.iaapp.bridge.AIWebBridge
 
 /**
- * CSN IA — App educativa sobre servicios de Chrono Shield Networks.
+ * CSN IA
  *
- * Diseño deliberadamente mínimo: un WebView cargando un asset local (chat.html)
- * que habla con el backend RAG+Ollama self-hosted de CSN. Sin SDKs propietarios
- * de Google, sin analytics, sin trackers -> compatible con los requisitos de F-Droid.
- *
- * La URL del backend es configurable por el usuario dentro de la propia UI
- * (ver chat.html), para que cada instancia de CSN pueda apuntar a su propio
- * servidor self-hosted.
+ * Interfaz Android para el asistente local.
  */
 class MainActivity : AppCompatActivity() {
 
@@ -22,9 +17,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val webView = WebView(this)
+
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
         webView.webViewClient = WebViewClient()
+
+        webView.addJavascriptInterface(
+            AIWebBridge(),
+            "CSNIA"
+        )
+
         webView.loadUrl("file:///android_asset/chat.html")
 
         setContentView(webView)
