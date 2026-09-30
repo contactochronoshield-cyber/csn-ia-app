@@ -1,3 +1,55 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# fix_definitivo.sh
+# Vuelve a la estructura que YA compilo exitosamente antes (sin MediaPipe,
+# sin servidor externo), y pone el conocimiento de CSN directo en la app
+# como un asistente por palabras clave. Funciona offline, sin depender de nada.
+set -e
+
+# 1. Quitar el archivo que causaba el riesgo (motor MediaPipe no verificado)
+rm -f android/app/src/main/java/net/chronoshield/iaapp/ChronoLLM.kt
+
+# 2. build.gradle de vuelta a la version simple que SI compilo bien
+cat > android/app/build.gradle << 'EOF'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'net.chronoshield.iaapp'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "net.chronoshield.iaapp"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "0.3.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
+}
+EOF
+
+# 3. Chat con el conocimiento de CSN embebido directo en la app (sin servidor)
+cat > android/app/src/main/assets/chat.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -88,3 +140,13 @@
 </script>
 </body>
 </html>
+HTMLEOF
+
+echo "App convertida a 100% local, sin dependencias externas."
+git add .
+git commit -m "Version final: asistente 100% local sin dependencias riesgosas"
+git push
+
+echo ""
+echo "Listo. En 2-3 minutos revisa Actions -> deberia compilar sin problema,"
+echo "porque usa la misma estructura que ya funciono antes."
