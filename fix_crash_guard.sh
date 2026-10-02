@@ -1,3 +1,10 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# fix_crash_guard.sh
+set -e
+
+mkdir -p android/app/src/main/java/net/chronoshield/iaapp
+
+cat > android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt << 'KOTLIN_EOF'
 package net.chronoshield.iaapp
 
 import android.annotation.SuppressLint
@@ -85,3 +92,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+KOTLIN_EOF
+
+echo "MainActivity blindado contra crashes."
+git add .
+git commit -m "Blindar contra crashes al iniciar y registrar errores en archivo"
+git push
+
+echo ""
+echo "Listo. Espera el build, baja el APK nuevo, DESINSTALA la version vieja primero,"
+echo "e instala esta. Si se vuelve a cerrar, busca en el celular, con un gestor de"
+echo "archivos, la carpeta: Android/data/net.chronoshield.iaapp/files/crash_log.txt"
+echo "y mandame lo que diga ese archivo -- ahi va a estar el error real, texto plano."
