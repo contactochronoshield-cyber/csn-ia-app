@@ -1,3 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+cat > android/app/src/main/assets/chat.html << 'HTML_EOF'
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -223,3 +227,12 @@
 </script>
 </body>
 </html>
+HTML_EOF
+
+echo "App completa: conocimiento de todos los productos, bilingue, navegador de busqueda, menu profesional."
+git add .
+git commit -m "Base de conocimiento completa bilingue + navegador de busqueda + menu profesional"
+git push
+
+echo ""
+echo "Listo. Build en Actions, desinstala la vieja, instala la nueva."
