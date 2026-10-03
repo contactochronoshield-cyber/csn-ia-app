@@ -1,3 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+
+cat > android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt << 'KOTLIN_EOF'
 package net.chronoshield.iaapp
 
 import android.annotation.SuppressLint
@@ -52,3 +56,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+KOTLIN_EOF
+
+echo "Registro de errores restaurado en la version limpia."
+git add .
+git commit -m "Restaurar registro de errores y mostrar error en pantalla si el WebView falla" --allow-empty
+git push
+
+echo ""
+echo "Listo. Espera el build verde, desinstala TODO, instala el nuevo."
+echo "Si se cierra igual, ahora deberia aparecer el error EN LA PANTALLA directamente."
+echo "Si no aparece nada en pantalla, busca de todos modos:"
+echo "Android/data/net.chronoshield.iaapp/files/crash_log.txt"
