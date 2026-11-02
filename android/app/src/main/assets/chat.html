@@ -1,272 +1,116 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>CSN IA</title>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>CSN IA</title>
 <style>
-  * { box-sizing: border-box; }
-  body { margin: 0; background: #0a0c0e; color: #d8ddd9; font-family: monospace; display: flex; flex-direction: column; height: 100vh; }
-  header { padding: 12px 16px; border-bottom: 1px solid #2a2f2c; background: #0f1214; display: flex; justify-content: space-between; align-items: center; }
-  header h1 { font-size: 14px; letter-spacing: 2px; margin: 0; color: #7de08d; }
-  #gearBtn { background: none; border: none; color: #9aa39c; font-size: 20px; padding: 4px 8px; }
-  #tabs { display: flex; border-bottom: 1px solid #2a2f2c; background: #0d1012; }
-  .tabBtn { flex: 1; background: none; border: none; color: #6b756f; padding: 10px; font-size: 11px; letter-spacing: 1px; font-family: monospace; }
-  .tabBtn.active { color: #7de08d; border-bottom: 2px solid #7de08d; }
-  #chatTab { flex: 1; display: flex; flex-direction: column; min-height: 0; }
-  #browseTab { flex: 1; display: none; flex-direction: column; min-height: 0; }
-  #messages { flex: 1; overflow-y: auto; padding: 14px 16px; }
-  .msg { margin-bottom: 14px; max-width: 85%; padding: 10px 12px; border-radius: 2px; font-size: 13px; line-height: 1.5; }
-  .user { margin-left: auto; background: #16221a; border: 1px solid #2f4a38; color: #cfe8d6; }
-  .bot { background: #14171a; border: 1px solid #22262a; color: #c7cdc9; }
-  #inputRow { display: flex; padding: 10px; border-top: 1px solid #2a2f2c; background: #0f1214; }
-  #inputRow input { flex: 1; background: #14171a; border: 1px solid #2a2f2c; color: #d8ddd9; padding: 10px; font-family: monospace; font-size: 13px; }
-  #inputRow button { margin-left: 8px; background: #7de08d; color: #0a0c0e; border: none; padding: 0 16px; font-size: 12px; }
-  #browseBar { display: flex; padding: 8px; gap: 6px; background: #0f1214; border-bottom: 1px solid #2a2f2c; }
-  #browseBar input { flex: 1; background: #14171a; border: 1px solid #2a2f2c; color: #d8ddd9; padding: 8px; font-family: monospace; font-size: 12px; }
-  #browseBar button { background: #7de08d; color: #0a0c0e; border: none; padding: 0 14px; font-size: 11px; }
-  #browseFrame { flex: 1; border: none; background: #fff; }
-  #settingsOverlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 10; }
-  #settingsPanel { position: absolute; right: 0; top: 0; bottom: 0; width: 82%; max-width: 320px; background: #0f1214; border-left: 1px solid #2a2f2c; padding: 18px; overflow-y: auto; }
-  #settingsPanel h2 { font-size: 14px; letter-spacing: 1px; color: #7de08d; margin: 0 0 16px; }
-  .settingItem { padding: 12px 0; border-bottom: 1px solid #1c201d; font-size: 12.5px; color: #c7cdc9; }
-  .settingItem .label { color: #6b756f; font-size: 10.5px; text-transform: uppercase; margin-bottom: 3px; }
-  .langBtn { background: #14171a; border: 1px solid #2a2f2c; color: #c7cdc9; padding: 6px 12px; font-size: 11px; margin-right: 6px; }
-  .langBtn.active { background: #7de08d; color: #0a0c0e; border-color: #7de08d; }
-  #closeSettings { background: none; border: 1px solid #2a2f2c; color: #9aa39c; padding: 6px 14px; font-size: 11px; margin-top: 16px; width: 100%; }
-</style>
-</head>
-<body>
-  <header>
-    <h1>CSN // ASISTENTE</h1>
-    <button id="gearBtn" onclick="document.getElementById('settingsOverlay').style.display='block'">&#9881;</button>
-  </header>
-
-  <div id="tabs">
-    <button class="tabBtn active" id="tabChatBtn" onclick="showTab('chat')">CHAT</button>
-    <button class="tabBtn" id="tabBrowseBtn" onclick="showTab('browse')">BUSCAR EN LA WEB</button>
-  </div>
-
-  <div id="settingsOverlay" onclick="if(event.target===this) this.style.display='none'">
-    <div id="settingsPanel">
-      <h2 id="stConfig">CONFIGURACION</h2>
-      <div class="settingItem">
-        <div class="label" id="stLang">Idioma</div>
-        <button class="langBtn active" id="langEsBtn" onclick="setLang('es')">Espanol</button>
-        <button class="langBtn" id="langEnBtn" onclick="setLang('en')">English</button>
-      </div>
-      <div class="settingItem"><div class="label" id="stApp">App</div>CSN IA</div>
-      <div class="settingItem"><div class="label" id="stVer">Version</div>0.6.0</div>
-      <div class="settingItem"><div class="label" id="stMode">Modo</div><span id="stModeVal">100% local, sin servidores</span></div>
-      <div class="settingItem"><div class="label" id="stCo">Empresa</div>Chrono Shield Networks (CSN)</div>
-      <button id="closeSettings" onclick="document.getElementById('settingsOverlay').style.display='none'">CERRAR</button>
-    </div>
-  </div>
-
-  <div id="chatTab">
-    <div id="messages"></div>
-    <div id="inputRow">
-      <input id="userInput" placeholder="Escribe tu pregunta..." />
-      <button id="sendBtn" onclick="sendMessage()">ENVIAR</button>
-    </div>
-  </div>
-
-  <div id="browseTab">
-    <div id="browseBar">
-      <input id="browseInput" placeholder="Buscar en internet..." />
-      <button onclick="doSearch()">IR</button>
-    </div>
-    <iframe id="browseFrame" src="about:blank"></iframe>
-  </div>
-
+:root{--ink:#07101E;--blue:#2B5BE6;--green:#17B26A;--paper:#F4F7FB;--muted:#5B6B84;--line:#E3E9F3}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,Roboto,sans-serif;font-size:16px;display:flex;flex-direction:column}
+header{display:flex;align-items:center;gap:10px;padding:8px 6px 8px 16px;background:#fff;border-bottom:1px solid var(--line)}
+header b{font-size:18px}.sp{flex:1}
+.chip{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:99px;background:#E3F6EC;color:#0B7A4B;font-size:13px;font-weight:600}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.ib{width:44px;height:44px;border:0;background:none;color:var(--ink);font-size:22px}
+nav{display:flex;background:#fff;border-bottom:1px solid var(--line)}
+nav button{flex:1;min-height:44px;border:0;background:none;font-size:14px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent}
+nav button.on{color:var(--blue);border-color:var(--blue)}
+.tab{display:none;flex:1;min-height:0;flex-direction:column}.tab.on{display:flex}
+#msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:86%;padding:11px 14px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}
+.bot{background:#fff;border:1px solid var(--line);border-radius:16px 16px 16px 4px}
+.usr{align-self:flex-end;background:var(--blue);color:#fff;border-radius:16px 16px 4px 16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 8px}
+.chips button{min-height:44px;padding:0 14px;border:1.5px solid #C9D5EA;border-radius:99px;background:#fff;font-size:15px;color:var(--ink)}
+#bar{display:flex;gap:10px;padding:10px 12px 14px;background:#fff;border-top:1px solid var(--line)}
+#bar input{flex:1;min-width:0;height:48px;padding:0 18px;border:1.5px solid #D9E1EE;border-radius:24px;background:var(--paper);font-size:16px;color:var(--ink)}
+#bar button{width:48px;height:48px;border:0;border-radius:50%;background:var(--blue);color:#fff;font-size:20px}
+#bar button:disabled{opacity:.5}
+.pad{padding:18px;overflow-y:auto;flex:1}
+h1{font-size:24px;margin:6px 0;line-height:1.2}p.s{color:var(--muted);margin:0 0 14px}
+.prog{height:8px;border-radius:4px;background:#DCE4F2;margin:6px 0 16px}.prog div{height:8px;border-radius:4px;background:var(--blue)}
+.opt{display:block;width:100%;text-align:left;min-height:72px;margin-bottom:12px;padding:14px 16px;border:1.5px solid #D9E1EE;border-radius:16px;background:#fff;font-size:17px;font-weight:700;color:var(--ink)}
+.opt small{display:block;font-weight:400;font-size:14px;color:var(--muted);margin-top:2px}
+.btn{width:100%;height:54px;border:0;border-radius:14px;background:var(--blue);color:#fff;font-size:17px;font-weight:700;margin-top:10px}
+.btn.g{background:#fff;color:var(--ink);border:1.5px solid #C9D5EA}
+pre{background:var(--ink);color:#E8F0FA;padding:12px;border-radius:12px;font-size:13px;white-space:pre-wrap;word-wrap:break-word}
+.note{padding:12px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);font-size:14px;line-height:1.45;margin:12px 0}
+#sr{display:none;position:fixed;inset:0;background:rgba(7,16,30,.6);z-index:9}
+#sp{position:absolute;right:0;top:0;bottom:0;width:84%;max-width:340px;background:#fff;padding:18px;overflow-y:auto}
+#sp div{padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}#sp span{display:block;font-size:12px;color:var(--muted)}
+#bf{flex:1;border:0;background:#fff}
+</style></head><body>
+<header><svg viewBox="0 0 120 140" width="28" height="33" aria-label="CSN"><path d="M60 6 108 24v44c0 30-22 54-48 66C34 122 12 98 12 68V24z" fill="#0B2342" stroke="#19B6FF" stroke-width="6" stroke-linejoin="round"/><path d="M60 66C68 50 90 50 90 66C90 82 68 82 60 66C52 50 30 50 30 66C30 82 52 82 60 66" fill="none" stroke="#19B6FF" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="66" r="9" fill="#17B26A"/></svg><b>CSN IA</b><span class="sp"></span><span class="chip"><i></i>Red protegida</span><button class="ib" aria-label="Configuración" onclick="document.getElementById('sr').style.display='block'">&#9881;</button></header>
+<nav><button class="on" id="n-chat" onclick="tab('chat')">Chat</button><button id="n-red" onclick="tab('red')">Mi red</button><button id="n-web" onclick="tab('web')">Buscar</button></nav>
+<div class="tab on" id="t-chat"><div id="msgs"></div><div class="chips" id="qc"></div><div id="bar"><input id="q" aria-label="Escribe tu pregunta" placeholder="Escribe tu pregunta"><button aria-label="Enviar" onclick="send()">&#10148;</button></div></div>
+<div class="tab" id="t-red"><div class="pad" id="wz"></div></div>
+<div class="tab" id="t-web"><div id="bar" style="border-top:0;border-bottom:1px solid var(--line)"><input id="wq" aria-label="Buscar en internet" placeholder="Buscar en internet"><button aria-label="Buscar" onclick="web()">&#8594;</button></div><iframe id="bf" src="about:blank"></iframe></div>
+<div id="sr" onclick="if(event.target===this)this.style.display='none'"><div id="sp"><h1>Configuración</h1>
+<div><span>App</span>CSN IA · versión 0.8.0</div><div><span>Sitio</span>chronoshieldnetworks.com</div><div><span>GitHub</span>github.com/contactochronoshield-cyber</div><div><span>Contacto</span>contactochronoshield@gmail.com</div><div><span>Privacidad</span>Tus preguntas no salen del teléfono. Solo se consulta la lista pública de repositorios de GitHub y, si buscas, la pestaña Buscar.</div>
+<button class="btn g" onclick="clr()">Borrar conversación</button><button class="btn" onclick="document.getElementById('sr').style.display='none'">Cerrar</button></div></div>
 <script>
-  let lang = 'es';
-
-  function t(es, en) { return lang === 'es' ? es : en; }
-
-  function setLang(l) {
-    lang = l;
-    document.getElementById('langEsBtn').classList.toggle('active', l === 'es');
-    document.getElementById('langEnBtn').classList.toggle('active', l === 'en');
-    document.getElementById('stConfig').textContent = t('CONFIGURACION', 'SETTINGS');
-    document.getElementById('stLang').textContent = t('Idioma', 'Language');
-    document.getElementById('stApp').textContent = t('App', 'App');
-    document.getElementById('stVer').textContent = t('Version', 'Version');
-    document.getElementById('stMode').textContent = t('Modo', 'Mode');
-    document.getElementById('stModeVal').textContent = t('100% local, sin servidores', '100% local, no servers');
-    document.getElementById('stCo').textContent = t('Empresa', 'Company');
-    document.getElementById('userInput').placeholder = t('Escribe tu pregunta...', 'Type your question...');
-    document.getElementById('sendBtn').textContent = t('ENVIAR', 'SEND');
-    document.getElementById('tabChatBtn').textContent = t('CHAT', 'CHAT');
-    document.getElementById('tabBrowseBtn').textContent = t('BUSCAR EN LA WEB', 'SEARCH THE WEB');
-  }
-
-  function showTab(tab) {
-    document.getElementById('chatTab').style.display = tab === 'chat' ? 'flex' : 'none';
-    document.getElementById('browseTab').style.display = tab === 'browse' ? 'flex' : 'none';
-    document.getElementById('tabChatBtn').classList.toggle('active', tab === 'chat');
-    document.getElementById('tabBrowseBtn').classList.toggle('active', tab === 'browse');
-  }
-
-  function doSearch() {
-    const q = document.getElementById('browseInput').value.trim();
-    if (!q) return;
-    document.getElementById('browseFrame').src = 'https://lite.duckduckgo.com/lite/?q=' + encodeURIComponent(q);
-  }
-  document.getElementById('browseInput').addEventListener('keypress', function(e) { if (e.key === 'Enter') doSearch(); });
-
-  // Base de conocimiento completa de CSN, bilingue (es/en)
-  const KB = [
-    { keys: ["hola","buenas","buenos dias","buenas tardes","buenas noches","que tal","hey","saludos","hello","hi","good morning","good afternoon"],
-      es: "Hola! Soy el asistente de CSN. Preguntame sobre la red privada, el Mesh Node, Sentinel, el Cloud Sovereign, o cualquiera de nuestros servicios.",
-      en: "Hi! I'm the CSN assistant. Ask me about our private network, the Mesh Node, Sentinel, Cloud Sovereign, or any of our services." },
-    { keys: ["adios","chao","hasta luego","nos vemos","bye","goodbye","see you"],
-      es: "Hasta pronto! Si vuelves a tener dudas, aqui estare.",
-      en: "See you soon! If you have more questions, I'm here." },
-    { keys: ["gracias","thanks","thank you","listo","perfecto"],
-      es: "Con gusto. Si te surge otra duda, aqui estoy.",
-      en: "You're welcome. Let me know if you have more questions." },
-    { keys: ["red privada","que es una red","vpn","private network","what is a private network"],
-      es: "Una red privada es un pasillo cifrado entre tus dispositivos que nadie mas puede ver ni usar. Con el Chrono Mesh Node te conectas a tus camaras, computadores o servidores desde cualquier lugar, de forma segura.",
-      en: "A private network is an encrypted tunnel between your devices that no one else can see or use. With the Chrono Mesh Node you connect to your cameras, computers or servers from anywhere, securely." },
-    { keys: ["mesh node","nodo mesh","hardware","placa","mesh node price","precio mesh node"],
-      es: "El Chrono Mesh Node es nuestro dispositivo fisico (placa con antena externa). Cuesta 169.000 COP, incluye el software listo para usar y un video guia en YouTube. Se vende en Mercado Libre. Es la puerta de entrada a tu red privada.",
-      en: "The Chrono Mesh Node is our physical device (board with external antenna). It costs 169,000 COP, includes ready-to-use software and a YouTube guide video. Sold on Mercado Libre. It's the gateway into your private network." },
-    { keys: ["como activo el mesh node","como configuro el mesh node","como uso el mesh node","how to activate mesh node","how to set up mesh node"],
-      es: "Para activar el Mesh Node: conectalo a tu red local con el cable incluido, abre la app o sigue el video guia de YouTube que viene con la compra, y escanea el codigo QR para generar tu primera conexion WireGuard. En minutos tu red privada queda activa.",
-      en: "To activate the Mesh Node: connect it to your local network with the included cable, open the app or follow the YouTube guide video included with your purchase, and scan the QR code to generate your first WireGuard connection. Your private network is active in minutes." },
-    { keys: ["sentinel","monitoreo","vigilar","alertas","civic assistant","wisp","evil twin"],
-      es: "Chrono Sentinel es nuestra app de monitoreo multi-nodo: detecta cambios de SIM, redes Wi-Fi falsas (Evil Twin), degradacion de enlace, y manda alertas por Telegram o notificaciones push. Tiene version PRO via Gumroad. Esta en GitHub y pronto en Google Play.",
-      en: "Chrono Sentinel is our multi-node monitoring app: detects SIM swaps, fake Wi-Fi networks (Evil Twin), link degradation, and sends alerts via Telegram or push notifications. Has a PRO tier via Gumroad. Available on GitHub, coming soon to Google Play." },
-    { keys: ["cloud sovereign","cloud soberano","chrono cloud","sovereign cloud","nuestro cloud"],
-      es: "Chrono Cloud Sovereign es nuestro cloud propio, alternativa a AWS/Azure/Google Cloud pero operado localmente, bajo jurisdiccion propia. Tiene tres planes de precio. Es nuestro primer producto de ingresos.",
-      en: "Chrono Cloud Sovereign is our own cloud, an alternative to AWS/Azure/Google Cloud but operated locally under our own jurisdiction. It has three pricing tiers. It's our first revenue product." },
-    { keys: ["guardian","aap","deteccion de anomalias","ataques fisicos","acoustic"],
-      es: "Chrono Guardian detecta comportamientos anomalos en un dispositivo. AAP (Acoustic Anomaly Protocol) detecta ataques fisicos a infraestructura analizando sonido, sin necesidad de inteligencia artificial. Ambos son open source.",
-      en: "Chrono Guardian detects anomalous behavior on a device. AAP (Acoustic Anomaly Protocol) detects physical attacks on infrastructure by analyzing sound, no AI required. Both are open source." },
-    { keys: ["orbital","satelital","failover","multi operador","sim manager"],
-      es: "Chrono Orbital es nuestra iniciativa de conectividad satelital y multi-operador: mantiene un dispositivo conectado aunque falle su conexion principal (4G, fibra), cambiando automaticamente a otra via.",
-      en: "Chrono Orbital is our satellite and multi-operator connectivity initiative: keeps a device connected even if its main connection fails (4G, fiber), automatically switching to another path." },
-    { keys: ["vortex","banco digital","pagos","liquidacion p2p"],
-      es: "Vortex Banco Digital es nuestro gateway de liquidacion de pagos P2P, conectado a nuestro propio ledger en Bogota.",
-      en: "Vortex Digital Bank is our P2P payment settlement gateway, connected to our own ledger in Bogota." },
-    { keys: ["wireguard","activar vpn","conectar vpn","configurar vpn"],
-      es: "WireGuard es la tecnologia detras del tunel cifrado de nuestra red privada. Con el Mesh Node configurado, escaneas un codigo QR desde la app y quedas conectado en segundos.",
-      en: "WireGuard is the technology behind the encrypted tunnel of our private network. With the Mesh Node set up, you scan a QR code from the app and you're connected in seconds." },
-    { keys: ["soberania","soberano","por que csn","independencia","sovereignty","why csn"],
-      es: "Soberania digital significa que tus datos no dependen de servidores de otros paises ni de empresas extranjeras que pueden subir precios o cortar el servicio. Con CSN, todo corre en infraestructura propia.",
-      en: "Digital sovereignty means your data doesn't depend on foreign servers or companies that can raise prices or cut service. With CSN, everything runs on our own infrastructure." },
-    { keys: ["precio","costo","cuanto vale","comprar","price","cost","how much"],
-      es: "El Chrono Mesh Node cuesta 169.000 COP y se compra en Mercado Libre. Chrono Cloud Sovereign tiene tres planes distintos; escribenos para precios exactos segun lo que necesites.",
-      en: "The Chrono Mesh Node costs 169,000 COP, available on Mercado Libre. Chrono Cloud Sovereign has three pricing tiers; contact us for exact pricing based on your needs." },
-    { keys: ["productos","servicios","que ofrecen","que hace csn","products","services","what does csn do"],
-      es: "CSN ofrece: red privada/mesh con el Chrono Mesh Node, Chrono Sentinel (monitoreo), Chrono Cloud Sovereign (cloud propio), Chrono Guardian y AAP (seguridad), Chrono Orbital (conectividad satelital), y Vortex (pagos P2P). Todo bajo el principio de soberania digital.",
-      en: "CSN offers: private/mesh networking with the Chrono Mesh Node, Chrono Sentinel (monitoring), Chrono Cloud Sovereign (our own cloud), Chrono Guardian and AAP (security), Chrono Orbital (satellite connectivity), and Vortex (P2P payments). All under the principle of digital sovereignty." },
-    { keys: ["problema","no funciona","ayuda","error","help","not working","issue"],
-      es: "Cuentame que producto estas usando (Mesh Node, Sentinel, Cloud) y que te esta fallando exactamente, para ayudarte mejor.",
-      en: "Tell me which product you're using (Mesh Node, Sentinel, Cloud) and exactly what's failing, so I can help you better." }
-
-    { keys: ["chrono shield onion", "onion", "mtls", "warrant canary"],
-      es: "Chrono Shield Onion es nuestra arquitectura de doble canal: panel de administracion por HTTP+JWT, y un canal mesh ultra seguro con mTLS estricto, mas un warrant canary para transparencia. Codigo abierto en GitHub.",
-      en: "Chrono Shield Onion is our dual-channel architecture: an HTTP+JWT admin panel, and a strict mTLS mesh channel, plus a warrant canary for transparency. Open source on GitHub." },
-    { keys: ["robo de celular", "celular robado", "localizar celular", "blindaje de telefono", "stolen phone"],
-      es: "Ofrecemos un servicio de localizacion y respuesta de seguridad para clientes a quienes les robaron el celular. Es un servicio de pago, pensado para actuar rapido en una emergencia.",
-      en: "We offer a location and security response service for clients whose phone was stolen. It's a paid service, designed for fast action in an emergency." },
-    { keys: ["esim", "e-sim", "chip virtual"],
-      es: "Estamos desarrollando eSIM con seguridad integrada: anti-spam, anti-bot, anti-estafas, mas VPN. Tambien firmware VPN para routers (compatibilidad inicial con TP-Link Archer C7 y GL.iNet Flint), para que tu red este protegida desde el router, no solo desde el celular.",
-      en: "We're developing eSIM with built-in security: anti-spam, anti-bot, anti-scam, plus VPN. Also VPN firmware for routers (initial compatibility with TP-Link Archer C7 and GL.iNet Flint), so your network is protected from the router itself, not just the phone." },
-    { keys: ["chrono backbone", "backbone", "bgp", "routing propio"],
-      es: "Chrono Backbone es nuestra red troncal propia (routing BGP/OSPF con FRR), la base tecnica que sostiene toda la infraestructura de CSN por debajo de los demas servicios.",
-      en: "Chrono Backbone is our own network backbone (BGP/OSPF routing with FRR), the technical foundation that supports all of CSN's infrastructure underneath the other services." },
-    { keys: ["liberacion web total", "lwt", "despliegue soberano"],
-      es: "Liberacion Web Total (LWT) es el motor tecnico interno que usamos para desplegar aplicaciones web sin depender de servicios externos. Es lo que hace posible Chrono Cloud Sovereign de cara al cliente.",
-      en: "Liberacion Web Total (LWT) is the internal technical engine we use to deploy web applications without depending on external services. It's what makes Chrono Cloud Sovereign possible for the client." },
-    { keys: ["sovereign.md", "sovereign md", "estandar soberano"],
-      es: "SOVEREIGN.md es un estandar abierto que estamos desarrollando para describir como desplegar servicios sin depender de nube extranjera, con niveles de soberania verificables (Full Sovereign, Partial Sovereign, Legacy).",
-      en: "SOVEREIGN.md is an open standard we're developing to describe how to deploy services without depending on foreign cloud, with verifiable sovereignty levels (Full Sovereign, Partial Sovereign, Legacy)." },
-    { keys: ["chronoos", "chrono os", "sistema operativo propio"],
-      es: "ChronoOS es nuestro sistema operativo propio, base de varios de nuestros proyectos tecnicos internos.",
-      en: "ChronoOS is our own operating system, the foundation of several of our internal technical projects." },
-    { keys: ["todos los servicios", "lista de servicios", "que mas ofrecen", "all services"],
-      es: "Resumen completo de CSN: Chrono Mesh Node (hardware), WireGuard (VPN), Chrono Sentinel (monitoreo), Chrono Cloud Sovereign (cloud propio), Chrono Guardian y AAP (seguridad), Chrono Orbital (conectividad satelital), Vortex (pagos P2P), Chrono Shield Onion (arquitectura mTLS), eSIM con seguridad integrada, Chrono Backbone (red troncal), y el servicio de localizacion de celulares robados. Pregunta por cualquiera en detalle.",
-      en: "Full CSN summary: Chrono Mesh Node (hardware), WireGuard (VPN), Chrono Sentinel (monitoring), Chrono Cloud Sovereign (our own cloud), Chrono Guardian and AAP (security), Chrono Orbital (satellite connectivity), Vortex (P2P payments), Chrono Shield Onion (mTLS architecture), eSIM with built-in security, Chrono Backbone (network backbone), and the stolen-phone location service. Ask about any of them in detail." },
-
-    { keys: ["historia de csn", "historia de la empresa", "quienes son", "fundacion", "desde cuando existen", "our history", "company history"],
-      es: "CSN (Chrono Shield Networks) nacio a mediados de 2023, en Bogota, Colombia, con la idea de construir infraestructura digital soberana para LATAM. Hoy somos un equipo de alrededor de 12 personas. Nuestra meta no es solo crecer: queremos que CSN siga existiendo 200 anos despues de nosotros, porque las ideas duran mas que las personas.",
-      en: "CSN (Chrono Shield Networks) was founded in mid-2023, in Bogota, Colombia, with the idea of building sovereign digital infrastructure for LATAM. Today we're a team of around 12 people. Our goal isn't just to grow: we want CSN to still exist 200 years from now, because ideas outlast people." },
-    { keys: ["empresa pequena", "pyme", "pequeño negocio", "small business"],
-      es: "Para un negocio pequeno recomendamos empezar con un Chrono Mesh Node (acceso remoto seguro a camaras/equipos) mas DNS filtrado basico. Es la forma mas barata de tener seguridad real sin contratar un equipo de TI.",
-      en: "For a small business we recommend starting with one Chrono Mesh Node (secure remote access to cameras/equipment) plus basic DNS filtering. It's the cheapest way to get real security without hiring an IT team." },
-    { keys: ["empresa mediana", "medium business", "varias sucursales"],
-      es: "Para una empresa mediana con varias sucursales, el combo es: un Mesh Node por sede conectados en la misma red privada, Chrono Sentinel para monitorear todas las sedes desde un solo panel, y firewall gestionado con autorizacion para que no dependan de un tecnico presencial en cada sitio.",
-      en: "For a medium business with multiple branches: one Mesh Node per site connected on the same private network, Chrono Sentinel to monitor all sites from a single panel, and managed firewall with authorization so you don't need an on-site technician everywhere." },
-    { keys: ["empresa grande", "corporativo", "enterprise", "gran empresa", "data center propio", "centro de datos"],
-      es: "Para una empresa grande con su propio servidor o data center, nuestro backend (DNS, firewall, panel de dispositivos) se puede desplegar completo dentro de su propia infraestructura (self-hosted), sin que nada salga a servidores externos. Nosotros damos el software y la guia de despliegue; ustedes mantienen el control total de sus datos.",
-      en: "For a large company with its own server or data center, our backend (DNS, firewall, device panel) can be fully deployed inside your own infrastructure (self-hosted), with nothing leaving to external servers. We provide the software and deployment guide; you keep full control of your data." },
-    { keys: ["prevenir ciberataque", "prevenir un ataque", "como me protejo", "cyberattack prevention", "proteger mi empresa"],
-      es: "Con nuestros servicios, la prevencion tiene capas: 1) red privada (nadie entra si no esta autorizado), 2) firewall con reglas claras y kill switch (si la VPN cae, no sale trafico sin cifrar), 3) DNS filtrado (bloquea dominios maliciosos conocidos antes de que carguen), 4) Chrono Sentinel vigilando anomalias en tiempo real. Ninguna capa sola es suficiente; juntas si.",
-      en: "With our services, prevention works in layers: 1) private network (no one gets in without authorization), 2) firewall with clear rules and a kill switch (if the VPN drops, no unencrypted traffic leaks), 3) DNS filtering (blocks known malicious domains before they load), 4) Chrono Sentinel watching for anomalies in real time. No single layer is enough alone; together they are." },
-    { keys: ["organizaciones criminales", "cibercriminales", "amenazas conocidas", "threat intelligence", "grupos de hackers"],
-      es: "Usamos inteligencia de amenazas de fuentes publicas y reconocidas (listas de dominios maliciosos, infraestructura de phishing conocida, patrones de ataque documentados) para que Sentinel y el firewall reconozcan trafico asociado a actividad criminal conocida y lo bloqueen automaticamente. Esto es deteccion defensiva, basada en lo que ya esta documentado por la comunidad de seguridad, no investigacion propia de grupos criminales.",
-      en: "We use threat intelligence from public, recognized sources (malicious domain lists, known phishing infrastructure, documented attack patterns) so Sentinel and the firewall recognize traffic associated with known criminal activity and block it automatically. This is defensive detection based on what the security community already documents, not original investigation of criminal groups." },
-    { keys: ["insultos", "acoso", "lenguaje ofensivo", "contenido toxico", "harassment"],
-      es: "El filtro DNS/firewall tambien puede activarse en modo familiar, bloqueando sitios con contenido de acoso o lenguaje toxico conocido, pensado para proteger a menores u oficinas compartidas.",
-      en: "The DNS/firewall filter can also run in family mode, blocking sites with known harassment or toxic content, designed to protect minors or shared offices." }
-  ];
-
-  const FALLBACK_ES = "No tengo informacion especifica sobre eso todavia. Puedo contarte sobre el Mesh Node, Sentinel, Cloud Sovereign, Guardian, Orbital o Vortex. Tambien puedes usar la pestana BUSCAR EN LA WEB arriba.";
-  const FALLBACK_EN = "I don't have specific info on that yet. I can tell you about the Mesh Node, Sentinel, Cloud Sovereign, Guardian, Orbital or Vortex. You can also use the SEARCH THE WEB tab above.";
-
-  function normalize(text) {
-    return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s]/g, "").trim();
-  }
-
-  function detectLang(text) {
-    const en = ["the","what","how","is","are","price","help","hello","hi "];
-    const t = " " + text.toLowerCase() + " ";
-    let hits = 0;
-    en.forEach(w => { if (t.includes(" " + w)) hits++; });
-    return hits >= 1 ? 'en' : 'es';
-  }
-
-  function findAnswer(rawText) {
-    const text = normalize(rawText);
-    if (!text) return lang === 'es' ? FALLBACK_ES : FALLBACK_EN;
-    let best = null, bestScore = 0;
-    for (const item of KB) {
-      let score = 0;
-      for (const key of item.keys) {
-        if (text.includes(normalize(key))) score += key.split(" ").length;
-      }
-      if (score > bestScore) { bestScore = score; best = item; }
-    }
-    if (!best) return lang === 'es' ? FALLBACK_ES : FALLBACK_EN;
-    return lang === 'es' ? best.es : best.en;
-  }
-
-  const messagesEl = document.getElementById('messages');
-  const inputEl = document.getElementById('userInput');
-
-  function addMessage(text, who) {
-    const div = document.createElement('div');
-    div.className = 'msg ' + who;
-    div.textContent = text;
-    messagesEl.appendChild(div);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
-
-  function sendMessage() {
-    const text = inputEl.value.trim();
-    if (!text) return;
-    const detected = detectLang(text);
-    if (detected !== lang) setLang(detected);
-    addMessage(text, 'user');
-    inputEl.value = '';
-    setTimeout(() => addMessage(findAnswer(text), 'bot'), 200);
-  }
-
-  inputEl.addEventListener('keypress', function(e) { if (e.key === 'Enter') sendMessage(); });
-  addMessage('Hola, soy el asistente de CSN. Preguntame sobre cualquiera de nuestros servicios, o usa la pestana de busqueda arriba.', 'bot');
-</script>
-</body>
-</html>
+function N(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim()}
+function has(t,k){return k.length<=4?(' '+t+' ').indexOf(' '+k+' ')>-1:t.indexOf(k)>-1}
+var REPOS=[],FR=[['Chrono-Shield-Onion',53],['ChronoOS-',40],['ChronoGuardians',20],['chrono-sentinel-app',16],['Sentinel-Civil',12],['chrono-sovereign-onboarding',11]];
+try{var c=JSON.parse(localStorage.getItem('repos')||'[]');if(c.length)REPOS=c}catch(e){}
+try{fetch('https://api.github.com/users/contactochronoshield-cyber/repos?per_page=100').then(function(r){return r.json()}).then(function(d){if(Array.isArray(d)&&d.length){REPOS=d;try{localStorage.setItem('repos',JSON.stringify(d))}catch(e){}}}).catch(function(){})}catch(e){}
+function repoInfo(t){for(var i=0;i<REPOS.length;i++){var n=N(REPOS[i].name);if(n.length>3&&t.indexOf(n)>-1){var r=REPOS[i];return r.name+': '+(r.description||'Proyecto de CSN')+'\nLenguaje: '+(r.language||'varios')+' · '+r.stargazers_count+' estrellas\n'+r.html_url}}return null}
+function repoList(){var L=REPOS.length?REPOS.slice().sort(function(a,b){return b.stargazers_count-a.stargazers_count}).slice(0,8).map(function(r){return[r.name,r.stargazers_count]}):FR;return 'Tenemos '+(REPOS.length||'más de 30')+' repositorios públicos en github.com/contactochronoshield-cyber. Los más populares:\n'+L.map(function(x){return '• '+x[0]+' (★'+x[1]+')'}).join('\n')+'\nPregúntame por cualquiera usando su nombre.'}
+var KB=[];function K(k,a){KB.push({k:k.split('|'),a:a})}
+K('hola|buenas|buenos dias|buenas tardes|buenas noches|hey|saludos|que tal|holi','¡Hola! Soy el asistente de Chrono Shield Networks. Puedo explicarte nuestros servicios, ayudarte a crear tu red privada o contarte sobre nuestros proyectos en GitHub. ¿Por dónde empezamos?');
+K('adios|chao|hasta luego|nos vemos|bye','¡Hasta pronto! Aquí estaré cuando me necesites.');
+K('gracias|perfecto|genial|excelente','Con gusto. Si te surge otra duda, pregúntame.');
+K('quien eres|que eres|eres una ia|que puedes hacer','Soy el asistente de CSN. Conozco nuestros servicios, hardware, sitio web y repositorios, y te guío para crear y conectar tu red privada. Funciono en tu teléfono, sin servidor.');
+K('quienes son|historia|fundacion|desde cuando|que es csn|que es chrono shield|sobre ustedes|la empresa|nosotros','Chrono Shield Networks (parte de Chrono Shield Systems) nació en 2023 en Bogotá, Colombia. Diseñamos infraestructura digital, telecomunicaciones y redes privadas para organizaciones en Latinoamérica y Europa. Queremos que CSN siga existiendo dentro de 200 años: las personas mueren, las ideas no.');
+K('paises|presencia|donde estan|mercados|ubicacion|sedes','Tenemos presencia, operaciones, investigación o procesos de expansión en Colombia, Perú, Honduras, El Salvador, Brasil, Estonia y Barcelona (España). Nuestra base está en Bogotá.');
+K('contacto|correo|email|escribir|hablar con|linkedin|facebook|sitio web|pagina web|web oficial','Sitio: chronoshieldnetworks.com\nCorreo: contactochronoshield@gmail.com\nGitHub: github.com/contactochronoshield-cyber\nPuedes pedir una evaluación técnica, una implementación o una propuesta empresarial por correo.');
+K('red privada|que es una red|vpn|private network','Una red privada es un camino cifrado entre tus dispositivos que nadie más puede ver ni usar. Con ella entras a tus cámaras, computadores o servidores desde cualquier lugar, de forma segura. Toca "Mi red" arriba para crear la tuya paso a paso.');
+K('mesh node|nodo mesh|nodo|hardware|placa|antena','El Chrono Mesh Node es nuestro dispositivo físico: una placa con antena que se convierte en la puerta de entrada segura a tu red privada. Cuesta 169.000 COP, incluye software listo para usar y un video guía en YouTube. Se vende en Mercado Libre.');
+K('wireguard|activar|conectar mi red|configurar|como empiezo|como empezar','WireGuard es el túnel cifrado de tu red privada. Con tu Mesh Node o tu archivo .conf, instalas WireGuard, importas el archivo (o escaneas el QR) y activas el túnel. Toca "Mi red" y te guío según lo que quieras conectar.');
+K('sentinel|monitoreo|alertas|vigilar|civil','Chrono Sentinel monitorea tus nodos y tu red: detecta cambios de SIM, redes Wi-Fi falsas (Evil Twin) y degradación de enlace, y te avisa con alertas. Tiene versión PRO y el código está en GitHub (chrono-sentinel-app y Sentinel-Civil). Pronto en Google Play.');
+K('cloud|nube|chrono cloud|cloud soberano|sovereign cloud','Chrono Cloud Sovereign es nuestro cloud propio, una alternativa a AWS, Azure y Google Cloud operada localmente, con tres planes. Es nuestro primer producto de ingresos.');
+K('guardian|guardians|aap|anomalias|acoustic|ataques fisicos','Chrono Guardians detecta comportamientos anómalos en un dispositivo. AAP (Acoustic Anomaly Protocol) detecta ataques físicos a infraestructura analizando sonido. Ambos son de código abierto.');
+K('orbital|satelite|satelital|failover|multi operador','Chrono Orbital mantiene conectado tu dispositivo aunque falle su conexión principal (4G, fibra), cambiando solo a otra vía, incluida satelital.');
+K('vortex|banco digital|pagos|liquidacion','Vortex Banco Digital es nuestro gateway de liquidación de pagos entre personas (P2P), conectado a nuestro propio ledger en Bogotá.');
+K('onion|mtls|warrant canary|cebolla','Chrono Shield Onion es nuestra arquitectura de doble canal: un panel de administración con JWT y un canal mesh con mTLS estricto, más un warrant canary para transparencia. Es nuestro repositorio más popular en GitHub.');
+K('chronoos|chrono os|sistema operativo','ChronoOS es nuestro sistema operativo propio, base de varios proyectos técnicos. Su código está en GitHub (ChronoOS-).');
+K('esim|e sim|chip virtual|router firmware','Desarrollamos una eSIM con seguridad integrada (anti-spam, anti-bot, anti-estafas) y VPN, más firmware VPN para routers. Está en desarrollo.');
+K('backbone|bgp|troncal|routing','Chrono Backbone es nuestra red troncal propia (routing BGP/OSPF con FRR), la base técnica que sostiene la infraestructura de CSN.');
+K('robo de celular|celular robado|me robaron|localizar celular','Ofrecemos un servicio de pago de localización y respuesta de seguridad para clientes a quienes les robaron el celular. Escríbenos a contactochronoshield@gmail.com para activarlo.');
+K('remote node|velora|sentinel ia|lora|iot|telecom|edge|cloud edge|telecomunicaciones','Nuestra tecnología incluye Sentinel IA (análisis operacional de infraestructura), Chrono Remote Node (gestión de nodos remotos), Velora Enterprise (servicios para organizaciones) y Chrono Shield Onion. También trabajamos redes mesh avanzadas, Cloud + Edge, IoT/LoRa y telecomunicaciones.');
+K('principios|valores|filosofia|soberania|open source|codigo abierto','Nuestros principios: seguridad por diseño, transparencia, innovación responsable, soberanía tecnológica, open source, privacidad e interoperabilidad. Soberanía significa que tus datos no dependen de servidores extranjeros que pueden subir precios o cortar el servicio.');
+K('negocio pequeno|pyme|empresa pequena|tienda','Para un negocio pequeño: un Mesh Node (acceso remoto seguro a cámaras y equipos) y filtro DNS básico. Es la forma más barata de tener seguridad real sin contratar un equipo de TI.');
+K('empresa mediana|varias sucursales|sucursales|medium','Para una empresa mediana: un Mesh Node por sede en la misma red privada, Chrono Sentinel para vigilar todas las sedes desde un panel, y firewall con aprobación para no depender de un técnico en cada sitio.');
+K('empresa grande|corporativo|enterprise|gran empresa|data center|datacenter|centro de datos|mi servidor','Para una empresa grande: nuestro backend se despliega completo en su propio servidor o data center (self-hosted), sin que nada salga a servidores externos. Nosotros damos el software y la guía; ustedes mantienen el control. Para propuesta empresarial escribe a contactochronoshield@gmail.com.');
+K('ciberataque|hackeo|hackear|prevenir|proteger mi|ransomware|phishing','Prevenimos por capas: 1) red privada, nadie entra sin autorización; 2) firewall con kill switch, si la VPN cae no sale tráfico sin cifrar; 3) DNS filtrado que bloquea dominios maliciosos conocidos; 4) Sentinel vigilando anomalías. Ninguna capa basta sola; juntas sí.');
+K('dns|firewall|filtro|bloquear|kill switch','Estamos desarrollando DNS filtrado y firewall que configuras hablando en español ("bloquéame apuestas de 8 a 5"). La IA propone la regla y tú la confirmas: nada se aplica sin tu aprobación, y todo queda en un registro.');
+K('acceso a mi computador|mi computador|mi pc|control remoto|acceso remoto|permiso|autorizacion|instalar en mi','Puedo ayudarte a conectar tu computador, pero siempre con tu permiso: te doy cada comando, tú lo ves y decides si lo ejecutas. Nada se instala ni se abre solo y puedes desinstalar cuando quieras. Toca "Mi red" y elige "Mi computador".');
+K('precio|costo|cuanto vale|comprar|plan|planes','El Chrono Mesh Node cuesta 169.000 COP en Mercado Libre. Chrono Cloud Sovereign tiene tres planes; escribe a contactochronoshield@gmail.com para precios según lo que necesites.');
+K('cuantos mensajes|limite|limitado|ilimitado|cuantas preguntas','No hay límite: puedes preguntarme todo lo que quieras. Funciono en tu teléfono, sin servidor y sin costo por mensaje.');
+K('repos|repositorios|github|proyectos|proyectos abiertos',function(){return repoList()});
+K('ayuda|problema|no funciona|error|falla','Cuéntame qué producto usas (Mesh Node, Sentinel, Cloud, WireGuard) y qué te falla exactamente, y te ayudo. Si es urgente, escribe a contactochronoshield@gmail.com.');
+var FB='Eso todavía no lo tengo. Puedo hablarte de redes privadas, Mesh Node, Sentinel, Cloud, seguridad, nuestros repositorios o ayudarte a crear tu red. También puedes usar la pestaña Buscar.';
+function reply(raw){var t=N(raw);if(!t)return FB;var ri=repoInfo(t);if(ri)return ri;var best=null,bs=0;KB.forEach(function(e){var s=0;e.k.forEach(function(k){if(has(t,k))s+=k.length});if(s>bs){bs=s;best=e}});return best?(typeof best.a==='function'?best.a():best.a):FB}
+var M=document.getElementById('msgs'),Q=document.getElementById('q');
+function add(t,c){var d=document.createElement('div');d.className='m '+c;d.textContent=t;M.appendChild(d);M.scrollTop=M.scrollHeight}
+function ask(t){add(t,'usr');setTimeout(function(){add(reply(t),'bot')},180)}
+function send(){var t=Q.value.trim();if(!t)return;Q.value='';ask(t)}
+Q.addEventListener('keypress',function(e){if(e.key==='Enter')send()});
+function tab(n){['chat','red','web'].forEach(function(x){document.getElementById('t-'+x).classList.toggle('on',x===n);document.getElementById('n-'+x).classList.toggle('on',x===n)})}
+function web(){var q=document.getElementById('wq').value.trim();if(q)document.getElementById('bf').src='https://lite.duckduckgo.com/lite/?q='+encodeURIComponent(q)}
+function clr(){M.innerHTML='';add('Conversación borrada. ¿En qué te ayudo?','bot');document.getElementById('sr').style.display='none'}
+var QC=['Qué es una red privada','Conectar mi computador','Nuestros repos','Precios'];
+QC.forEach(function(t){var b=document.createElement('button');b.textContent=t;b.onclick=function(){ask(t)};document.getElementById('qc').appendChild(b)});
+add('¡Hola! Soy el asistente de Chrono Shield Networks. Pregúntame lo que quieras sobre nuestros servicios, sitio y repositorios, o toca "Mi red" para crear la tuya.','bot');
+var W={s:1,who:'',dev:''};
+function opt(k,t,d){return '<button class="opt" onclick="W.'+k+'=\''+t+'\';W.s++;wz()">'+t+'<small>'+d+'</small></button>'}
+var CM=['winget install WireGuard.WireGuard\n\nLuego abre WireGuard, toca "Añadir túnel", importa tu archivo .conf y pulsa "Activar".','Instala WireGuard desde la App Store, o con:\nbrew install wireguard-tools\n\nLuego importa tu archivo .conf y activa el túnel.','sudo apt install wireguard\nsudo wg-quick up ./chrono.conf\n\n(Cambia chrono.conf por el nombre de tu archivo. Para apagar: sudo wg-quick down ./chrono.conf)'];
+function cmd(i){document.getElementById('cmd').innerHTML='<pre>'+CM[i].replace(/</g,'&lt;')+'</pre>'}
+function result(){var d=W.dev,h='<h1>Listo: '+W.who.toLowerCase()+' + '+d.toLowerCase()+'</h1>';
+if(d==='Mi computador')h+='<p class="s">Tú ejecutas cada paso y ves qué hace. Nada se instala ni se abre solo.</p><div class="note"><b>Tu permiso manda.</b> La IA no entra a tu computador: te da el comando y tú decides si lo ejecutas. Puedes desinstalar WireGuard cuando quieras. Tu archivo .conf te lo entrega tu Mesh Node o tu red Chrono.</div><button class="btn g" onclick="cmd(0)">Windows</button><button class="btn g" onclick="cmd(1)">Mac</button><button class="btn g" onclick="cmd(2)">Linux</button><div id="cmd"></div>';
+else if(d==='Mi celular')h+='<p class="s">Son 3 pasos.</p><div class="note">1. Instala la app WireGuard (Play Store, App Store o F-Droid).<br>2. Toca "+" y elige "Escanear código QR".<br>3. Escanea el QR de tu nodo y activa el túnel.</div>';
+else h+='<p class="s">Son 4 pasos.</p><div class="note">1. Conecta el Mesh Node a tu router con el cable.<br>2. Enciéndelo y espera a que quede estable.<br>3. Sigue el video guía de YouTube que viene con tu compra.<br>4. Escanea el QR del nodo desde WireGuard y activa el túnel.</div>';
+return h+'<button class="btn" onclick="tab(\'chat\');ask(\'Necesito ayuda con mi red privada\')">Preguntarle a la IA</button><button class="btn g" onclick="W.s=1;wz()">Empezar de nuevo</button>'}
+function wz(){var p=Math.round(W.s/3*100),h='<div style="color:var(--muted);font-size:14px">Paso '+W.s+' de 3</div><div class="prog"><div style="width:'+p+'%"></div></div>';
+if(W.s===1)h+='<h1>¿Qué quieres proteger?</h1><p class="s">Elige una opción. Después te guío en cada paso.</p>'+opt('who','Mi negocio','Sucursales, cámaras y equipos')+opt('who','Mi casa','Cámaras y dispositivos del hogar')+opt('who','Mi familia','Celulares de quienes quieres cuidar');
+else if(W.s===2)h+='<h1>¿Qué vas a conectar primero?</h1><p class="s">Después puedes agregar más.</p>'+opt('dev','Mi computador','Windows, Mac o Linux')+opt('dev','Mi celular','Android o iPhone')+opt('dev','Un Mesh Node','El nodo físico de CSN')+'<button class="btn g" onclick="W.s=1;wz()">Volver</button>';
+else h+=result();
+document.getElementById('wz').innerHTML=h}
+wz();
+</script></body></html>
