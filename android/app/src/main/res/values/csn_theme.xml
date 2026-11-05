@@ -1,0 +1,7 @@
+<resources>
+    <style name="CSNAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#2B5BE6</item>
+        <item name="colorPrimaryDark">#07101E</item>
+        <item name="android:windowBackground">#F4F7FB</item>
+    </style>
+</resources>
