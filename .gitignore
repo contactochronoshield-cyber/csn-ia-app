@@ -32,3 +32,14 @@ local.properties
 
 # Local files
 .DS_Store
+
+# CSN IA - secretos y datos locales
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+*.pre-ed25519
+*.bak
+backend-pro/data/
+license-private.key
