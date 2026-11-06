@@ -43,3 +43,18 @@ __pycache__/
 *.bak
 backend-pro/data/
 license-private.key
+
+# Android / Gradle
+/android/.gradle/
+/android/**/build/
+/android/build/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Datos y secretos
+backend-pro/data/
+.env
+.env.*
+!.env.example

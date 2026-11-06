@@ -9,7 +9,8 @@ import java.net.URL
 import java.util.concurrent.Executors
 
 class ChronoNetworkBrainClient(
-    private val baseUrl: String
+    private val baseUrl: String,
+    private val sessionStore: ChronoSessionStore
 ) {
     interface Callback {
         fun onSuccess(result: JSONObject)
@@ -21,42 +22,164 @@ class ChronoNetworkBrainClient(
 
     fun analyze(message: String, callback: Callback) {
         if (message.isBlank()) {
-            mainHandler.post {
-                callback.onError("El mensaje no puede estar vacío.")
-            }
+            callbackError(callback, "El mensaje no puede estar vacío.")
             return
         }
 
+        request(
+            "/network/analyze",
+            "POST",
+            JSONObject().put("message", message),
+            true,
+            false,
+            callback
+        )
+    }
+
+    fun activateOrganization(
+        licenseKey: String,
+        email: String,
+        password: String,
+        callback: Callback
+    ) {
+        if (
+            licenseKey.isBlank() ||
+            email.isBlank() ||
+            password.isBlank()
+        ) {
+            callbackError(callback, "Completa todos los campos.")
+            return
+        }
+
+        val payload = JSONObject()
+            .put("license_key", licenseKey.trim())
+            .put("email", email.trim())
+            .put("password", password)
+
+        request(
+            "/auth/activate",
+            "POST",
+            payload,
+            false,
+            false,
+            callback
+        )
+    }
+
+    fun login(
+        email: String,
+        password: String,
+        organizationId: String,
+        callback: Callback
+    ) {
+        if (
+            email.isBlank() ||
+            password.isBlank() ||
+            organizationId.isBlank()
+        ) {
+            callbackError(
+                callback,
+                "Correo, contraseña e identificador de organización son obligatorios."
+            )
+            return
+        }
+
+        val payload = JSONObject()
+            .put("email", email.trim())
+            .put("password", password)
+            .put("organization_id", organizationId.trim())
+
+        request(
+            "/auth/login",
+            "POST",
+            payload,
+            false,
+            true,
+            callback
+        )
+    }
+
+    fun me(callback: Callback) {
+        request(
+            "/auth/me",
+            "GET",
+            null,
+            true,
+            false,
+            callback
+        )
+    }
+
+    fun logout(callback: Callback) {
+        request(
+            "/auth/logout",
+            "POST",
+            JSONObject(),
+            true,
+            false,
+            callback,
+            clearSession = true
+        )
+    }
+
+    private fun request(
+        path: String,
+        method: String,
+        payload: JSONObject?,
+        requiresSession: Boolean,
+        saveLoginToken: Boolean,
+        callback: Callback,
+        clearSession: Boolean = false
+    ) {
         executor.execute {
             var connection: HttpURLConnection? = null
 
             try {
+                val token = if (requiresSession) {
+                    sessionStore.getToken()
+                        ?: throw IOException(
+                            "Inicia sesión para utilizar este servicio."
+                        )
+                } else {
+                    null
+                }
+
                 val endpoint = URL(
-                    "${baseUrl.trim().trimEnd('/')}/network/analyze"
+                    baseUrl.trim().trimEnd('/') + path
                 )
 
                 require(endpoint.protocol == "https") {
-                    "Chrono Network Brain requiere una conexión HTTPS."
+                    "Chrono Network Brain requiere HTTPS."
                 }
 
                 connection = endpoint.openConnection() as HttpURLConnection
-                connection.requestMethod = "POST"
+                connection.requestMethod = method
                 connection.connectTimeout = 10000
-                connection.readTimeout = 15000
-                connection.doOutput = true
+                connection.readTimeout = 20000
                 connection.setRequestProperty(
-                    "Content-Type", "application/json; charset=utf-8"
-                )
-                connection.setRequestProperty(
-                    "Accept", "application/json"
+                    "Accept",
+                    "application/json"
                 )
 
-                val payload = JSONObject()
-                    .put("message", message)
-                    .toString()
+                if (payload != null) {
+                    connection.doOutput = true
+                    connection.setRequestProperty(
+                        "Content-Type",
+                        "application/json; charset=utf-8"
+                    )
 
-                connection.outputStream.use { output ->
-                    output.write(payload.toByteArray(Charsets.UTF_8))
+                    connection.outputStream.use { output ->
+                        output.write(
+                            payload.toString().toByteArray(Charsets.UTF_8)
+                        )
+                    }
+                }
+
+                if (!token.isNullOrBlank()) {
+                    connection.setRequestProperty(
+                        "Authorization",
+                        "Bearer $token"
+                    )
                 }
 
                 val status = connection.responseCode
@@ -70,21 +193,61 @@ class ChronoNetworkBrainClient(
                     ?.use { it.readText() } ?: ""
 
                 if (status !in 200..299) {
-                    throw IOException("Error HTTP $status: ${body.take(300)}")
+                    if (status == 401 && requiresSession) {
+                        sessionStore.clear()
+                    }
+
+                    val detail = try {
+                        JSONObject(body).optString(
+                            "detail",
+                            "Error HTTP $status"
+                        )
+                    } catch (_: Exception) {
+                        "Error HTTP $status"
+                    }
+
+                    throw IOException(detail)
                 }
 
-                val response = JSONObject(body)
+                val response = if (body.isBlank()) {
+                    JSONObject()
+                } else {
+                    JSONObject(body)
+                }
+
+                if (saveLoginToken) {
+                    val accessToken = response.optString("access_token")
+
+                    if (accessToken.isBlank()) {
+                        throw IOException(
+                            "El servidor no devolvió un token de sesión."
+                        )
+                    }
+
+                    sessionStore.saveToken(accessToken)
+
+                    // El token nunca se devuelve al JavaScript.
+                    response.remove("access_token")
+                }
+
+                if (clearSession) {
+                    sessionStore.clear()
+                }
 
                 mainHandler.post {
                     callback.onSuccess(response)
                 }
 
             } catch (error: Exception) {
-                val messageError = error.message
-                    ?: "No fue posible conectar con Chrono Network Brain."
+                if (clearSession) {
+                    sessionStore.clear()
+                }
+
+                val errorMessage = error.message
+                    ?: "No fue posible conectar con Chrono Shield Networks."
 
                 mainHandler.post {
-                    callback.onError(messageError)
+                    callback.onError(errorMessage)
                 }
             } finally {
                 connection?.disconnect()
@@ -92,7 +255,16 @@ class ChronoNetworkBrainClient(
         }
     }
 
+    private fun callbackError(
+        callback: Callback,
+        message: String
+    ) {
+        mainHandler.post {
+            callback.onError(message)
+        }
+    }
+
     fun shutdown() {
-        executor.shutdown()
+        executor.shutdownNow()
     }
 }

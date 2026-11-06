@@ -13,6 +13,17 @@ from fastapi import FastAPI, HTTPException, Request, Depends, Header
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from identity import (
+    IdentityError,
+    initialize_db as initialize_identity_db,
+    issue_license,
+    activate_organization,
+    login as identity_login,
+    authenticate_session,
+    logout as identity_logout,
+)
+
+
 app = FastAPI(title="CSN PRO")
 
 ALLOWED_ORIGINS = [
@@ -355,6 +366,152 @@ from chrono_mesh import router as chrono_mesh_router
 app.include_router(chrono_mesh_router)
 
 
+
+# ============================================================
+# CSN IDENTITY: CUENTAS, ORGANIZACIONES Y LICENCIAS
+# ============================================================
+
+class LicenseIssueRequest(BaseModel):
+    organization_name: str
+    plan: str = "enterprise"
+    max_seats: int = 10
+    expires_at: str | None = None
+
+
+class OrganizationActivationRequest(BaseModel):
+    license_key: str
+    email: str
+    password: str
+
+
+class IdentityLoginRequest(BaseModel):
+    email: str
+    password: str
+    organization_id: str
+
+
+def identity_http_error(exc: IdentityError):
+    raise HTTPException(
+        status_code=exc.status_code,
+        detail=str(exc)
+    )
+
+
+def require_identity_user(
+    authorization: str | None = Header(default=None)
+):
+    if not authorization:
+        raise HTTPException(401, "Se requiere una sesión.")
+
+    scheme, separator, token = authorization.partition(" ")
+
+    if scheme.lower() != "bearer" or not separator or not token.strip():
+        raise HTTPException(401, "Formato de autorización no válido.")
+
+    try:
+        return authenticate_session(token.strip())
+    except IdentityError as exc:
+        identity_http_error(exc)
+
+
+@app.on_event("startup")
+def initialize_csn_identity():
+    initialize_identity_db()
+
+
+@app.post("/admin/licenses")
+def admin_issue_license(
+    payload: LicenseIssueRequest,
+    _admin=Depends(require_admin)
+):
+    try:
+        return {
+            "status": "issued",
+            "license": issue_license(
+                organization_name=payload.organization_name,
+                plan=payload.plan,
+                max_seats=payload.max_seats,
+                expires_at=payload.expires_at
+            )
+        }
+    except IdentityError as exc:
+        identity_http_error(exc)
+
+
+@app.post("/auth/activate", status_code=201)
+def auth_activate(payload: OrganizationActivationRequest):
+    try:
+        result = activate_organization(
+            license_key=payload.license_key,
+            email=payload.email,
+            password=payload.password
+        )
+        return {
+            "status": "activated",
+            "organization": {
+                "id": result["organization_id"],
+                "name": result["organization_name"],
+                "plan": result["license_plan"],
+                "max_seats": result["max_seats"]
+            },
+            "owner": {
+                "id": result["user_id"],
+                "email": result["email"],
+                "role": result["role"]
+            }
+        }
+    except IdentityError as exc:
+        identity_http_error(exc)
+
+
+@app.post("/auth/login")
+def auth_login(payload: IdentityLoginRequest):
+    try:
+        return identity_login(
+            email=payload.email,
+            password=payload.password,
+            organization_id=payload.organization_id
+        )
+    except IdentityError as exc:
+        identity_http_error(exc)
+
+
+@app.get("/auth/me")
+def auth_me(principal=Depends(require_identity_user)):
+    return {
+        "authenticated": True,
+        "user": {
+            "id": principal["user_id"],
+            "email": principal["email"],
+            "role": principal["role"]
+        },
+        "organization": {
+            "id": principal["organization_id"],
+            "name": principal["organization_name"],
+            "plan": principal["license_plan"]
+        }
+    }
+
+
+@app.post("/auth/logout")
+def auth_logout(
+    authorization: str | None = Header(default=None)
+):
+    if not authorization:
+        raise HTTPException(401, "Se requiere una sesión.")
+
+    scheme, separator, token = authorization.partition(" ")
+
+    if scheme.lower() != "bearer" or not separator or not token.strip():
+        raise HTTPException(401, "Formato de autorización no válido.")
+
+    try:
+        return identity_logout(token.strip())
+    except IdentityError as exc:
+        identity_http_error(exc)
+
+
+
 # CHRONO_NETWORK_BRAIN_API
 # Endpoint de análisis conversacional de infraestructura.
 # Solo analiza intenciones; no ejecuta operaciones de red.
@@ -366,7 +523,10 @@ except ImportError:
 
 
 @app.post("/network/analyze")
-async def network_analyze(payload: dict):
+async def network_analyze(
+    payload: dict,
+    principal=Depends(require_identity_user)
+):
     from fastapi import HTTPException
 
     if analyze_network_intent is None:
