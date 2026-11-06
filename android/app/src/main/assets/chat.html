@@ -37,7 +37,7 @@ pre{background:var(--ink);color:#E8F0FA;padding:12px;border-radius:12px;font-siz
 #bf{flex:1;border:0;background:#fff}
 </style></head><body>
 <header><svg viewBox="0 0 120 140" width="28" height="33" aria-label="CSN"><path d="M60 6 108 24v44c0 30-22 54-48 66C34 122 12 98 12 68V24z" fill="#0B2342" stroke="#19B6FF" stroke-width="6" stroke-linejoin="round"/><path d="M60 66C68 50 90 50 90 66C90 82 68 82 60 66C52 50 30 50 30 66C30 82 52 82 60 66" fill="none" stroke="#19B6FF" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="66" r="9" fill="#17B26A"/></svg><b>CSN IA</b><span class="sp"></span><span class="chip"><i></i>Red protegida</span><button class="ib" aria-label="Configuración" onclick="document.getElementById('sr').style.display='block'">&#9881;</button></header>
-<nav><button class="on" id="n-chat" onclick="tab('chat')">Chat</button><button id="n-red" onclick="tab('red')">Mi red</button><button id="n-web" onclick="tab('web')">Buscar</button><button id="n-nodo" onclick="tab('nodo')">Nodo</button></nav>
+<nav><button class="on" id="n-chat" onclick="tab('chat')">Chat</button><button id="n-red" onclick="tab('red')">Mi red</button><button id="n-web" onclick="tab('web')">Buscar</button><button id="n-nodo" onclick="tab('nodo')">Nodo</button><button id="n-pro" onclick="tab('pro')">Pro</button></nav>
 <div class="tab on" id="t-chat"><div id="msgs"></div><div class="chips" id="qc"></div><div id="bar"><input id="q" aria-label="Escribe tu pregunta" placeholder="Escribe tu pregunta"><button aria-label="Enviar" onclick="send()">&#10148;</button></div></div>
 <div class="tab" id="t-red"><div class="pad" id="wz"></div></div>
 <div class="tab" id="t-web"><div id="bar" style="border-top:0;border-bottom:1px solid var(--line)"><input id="wq" aria-label="Buscar en internet" placeholder="Buscar en internet"><button aria-label="Buscar" onclick="web()">&#8594;</button></div><iframe id="bf" src="about:blank"></iframe></div>
@@ -92,7 +92,7 @@ function add(t,c){var d=document.createElement('div');d.className='m '+c;d.textC
 function ask(t){add(t,'usr');setTimeout(function(){add(reply(t),'bot')},180)}
 function send(){var t=Q.value.trim();if(!t)return;Q.value='';ask(t)}
 Q.addEventListener('keypress',function(e){if(e.key==='Enter')send()});
-function tab(n){['chat','red','nodo','web'].forEach(function(x){document.getElementById('t-'+x).classList.toggle('on',x===n);document.getElementById('n-'+x).classList.toggle('on',x===n)})}
+function tab(n){['chat','red','nodo','pro','web'].forEach(function(x){document.getElementById('t-'+x).classList.toggle('on',x===n);document.getElementById('n-'+x).classList.toggle('on',x===n)})}
 function web(){var q=document.getElementById('wq').value.trim();if(q)document.getElementById('bf').src='https://lite.duckduckgo.com/lite/?q='+encodeURIComponent(q)}
 function clr(){M.innerHTML='';add('Conversación borrada. ¿En qué te ayudo?','bot');document.getElementById('sr').style.display='none'}
 var QC=['Qué es una red privada','Conectar mi computador','Nuestros repos','Precios'];
@@ -113,4 +113,4 @@ else if(W.s===2)h+='<h1>¿Qué vas a conectar primero?</h1><p class="s">Después
 else h+=result();
 document.getElementById('wz').innerHTML=h}
 wz();
-</script><script src="nodo.js"></script></body></html>
+</script><script src="nodo.js"></script><script src="pro.js"></script><script src="conv.js"></script></body></html>
