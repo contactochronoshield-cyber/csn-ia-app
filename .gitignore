@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.token
+*.pem
+*.key
+.csn-mesh-test-config.json
+.csn-mesh-test-token
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Android
+.gradle/
+**/build/
+local.properties
+
+# Backups
+*.backup-*
+*.before-*
+*.pre-*
+*.auth-backup-*
+
+# Local files
+.DS_Store

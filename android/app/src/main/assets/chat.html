@@ -89,7 +89,48 @@ var FB='Eso todavía no lo tengo. Puedo hablarte de redes privadas, Mesh Node, S
 function reply(raw){var t=N(raw);if(!t)return FB;var ri=repoInfo(t);if(ri)return ri;var best=null,bs=0;KB.forEach(function(e){var s=0;e.k.forEach(function(k){if(has(t,k))s+=k.length});if(s>bs){bs=s;best=e}});return best?(typeof best.a==='function'?best.a():best.a):FB}
 var M=document.getElementById('msgs'),Q=document.getElementById('q');
 function add(t,c){var d=document.createElement('div');d.className='m '+c;d.textContent=t;M.appendChild(d);M.scrollTop=M.scrollHeight}
-function ask(t){add(t,'usr');setTimeout(function(){add(reply(t),'bot')},180)}
+var csnRequestCounter=0;
+
+function localAsk(t){
+ setTimeout(function(){
+  add('Orientación local (sin conexión al Network Brain):\n'+reply(t),'bot');
+ },180);
+}
+
+function ask(t){
+ add(t,'usr');
+ if(window.ChronoNetworkBrain && typeof window.ChronoNetworkBrain.analyze==='function'){
+  var id='csn_'+(++csnRequestCounter)+'_'+Date.now();
+  add('Consultando Chrono Network Brain…','bot');
+  window.ChronoNetworkBrain.analyze(t,id);
+ }else{
+  localAsk(t);
+ }
+}
+
+window.onChronoNetworkBrainResult=function(id,success,value){
+ var resultText='';
+ if(success){
+  try{
+   var envelope=JSON.parse(value);
+   var r=envelope.result||{};
+   resultText='Chrono Network Brain · '+(envelope.version||'versión no indicada')+'\n'+
+    'Dominio: '+(r.domain||'no identificado')+'\n'+
+    'Acción: '+(r.action||'no identificada')+'\n'+
+    'Confianza: '+(r.confidence!==undefined?Math.round(r.confidence*100)+'%':'no indicada')+'\n\n'+
+    (r.explanation||'Análisis recibido sin explicación.')+'\n\n'+
+    'Requiere autorización: '+(r.requires_authorization?'Sí':'No')+'\n'+
+    ((r.suggested_checks&&r.suggested_checks.length)?'Comprobaciones sugeridas:\n- '+r.suggested_checks.join('\n- '):'');
+  }catch(e){
+   resultText='Se recibió una respuesta, pero no se pudo interpretar.';
+  }
+ }else{
+  resultText='No se pudo conectar con Chrono Network Brain: '+value+'\n\n'+
+   'La orientación local sigue disponible y no ejecuta operaciones.';
+ }
+ add(resultText,'bot');
+};
+
 function send(){var t=Q.value.trim();if(!t)return;Q.value='';ask(t)}
 Q.addEventListener('keypress',function(e){if(e.key==='Enter')send()});
 function tab(n){['chat','red','nodo','pro','web'].forEach(function(x){document.getElementById('t-'+x).classList.toggle('on',x===n);document.getElementById('n-'+x).classList.toggle('on',x===n)})}

@@ -3,22 +3,53 @@ CSN PRO - Backend de DNS filtrado, Firewall con autorizacion, Panel de
 dispositivos, y sistema ANTI-ABUSO (bloqueo de usuarios maliciosos).
 """
 
+import os
 import re
 import time
 import uuid
 import datetime
-from fastapi import FastAPI, HTTPException, Request
+import secrets
+from fastapi import FastAPI, HTTPException, Request, Depends, Header
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 app = FastAPI(title="CSN PRO")
 
+ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv(
+        "CSN_ALLOWED_ORIGINS",
+        "http://localhost,http://127.0.0.1"
+    ).split(",")
+    if origin.strip()
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=ALLOWED_ORIGINS,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type", "Authorization", "X-CSN-Admin-Token"],
 )
+
+ADMIN_TOKEN = os.getenv("CSN_ADMIN_TOKEN", "")
+
+
+def require_admin(
+    x_csn_admin_token: str | None = Header(default=None)
+):
+    if not ADMIN_TOKEN:
+        raise HTTPException(
+            status_code=503,
+            detail="Administracion deshabilitada: falta configurar CSN_ADMIN_TOKEN."
+        )
+
+    if not x_csn_admin_token or not secrets.compare_digest(
+        x_csn_admin_token, ADMIN_TOKEN
+    ):
+        raise HTTPException(
+            status_code=401,
+            detail="Token administrativo invalido."
+        )
 
 # ============================================================
 # ANTI-ABUSO: lista de baneados, rate limiting, deteccion de intentos maliciosos
@@ -72,20 +103,20 @@ def check_malicious_intent(client_id: str, text: str) -> bool:
     return False
 
 
-@app.post("/admin/ban")
+@app.post("/admin/ban", dependencies=[Depends(require_admin)])
 def admin_ban(ban: AdminBan):
     BANNED_CLIENTS.add(ban.client_id)
     return {"status": "baneado", "client_id": ban.client_id, "reason": ban.reason}
 
 
-@app.post("/admin/unban")
+@app.post("/admin/unban", dependencies=[Depends(require_admin)])
 def admin_unban(client_id: str):
     BANNED_CLIENTS.discard(client_id)
     VIOLATIONS.pop(client_id, None)
     return {"status": "desbaneado", "client_id": client_id}
 
 
-@app.get("/admin/banned")
+@app.get("/admin/banned", dependencies=[Depends(require_admin)])
 def admin_list_banned():
     return {"banned": list(BANNED_CLIENTS), "violations": VIOLATIONS}
 
@@ -207,6 +238,7 @@ class FirewallRequest(BaseModel):
 
 class FirewallConfirm(BaseModel):
     request_id: str
+    client_id: str
     approve: bool
 
 
@@ -247,16 +279,34 @@ def firewall_confirm(conf: FirewallConfirm):
     pending = PENDING_RULES.get(conf.request_id)
     if not pending:
         raise HTTPException(404, "No existe esa solicitud o ya expiro.")
-    check_banned(pending["client_id"])
+    if pending["client_id"] != conf.client_id:
+        raise HTTPException(
+            403,
+            "Esta solicitud de firewall pertenece a otro cliente."
+        )
+
+    check_banned(conf.client_id)
 
     if not conf.approve:
         del PENDING_RULES[conf.request_id]
         return {"status": "DENEGADO_POR_CLIENTE", "request_id": conf.request_id}
 
-    APPLIED_LOG.append({**pending, "request_id": conf.request_id,
-                         "applied_at": datetime.datetime.utcnow().isoformat(), "status": "APLICADA"})
+    APPLIED_LOG.append({
+        **pending,
+        "request_id": conf.request_id,
+        "approved_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "status": "APROBADA_NO_EJECUTADA"
+    })
     del PENDING_RULES[conf.request_id]
-    return {"status": "AUTORIZADO", "request_id": conf.request_id, "message": "Regla aplicada y registrada en el log."}
+
+    return {
+        "status": "APROBADA_NO_EJECUTADA",
+        "request_id": conf.request_id,
+        "message": (
+            "Aprobacion registrada. La regla aun no se ha ejecutado "
+            "en el firewall del sistema operativo."
+        )
+    }
 
 
 @app.get("/firewall/log/{client_id}")
@@ -299,3 +349,48 @@ def devices_list(client_id: str):
 @app.get("/health")
 def health():
     return {"status": "ok", "service": "csn-pro-backend", "banned_count": len(BANNED_CLIENTS)}
+
+# CHRONO MESH INTELLIGENCE
+from chrono_mesh import router as chrono_mesh_router
+app.include_router(chrono_mesh_router)
+
+
+# CHRONO_NETWORK_BRAIN_API
+# Endpoint de análisis conversacional de infraestructura.
+# Solo analiza intenciones; no ejecuta operaciones de red.
+
+try:
+    from network_brain import analyze as analyze_network_intent
+except ImportError:
+    analyze_network_intent = None
+
+
+@app.post("/network/analyze")
+async def network_analyze(payload: dict):
+    from fastapi import HTTPException
+
+    if analyze_network_intent is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Chrono Network Brain no está disponible."
+        )
+
+    message = payload.get("message")
+
+    if not isinstance(message, str) or not message.strip():
+        raise HTTPException(
+            status_code=400,
+            detail="Se requiere un mensaje válido."
+        )
+
+    try:
+        result = analyze_network_intent(message)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+
+    return {
+        "service": "Chrono Network Brain",
+        "version": "0.1.0",
+        "execution_performed": False,
+        "result": result
+    }
