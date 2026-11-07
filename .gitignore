@@ -4,57 +4,41 @@ __pycache__/
 .venv/
 venv/
 
-# Secrets
+# Secrets and credentials
 .env
 .env.*
 !.env.example
 *.token
 *.pem
 *.key
+license-private.key
+*.pre-ed25519
 .csn-mesh-test-config.json
 .csn-mesh-test-token
 
-# Local databases
+# Local databases and data
 *.db
 *.sqlite
 *.sqlite3
+backend-pro/data/
 
-# Android
+# Android and Gradle
 .gradle/
+**/.gradle/
 **/build/
 local.properties
+**/local.properties
 
-# Backups
+# Backups and local files
+*.backup
 *.backup-*
 *.before-*
 *.pre-*
 *.auth-backup-*
-
-# Local files
+*.bak
 .DS_Store
 
-# CSN IA - secretos y datos locales
-.env
-.env.*
-!.env.example
-__pycache__/
-*.py[cod]
-*.pre-ed25519
-*.bak
-backend-pro/data/
-license-private.key
-
-# Android / Gradle
-/android/.gradle/
-/android/**/build/
-/android/build/
-
-# Python
-__pycache__/
-*.py[cod]
-
-# Datos y secretos
-backend-pro/data/
-.env
-.env.*
-!.env.example
+# Local audit files
+CSN_IA_AUDIT.zip
+CSN_IA_AUDIT_REPORT.txt
+*-backup
