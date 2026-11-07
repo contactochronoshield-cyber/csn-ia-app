@@ -40,6 +40,10 @@ pre{background:var(--ink);color:#E8F0FA;padding:12px;border-radius:12px;font-siz
 #t-guide h3{font-size:17px;margin:22px 0 8px}
 #t-guide .note{line-height:1.65}
 #t-guide .btn{cursor:pointer}
+#t-guide .companion-card{padding:16px;border:1px solid var(--line);border-radius:16px;background:#fff;margin:12px 0}
+#t-guide .companion-card h3{margin:0 0 6px}
+#t-guide #guide-location{white-space:pre-line}
+#t-guide .companion-status{font-size:13px;color:var(--muted);line-height:1.5}
 
 </style></head><body>
 <header><svg viewBox="0 0 120 140" width="28" height="33" aria-label="CSN"><path d="M60 6 108 24v44c0 30-22 54-48 66C34 122 12 98 12 68V24z" fill="#0B2342" stroke="#19B6FF" stroke-width="6" stroke-linejoin="round"/><path d="M60 66C68 50 90 50 90 66C90 82 68 82 60 66C52 50 30 50 30 66C30 82 52 82 60 66" fill="none" stroke="#19B6FF" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="66" r="9" fill="#17B26A"/></svg><b>CSN IA</b><span class="sp"></span><span class="chip"><i></i>Red protegida</span><button class="ib" aria-label="Configuración" onclick="document.getElementById('sr').style.display='block'">&#9881;</button></header>
@@ -63,6 +67,23 @@ Ubicación pendiente. Activa el GPS para consultar tu posición.
 <button class="btn" onclick="chronoRequestLocation()">
 Obtener mi ubicación GPS
 </button>
+
+<h3>CHRONO COMPANION</h3>
+<p class="s">Tu acompañante inteligente para orientarte en lugares desconocidos.</p>
+
+<div class="companion-card">
+<h3>¿Te has perdido?</h3>
+<p class="s">Chrono consultará tu posición y abrirá una conversación de ayuda.</p>
+<button class="btn" onclick="chronoCompanionLost()">ME PERDÍ</button>
+</div>
+
+<div class="companion-card">
+<h3>ACOMPAÑARME</h3>
+<p class="s">Inicia una conversación de orientación con CSN IA.</p>
+<button class="btn g" onclick="chronoCompanionStart()">Iniciar orientación</button>
+</div>
+
+<div class="note companion-status" id="companion-status">GPS: integrado; pendiente de prueba real.<br>Seguimiento continuo: pendiente.<br>Mapas y rutas offline: pendientes de instalación.</div>
 
 <h3>Mapas sin conexión</h3>
 <div class="note">
@@ -202,12 +223,27 @@ wz();
 </script><script src="nodo.js"></script><script src="pro.js"></script><script src="conv.js"></script><script src="auth.js"></script>
 <script src="noticias.js"></script><script src="buscador.js"></script>
 <script>
+var chronoCompanionPending = '';
+
+function chronoCompanionLost() {
+    chronoCompanionPending = 'lost';
+    tab('chat');
+    add('CHRONO COMPANION: voy a comprobar tu ubicación para ayudarte.', 'bot');
+    chronoRequestLocation();
+}
+
+function chronoCompanionStart() {
+    tab('chat');
+    ask('Quiero que seas mi acompañante de orientación. Ayúdame a orientarme y pregúntame a dónde necesito llegar. No inventes calles, rutas ni ubicaciones.');
+}
+
 window.chronoRequestLocation = function () {
     if (window.ChronoLocation &&
         typeof window.ChronoLocation.requestLocation === 'function') {
         add('Solicitando ubicación GPS al dispositivo...', 'bot');
         window.ChronoLocation.requestLocation();
     } else {
+        chronoCompanionPending = '';
         add('El servicio GPS de Chrono todavía no está disponible.', 'bot');
     }
 };
@@ -217,6 +253,7 @@ window.onChronoLocationResult = function (raw) {
         var result = JSON.parse(raw);
 
         if (!result.success) {
+            chronoCompanionPending = '';
             var panelError = document.getElementById('guide-location');
             if (panelError) panelError.textContent = 'GPS: ' + result.error;
             add('Chrono GPS: ' + result.error, 'bot');
@@ -226,11 +263,19 @@ window.onChronoLocationResult = function (raw) {
         var panel = document.getElementById('guide-location');
         if (panel) {
             panel.textContent =
-                'Ubicación GPS obtenida\\n' +
-                'Latitud: ' + result.latitude + '\\n' +
-                'Longitud: ' + result.longitude + '\\n' +
-                'Precisión: ' + Number(result.accuracy_meters).toFixed(1) + ' metros\\n' +
+                'Ubicación GPS obtenida\n' +
+                'Latitud: ' + result.latitude + '\n' +
+                'Longitud: ' + result.longitude + '\n' +
+                'Precisión: ' + Number(result.accuracy_meters).toFixed(1) + ' metros\n' +
                 'Proveedor: ' + result.provider;
+        }
+
+        var status = document.getElementById('companion-status');
+        if (status) {
+            status.textContent =
+                'GPS: ubicación recibida. Precisión: ' +
+                Number(result.accuracy_meters).toFixed(1) +
+                ' metros.\nMapas y rutas offline: pendientes de instalación.';
         }
 
         add(
@@ -241,7 +286,14 @@ window.onChronoLocationResult = function (raw) {
             'Proveedor: ' + result.provider,
             'bot'
         );
+
+        if (chronoCompanionPending === 'lost') {
+            chronoCompanionPending = '';
+            tab('chat');
+            ask('Me he perdido y necesito orientación. Ayúdame a identificar qué información necesitas para guiarme. No inventes mi ubicación, calles ni rutas.');
+        }
     } catch (e) {
+        chronoCompanionPending = '';
         add('No se pudo interpretar la ubicación GPS.', 'bot');
     }
 };
