@@ -45,11 +45,13 @@ jobs:
 
           MSG=$(gh api "repos/$REPO/commits/$SHA" -q '.commit.message' | head -1)
           AUTOR=$(gh api "repos/$REPO/commits/$SHA" -q '.commit.author.name')
+          ARCHIVOS=$(gh api "repos/$REPO/commits/$SHA" -q '[.files[].filename] | .[0:12] | join(", ")')
 
           {
             echo "**Commit:** \`${SHA:0:7}\` $MSG"
             echo "**Rama:** $BRANCH · **Autor:** $AUTOR"
             echo "**Run:** $RUN_URL"
+            echo "**Archivos del commit:** $ARCHIVOS"
             echo
             echo "**Pista:** $PISTA"
             echo

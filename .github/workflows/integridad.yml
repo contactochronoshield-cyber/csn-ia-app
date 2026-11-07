@@ -1,0 +1,24 @@
+name: Integridad
+on:
+  workflow_run:
+    workflows: ["Build APK"]
+    types: [completed]
+permissions:
+  contents: write
+jobs:
+  sumas:
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' }}
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: SHA-256 del APK publicado
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          TAG=$(gh release view -R "$REPO" --json tagName -q .tagName) || exit 0
+          mkdir w && cd w
+          gh release download "$TAG" -R "$REPO" -p '*.apk' || exit 0
+          sha256sum *.apk > SHA256SUMS.txt
+          cat SHA256SUMS.txt >> "$GITHUB_STEP_SUMMARY"
+          gh release upload "$TAG" SHA256SUMS.txt -R "$REPO" --clobber

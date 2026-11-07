@@ -53,3 +53,11 @@ contactochronoshield@gmail.com
 - **Buscar** consulta DuckDuckGo desde el propio teléfono y muestra los resultados dentro de la app. DuckDuckGo es un tercero: recibe la consulta y la IP del usuario. El proveedor es intercambiable (`SearchBridge.PROVIDER`) para pasar a una instancia propia de SearXNG.
 - **Escudo de enlaces:** cada resultado lleva una etiqueta (sin señales de riesgo, precaución, posible peligro) basada en señales de la dirección: sin https, acortadores, dominios que imitan marcas, caracteres engañosos y terminaciones de riesgo. No garantiza que un sitio sea seguro.
 - **Escudo anti-estafa:** analiza en el teléfono un mensaje pegado por el usuario y marca banderas rojas (pide códigos, urgencia falsa, premios, estafa del familiar con número nuevo).
+
+## Seguridad y mantenimiento
+
+- **Guardian:** si el build falla, abre un Issue con el error, una pista y los archivos del commit; lo cierra solo cuando el build vuelve a pasar.
+- **Precheck local** (`scripts/push_seguro.sh`): frena conflictos, JS roto, manifest inválido, secretos, archivos pesados y rutas locales antes de subir.
+- **CodeQL:** análisis estático semanal y en cada push a `main`.
+- **Integridad:** cada release incluye `SHA256SUMS.txt` con el hash del APK.
+- Para reportar una vulnerabilidad, ver `SECURITY.md`.
