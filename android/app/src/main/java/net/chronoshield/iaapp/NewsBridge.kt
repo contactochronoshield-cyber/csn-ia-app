@@ -13,85 +13,120 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class NewsBridge(ctx: Context, private val onDone: () -> Unit) {
-    private val sp = ctx.getSharedPreferences("news", Context.MODE_PRIVATE)
+
+    private val prefs = ctx.getSharedPreferences("news", Context.MODE_PRIVATE)
+
     private val feeds = listOf(
-        "The Hacker News" to "https://feeds.feedburner.com/TheHackersNews",
-        "BleepingComputer" to "https://www.bleepingcomputer.com/feed/",
-        "WeLiveSecurity ES" to "https://www.welivesecurity.com/es/feed/",
-        "Krebs on Security" to "https://krebsonsecurity.com/feed/"
+        Pair("The Hacker News", "https://feeds.feedburner.com/TheHackersNews"),
+        Pair("BleepingComputer", "https://www.bleepingcomputer.com/feed/"),
+        Pair("WeLiveSecurity ES", "https://www.welivesecurity.com/es/feed/"),
+        Pair("Krebs on Security", "https://krebsonsecurity.com/feed/")
     )
 
     @JavascriptInterface
-    fun get(): String = sp.getString("items", "[]") ?: "[]"
+    fun get(): String {
+        return prefs.getString("items", "[]") ?: "[]"
+    }
 
     @JavascriptInterface
-    fun lastUpdate(): Long = sp.getLong("ts", 0L)
+    fun lastUpdate(): Long {
+        return prefs.getLong("ts", 0L)
+    }
 
     @JavascriptInterface
     fun refresh() {
         Thread {
             val all = ArrayList<JSONObject>()
-            for ((name, url) in feeds) {
+            for (feed in feeds) {
                 try {
-                    val c = URL(url).openConnection() as HttpURLConnection
-                    c.connectTimeout = 10000
-                    c.readTimeout = 10000
-                    c.setRequestProperty("User-Agent", "CSN-IA/1.0")
-                    all.addAll(parse(name, c.inputStream))
-                    c.disconnect()
+                    val conn = URL(feed.second).openConnection() as HttpURLConnection
+                    conn.connectTimeout = 10000
+                    conn.readTimeout = 10000
+                    conn.setRequestProperty("User-Agent", "CSN-IA/1.0")
+                    val items = parse(feed.first, conn.inputStream)
+                    all.addAll(items)
+                    conn.disconnect()
                 } catch (e: Exception) {
+                    // una fuente caida no debe tumbar las demas
                 }
             }
             if (all.isNotEmpty()) {
-                all.sortByDescending { it.optLong("d") }
+                val sorted = all.sortedByDescending { it.optLong("d") }
                 val arr = JSONArray()
-                all.take(30).forEach { arr.put(it) }
-                sp.edit().putString("items", arr.toString())
-                    .putLong("ts", System.currentTimeMillis()).apply()
+                for (o in sorted.take(30)) {
+                    arr.put(o)
+                }
+                prefs.edit()
+                    .putString("items", arr.toString())
+                    .putLong("ts", System.currentTimeMillis())
+                    .apply()
             }
             onDone()
         }.start()
     }
 
-    private fun ts(s: String): Long {
-        val f = arrayOf(
+    private fun toMillis(s: String): Long {
+        val formats = arrayOf(
             "EEE, dd MMM yyyy HH:mm:ss Z",
             "EEE, dd MMM yyyy HH:mm:ss zzz",
             "yyyy-MM-dd'T'HH:mm:ssXXX"
         )
-        for (x in f) {
+        for (f in formats) {
             try {
-                return SimpleDateFormat(x, Locale.US).parse(s)!!.time
+                val d = SimpleDateFormat(f, Locale.US).parse(s)
+                if (d != null) {
+                    return d.time
+                }
             } catch (e: Exception) {
+                // probar el siguiente formato
             }
         }
         return 0L
     }
 
-    private fun parse(src: String, xml: InputStream): List<JSONObject> {
+    private fun parse(src: String, stream: InputStream): List<JSONObject> {
         val out = ArrayList<JSONObject>()
         val p = Xml.newPullParser()
-        p.setInput(xml, null)
-        var ev = p.eventType
+        p.setInput(stream, null)
         var inItem = false
-        var t = ""
-        var l = ""
-        var d = ""
+        var title = ""
+        var link = ""
+        var date = ""
+        var ev = p.eventType
         while (ev != XmlPullParser.END_DOCUMENT && out.size < 8) {
             if (ev == XmlPullParser.START_TAG) {
-                when (p.name) {
-                    "item", "entry" -> { inItem = true; t = ""; l = ""; d = "" }
-                    "title" -> if (inItem) t = p.nextText().trim()
-                    "link" -> if (inItem) {
-                        val h = p.getAttributeValue(null, "href")
-                        l = if (h != null) h else p.nextText().trim()
+                val name = p.name
+                if (name == "item" || name == "entry") {
+                    inItem = true
+                    title = ""
+                    link = ""
+                    date = ""
+                } else if (inItem && name == "title") {
+                    title = p.nextText().trim()
+                } else if (inItem && name == "link") {
+                    val href = p.getAttributeValue(null, "href")
+                    if (href != null && href.isNotEmpty()) {
+                        if (link.isEmpty()) {
+                            link = href
+                        }
+                    } else {
+                        link = p.nextText().trim()
                     }
-                    "pubDate", "published", "updated" -> if (inItem) d = p.nextText().trim()
+                } else if (inItem && (name == "pubDate" || name == "published" || name == "updated")) {
+                    date = p.nextText().trim()
                 }
-            } else if (ev == XmlPullParser.END_TAG && (p.name == "item" || p.name == "entry")) {
-                inItem = false
-                if (t.isNotEmpty() && l.startsWith("http")) {
-                    out.add(JSONObject().put("s", src).put("t", t).put("l", l).put("d", ts(d)))
+            } else if (ev == XmlPullParser.END_TAG) {
+                val name = p.name
+                if (name == "item" || name == "entry") {
+                    inItem = false
+                    if (title.isNotEmpty() && link.startsWith("http")) {
+                        val o = JSONObject()
+                        o.put("s", src)
+                        o.put("t", title)
+                        o.put("l", link)
+                        o.put("d", toMillis(date))
+                        out.add(o)
+                    }
                 }
             }
             ev = p.next()

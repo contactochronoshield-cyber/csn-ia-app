@@ -95,6 +95,15 @@ class MainActivity : AppCompatActivity() {
                 )
             }
 
+            webView.addJavascriptInterface(
+                NewsBridge(this) {
+                    runOnUiThread {
+                        webView.evaluateJavascript("window.newsReady&&newsReady()", null)
+                    }
+                },
+                "CSNNews"
+            )
+
             setContentView(webView)
             webView.loadUrl("file:///android_asset/chat.html")
 
