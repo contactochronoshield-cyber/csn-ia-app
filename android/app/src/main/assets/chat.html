@@ -133,7 +133,7 @@ window.onChronoNetworkBrainResult=function(id,success,value){
 
 function send(){var t=Q.value.trim();if(!t)return;Q.value='';ask(t)}
 Q.addEventListener('keypress',function(e){if(e.key==='Enter')send()});
-function tab(n){['chat','red','nodo','pro','web'].forEach(function(x){document.getElementById('t-'+x).classList.toggle('on',x===n);document.getElementById('n-'+x).classList.toggle('on',x===n)})}
+function tab(n){['chat','red','nodo','pro','web','guide'].forEach(function(x){document.getElementById('t-'+x).classList.toggle('on',x===n);document.getElementById('n-'+x).classList.toggle('on',x===n)})}
 function web(){var q=document.getElementById('wq').value.trim();if(q)document.getElementById('bf').src='https://lite.duckduckgo.com/lite/?q='+encodeURIComponent(q)}
 function clr(){M.innerHTML='';add('Conversación borrada. ¿En qué te ayudo?','bot');document.getElementById('sr').style.display='none'}
 var QC=['Qué es una red privada','Conectar mi computador','Nuestros repos','Precios'];
