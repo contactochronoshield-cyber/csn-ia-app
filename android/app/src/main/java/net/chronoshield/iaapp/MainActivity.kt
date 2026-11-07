@@ -104,6 +104,15 @@ class MainActivity : AppCompatActivity() {
                 "CSNNews"
             )
 
+            webView.addJavascriptInterface(
+                SearchBridge { res ->
+                    runOnUiThread {
+                        webView.evaluateJavascript("window.searchReady&&searchReady(" + org.json.JSONObject.quote(res) + ")", null)
+                    }
+                },
+                "CSNSearch"
+            )
+
             setContentView(webView)
             webView.loadUrl("file:///android_asset/chat.html")
 
