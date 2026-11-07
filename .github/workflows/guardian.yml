@@ -1,0 +1,66 @@
+name: Guardian
+on:
+  workflow_run:
+    workflows: ["Build APK"]
+    types: [completed]
+permissions:
+  actions: read
+  contents: read
+  issues: write
+jobs:
+  reportar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Analizar y reportar
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+          CONCL: ${{ github.event.workflow_run.conclusion }}
+          SHA: ${{ github.event.workflow_run.head_sha }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          gh label create build-roto --color B60205 --description "Build fallido (automatico)" -R "$REPO" 2>/dev/null || true
+          ABIERTO=$(gh issue list -R "$REPO" -l build-roto -s open --json number -q '.[0].number')
+
+          if [ "$CONCL" = "success" ]; then
+            if [ "$BRANCH" = "main" ] && [ -n "$ABIERTO" ]; then
+              gh issue close "$ABIERTO" -R "$REPO" -c "Resuelto: el build paso en ${SHA:0:7}."
+            fi
+            exit 0
+          fi
+          [ "$CONCL" = "failure" ] || exit 0
+
+          gh run view "$RUN_ID" -R "$REPO" --log-failed > log.txt 2>&1 || true
+          grep -E "(^| )e: |error:|Unresolved reference|What went wrong|Execution failed|Could not resolve|Duplicate class|AAPT" log.txt \
+            | sed 's/^[^ ]* *[^ ]* *//' | head -40 > errores.txt
+          [ -s errores.txt ] || tail -40 log.txt > errores.txt
+
+          PISTA="Revisa las lineas de abajo; la ruta y el numero indican el archivo."
+          grep -q "Unresolved reference" errores.txt && PISTA="Se usa una clase, variable o funcion que no existe: revisa imports y nombres."
+          grep -q "Could not resolve" errores.txt && PISTA="Dependencia que no se pudo descargar: revisa build.gradle y la red del runner."
+          grep -qi "aapt" errores.txt && PISTA="Problema de recursos Android (layouts, temas, manifest)."
+          grep -q "<<<<<<<" log.txt && PISTA="Quedaron marcadores de conflicto de git sin resolver."
+
+          MSG=$(gh api "repos/$REPO/commits/$SHA" -q '.commit.message' | head -1)
+          AUTOR=$(gh api "repos/$REPO/commits/$SHA" -q '.commit.author.name')
+
+          {
+            echo "**Commit:** \`${SHA:0:7}\` $MSG"
+            echo "**Rama:** $BRANCH · **Autor:** $AUTOR"
+            echo "**Run:** $RUN_URL"
+            echo
+            echo "**Pista:** $PISTA"
+            echo
+            echo '```'
+            cat errores.txt
+            echo '```'
+          } > cuerpo.md
+          cat cuerpo.md >> "$GITHUB_STEP_SUMMARY"
+
+          if [ -n "$ABIERTO" ]; then
+            gh issue comment "$ABIERTO" -R "$REPO" -F cuerpo.md
+          else
+            gh issue create -R "$REPO" -t "Build roto en ${SHA:0:7}: $MSG" -l build-roto -F cuerpo.md
+          fi
