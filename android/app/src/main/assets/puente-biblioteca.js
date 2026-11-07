@@ -44,6 +44,7 @@
       if (r) { add(r.texto, "bot"); chips(r.relacionados); }
     }, 150);
   }
+  window.CSNPuente = { resolver: resolver };
   window.reply = function (raw) { return resolver(raw).texto; };
   window.localAsk = function (t) {
     setTimeout(function () {
