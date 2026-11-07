@@ -1,0 +1,147 @@
+== ARBOL
+.github/workflows/build-apk.yml
+.github/workflows/codeql.yml
+.github/workflows/guardian.yml
+.github/workflows/integridad.yml
+.gitignore
+LICENSE
+README.md
+SECURITY.md
+android/app/build.gradle
+android/app/src/main/AndroidManifest.xml
+android/app/src/main/assets/auth.js
+android/app/src/main/assets/buscador.js
+android/app/src/main/assets/chat.html
+android/app/src/main/assets/chat.html.navigation-backup
+android/app/src/main/assets/conv.js
+android/app/src/main/assets/nodo.js
+android/app/src/main/assets/noticias.js
+android/app/src/main/assets/pro.js
+android/app/src/main/java/net/chronoshield/iaapp/CrashActivity.kt
+android/app/src/main/java/net/chronoshield/iaapp/CsnApp.kt
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt
+android/app/src/main/java/net/chronoshield/iaapp/NewsBridge.kt
+android/app/src/main/java/net/chronoshield/iaapp/SearchBridge.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/ChronoNetworkBrainClient.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/ChronoNetworkBrainConfig.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/ChronoSessionStore.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/CisaKevAdapter.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/CyberSourceAdapter.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/KnowledgeAIEngine.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/KnowledgeBase.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/LocalAIEngine.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/QueryRouter.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/ResearchType.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/SourceAdapter.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/ThreatIntelCollector.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/ThreatIntelDatabase.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/ThreatIntelRecord.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/ThreatIntelRouter.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/ThreatIntelStore.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/WebResearchEngine.kt
+android/app/src/main/java/net/chronoshield/iaapp/ai/WebResearchResult.kt
+android/app/src/main/java/net/chronoshield/iaapp/bridge/AIWebBridge.kt
+android/app/src/main/java/net/chronoshield/iaapp/bridge/ChronoNetworkBrainBridge.kt
+android/app/src/main/res/drawable/ic_launcher.xml
+android/app/src/main/res/values/csn_theme.xml
+android/app/src/main/res/values/strings.xml
+android/app/src/main/res/values/styles.xml
+android/build.gradle
+android/gradle.properties
+android/local.properties
+android/settings.gradle
+backend-pro/DESPLIEGUE_EMPRESARIAL.md
+backend-pro/app.py
+backend-pro/chrono_mesh.py
+backend-pro/deployment.py
+backend-pro/generate_license_keys.py
+backend-pro/identity.py
+backend-pro/license_engine.py
+backend-pro/network_brain.py
+backend-pro/requirements.txt
+backend-pro/tests/test_identity.py
+backend-pro/tests/test_network_brain.py
+backend/app.py
+backend/docs/01-que-es-una-red-privada.md
+backend/docs/02-soberania-digital.md
+backend/requirements.txt
+directorio-nodos/app.py
+directorio-nodos/requirements.txt
+fastlane/metadata/android/es-419/full_description.txt
+fastlane/metadata/android/es-419/short_description.txt
+scripts/agregar_backend_pro.sh
+scripts/app_nueva.sh
+scripts/conversacion_y_pro.sh
+scripts/download_apk.sh
+scripts/fix_all.sh
+scripts/fix_antiabuso_y_servicios.sh
+scripts/fix_completo.sh
+scripts/fix_crash_guard.sh
+scripts/fix_definitivo.sh
+scripts/fix_enterprise_y_historia.sh
+== WORKFLOWS
+build-apk.yml
+codeql.yml
+guardian.yml
+integridad.yml
+== ASSETS
+android/app/build/intermediates/assets/debug/mergeDebugAssets/nodo.js
+android/app/build/intermediates/assets/debug/mergeDebugAssets/conv.js
+android/app/build/intermediates/assets/debug/mergeDebugAssets/noticias.js
+android/app/build/intermediates/assets/debug/mergeDebugAssets/buscador.js
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html.navigation-backup
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html.guide-backup
+android/app/build/intermediates/assets/debug/mergeDebugAssets/auth.js
+android/app/build/intermediates/assets/debug/mergeDebugAssets/pro.js
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html.gps-backup
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html.companion-backup-20261107-071209
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html.companion-safety-20261107-071617
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html.companion-backup-20261107-071417
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/auth.js.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/buscador.js.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.gps-backup.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.guide-backup.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.navigation-backup.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/conv.js.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/nodo.js.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/noticias.js.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/pro.js.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.companion-backup-20261107-071209.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.companion-safety-20261107-071617.jar
+android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.companion-backup-20261107-071417.jar
+android/app/src/main/assets/chat.html
+android/app/src/main/assets/conv.js
+android/app/src/main/assets/nodo.js
+android/app/src/main/assets/pro.js
+== CHAT
+android/app/build/intermediates/assets/debug/mergeDebugAssets/conv.js:22:S('preguntas pendientes|preguntas sin respuesta',function(){var u=unk();return u.length?'Esto es 
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html:162:  add('Orientación local (sin conexión al Network Brain):\n'+reply(t),'bot');
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html:170:  add('Consultando Chrono Network Brain…','bot');
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html:183:   resultText='Chrono Network Brain · '+(envelope.version||'versión no indicada')+'\n'+
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html:194:  resultText='No se pudo conectar con Chrono Network Brain: '+value+'\n\n'+
+android/app/build/intermediates/assets/debug/mergeDebugAssets/chat.html:195:   'La orientación local sigue disponible y no ejecuta operaciones.';
+android/app/src/main/assets/chat.html:162:  add('Orientación local (sin conexión al Network Brain):\n'+reply(t),'bot');
+android/app/src/main/assets/chat.html:170:  add('Consultando Chrono Network Brain…','bot');
+android/app/src/main/assets/chat.html:183:   resultText='Chrono Network Brain · '+(envelope.version||'versión no indicada')+'\n'+
+android/app/src/main/assets/chat.html:194:  resultText='No se pudo conectar con Chrono Network Brain: '+value+'\n\n'+
+android/app/src/main/assets/chat.html:195:   'La orientación local sigue disponible y no ejecuta operaciones.';
+android/app/src/main/assets/conv.js:22:S('preguntas pendientes|preguntas sin respuesta',function(){var u=unk();return u.length?'Esto es lo último que me preguntaron y no 
+android/app/src/main/assets/biblioteca-data.js:74:{"id":"offline","titulo":"Sin conexión","claves":["sin conexion","offline","sin internet","modo offline","network brain"
+android/app/src/main/assets/biblioteca.js:60:  function responder(texto) {
+android/app/src/main/assets/biblioteca.js:79:  window.CSNBiblioteca = { responder: responder, porTema: porTema, temas: function () { return chips(DATA.map(function (e) { 
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:139:            browser.loadUrl("file:///android_asset/chat.html")
+android/app/src/main/java/net/chronoshield/iaapp/ai/ChronoNetworkBrainClient.kt:152:                    "Chrono Network Brain requiere HTTPS."
+backend/app.py:98:@app.post("/chat")
+== BUILD
+android/app/build.gradle:11:        applicationId "net.chronoshield.iaapp"
+android/app/build.gradle:12:        minSdk 24
+android/app/build.gradle:15:        versionName "0.9.1"
+android/app/build/intermediates/merged_manifest/debug/processDebugMainManifest/AndroidManifest.xml:5:    android:versionName="0.9.1" >
+android/app/build/intermediates/merged_manifest/debug/processDebugMainManifest/AndroidManifest.xml:8:        android:minSdkVersion="24"
+android/app/build/intermediates/merged_manifest/debug/processDebugMainManifest/AndroidManifest.xml:11:    <uses-permission android:name="android.permission.INTERNET" />
+android/app/build/intermediates/packaged_manifests/debug/processDebugManifestForPackage/AndroidManifest.xml:5:    android:versionName="0.9.1" >
+android/app/build/intermediates/packaged_manifests/debug/processDebugManifestForPackage/AndroidManifest.xml:8:        android:minSdkVersion="24"
+android/app/build/intermediates/packaged_manifests/debug/processDebugManifestForPackage/AndroidManifest.xml:11:    <uses-permission android:name="android.permission.INTERNET" />
+android/app/src/main/AndroidManifest.xml:3:    <uses-permission android:name="android.permission.INTERNET" />
