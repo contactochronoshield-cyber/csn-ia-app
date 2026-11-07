@@ -1,69 +1,49 @@
-# CSN IA — Asistente educativo de Chrono Shield Networks
+# CSN IA
 
-App con IA que explica en lenguaje simple qué son los servicios de CSN (redes privadas,
-nodos mesh, cloud soberano) a personas sin conocimiento técnico previo. Pensada como
-puerta de entrada para gente que ni sabe que necesita esto, para apoyar la venta de
-hardware (Chrono Mesh Node) y el crecimiento de CSN.
+Plataforma soberana de **Chrono Shield Networks** para conversar con una IA, crear tu red privada y **buscar en la red de forma segura**, desde el celular.
 
-## Por qué está construida así
+Web oficial: https://chronoshieldnetworks.com
 
-| Decisión | Por qué |
+## Qué es
+
+CSN IA no es solo un asistente: es una plataforma con varias áreas dentro de la app.
+
+| Pestaña | Para qué sirve |
 |---|---|
-| Modelo IA self-hosted (Ollama) | Coherente con la filosofía de soberanía digital de CSN: cero dependencia de APIs de IA extranjeras |
-| RAG con TF-IDF local, sin embeddings en la nube | Ligero, sin costos recurrentes de terceros, corre en tu propio servidor |
-| App Android = WebView sobre HTML/JS | Sin SDKs propietarios de Google, sin trackers → cumple los requisitos de F-Droid |
-| Backend separado (FastAPI) | El mismo backend puede alimentar web, WhatsApp o el post de Mercado Libre a futuro |
+| **Chat** | Asistente que explica los servicios, el sitio y los repositorios de CSN en lenguaje simple |
+| **Mi red** | Crea y configura tu propia red privada |
+| **Buscar** | Búsqueda en internet y, debajo, noticias de ciberseguridad y redes |
+| **Nodo** | Ser nodo de la red de CSN y consultar el directorio |
+| **Pro** | Plan Enterprise: IA que administra tu red de forma soberana |
+| **Cuenta** | Tu cuenta, junto a Pro en la barra de navegación |
 
-## Estructura
+## Principios
 
-```
-csn-ia-app/
-├── backend/           # FastAPI + RAG + Ollama (self-hosted)
-│   ├── app.py
-│   ├── requirements.txt
-│   └── docs/           # documentación fuente del RAG (editar/ampliar aquí)
-├── android/            # App Android (WebView + Kotlin)
-└── fastlane/metadata/  # Descripciones para publicación en F-Droid
-```
+- **Soberanía:** sin dependencia de proveedores corporativos extranjeros.
+- **Privacidad:** el asistente corre en el dispositivo; sin trackers ni SDKs propietarios.
+- **Transparencia:** código abierto (ver LICENSE).
 
-## Cómo levantar el backend
+## Noticias de ciberseguridad
 
-```bash
-cd backend
-pip install -r requirements.txt
-ollama pull llama3:8b      # o mistral:7b si el servidor tiene menos RAM
-ollama serve &
-uvicorn app:app --host 0.0.0.0 --port 8085
-```
+Se leen de feeds RSS públicos (The Hacker News, BleepingComputer, WeLiveSecurity, Krebs on Security), se guardan en el teléfono y se refrescan cada 24 horas al abrir la app o con el botón *Actualizar*. La lectura la hace `NewsBridge.kt`; no hay servidor intermedio.
 
-Prueba rápida:
-```bash
-curl -X POST http://localhost:8085/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message": "¿qué es un nodo mesh?"}'
-```
+## Estructura del repositorio
 
-Para ampliar lo que la IA sabe, agrega archivos `.md` en `backend/docs/` y llama a
-`POST /reload-docs` (no hace falta reiniciar el servidor).
+    android/            App Android (WebView + Kotlin); interfaz en app/src/main/assets
+    backend/            Servicios de apoyo y base de conocimiento
+    backend-pro/        Servicios del plan Pro: DNS filtrado, firewall con autorización, panel
+    directorio-nodos/   Directorio de nodos de la red
+    fastlane/           Metadata de publicación (F-Droid)
+    scripts/            Scripts de mantenimiento y despliegue
+    .github/workflows/  Compilación automática del APK
 
-## Cómo compilar la app Android
+## Compilar
 
-1. Abrir la carpeta `android/` en Android Studio (o `./gradlew assembleRelease` por línea de comandos).
-2. En la app, tocar el campo "Servidor" y apuntar a la IP real del backend de CSN.
-3. Generar el APK firmado.
+    cd android
+    gradle :app:assembleDebug
 
-## Roadmap hacia F-Droid
+Cada push a `main` compila el APK con GitHub Actions.
 
-- [x] Esqueleto de app sin dependencias propietarias
-- [x] Metadata fastlane (descripciones)
-- [ ] Ícono definitivo (`res/mipmap/ic_launcher`) — falta diseñarlo
-- [ ] Build reproducible verificado (`fdroiddata` build recipe)
-- [ ] Repo público en GitHub con releases etiquetados (F-Droid indexa desde ahí)
-- [ ] Enviar merge request a `fdroiddata` con la receta de build
+## Contacto
 
-## Siguiente capa (fuera de este entregable inicial)
-
-Para captar al usuario que "ni sabe que lo necesita" — el que nunca va a buscar en
-F-Droid — conviene además un chat web embebido en la landing de CSN y en el post de
-Mercado Libre, usando el mismo backend (`/chat`). Es la capa de visibilidad de la que
-hablábamos; esta app es la capa soberana para el usuario ya convencido.
+contactochronoshield@gmail.com
