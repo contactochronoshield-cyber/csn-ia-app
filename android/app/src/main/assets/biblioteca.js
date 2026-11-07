@@ -24,20 +24,20 @@
   }
 
   function puntuar(entry, qNorm, qToks) {
-    var score = 0;
+    var score = 0, mejor = 0;
     (entry.claves || []).forEach(function (k) {
       var kn = norm(k);
       if (!kn) return;
-      if ((" " + qNorm + " ").indexOf(" " + kn + " ") >= 0) { score += 10 + kn.length / 10; return; }
+      if ((" " + qNorm + " ").indexOf(" " + kn + " ") >= 0) { var sk = 10 + kn.length / 10; score += sk; if (sk > mejor) mejor = sk; return; }
       var kt = toks(kn);
       if (!kt.length) return;
       var hit = 0;
       kt.forEach(function (w) { if (qToks.some(function (q) { return close(q, w); })) hit++; });
       var ratio = hit / kt.length;
-      if (hit && ratio >= 0.6) score += ratio * 6;
+      if (hit && ratio >= 0.6) { var sf = ratio * 6; score += sf; if (sf > mejor) mejor = sf; }
     });
     toks(entry.titulo).forEach(function (w) { if (qToks.some(function (q) { return close(q, w); })) score += 1; });
-    return score;
+    return mejor + 0.1 * (score - mejor);
   }
 
   function buscar(texto) {

@@ -117,7 +117,7 @@ La pestaña Buscar es un buscador propio para navegar de forma segura. Revisa lo
 
 ## Cómo usar la app
 
-Palabras clave: como uso la app, como funciona la app, pestanas, menu, mi red, nodo, pro, cuenta, guia, tutorial, por donde empiezo, empezar, comenzar
+Palabras clave: como uso la app, como funciona la app, pestanas, menu, mi red, nodo, cuenta, guia, tutorial, por donde empiezo, empezar, comenzar
 
 La app tiene estas pestañas:
 • Chat: me preguntas lo que quieras.
@@ -182,3 +182,185 @@ Cuando no hay conexión, el asistente responde desde la biblioteca guardada en t
 Palabras clave: contacto, contactar, escribir al equipo, correo, email, pagina web, sitio web, soporte, hablar con alguien, telefono, whatsapp
 
 Puedes escribirnos a contactochronoshield@gmail.com o visitar chronoshieldnetworks.com. Con gusto te atendemos.
+
+## Qué es Termux
+
+Palabras clave: termux, que es termux, para que sirve termux, terminal en el celular, linux en android, instalar termux, terminal de android
+
+Termux es una app gratuita para Android que te da una terminal de Linux en el celular, sin necesidad de root. Sirve para aprender, conectarte a servidores por SSH, usar git, ejecutar scripts y probar herramientas de red. En CSN la usamos para trabajar y probar nuestros sistemas desde el teléfono.
+Instálala desde F-Droid: la versión de Google Play está desactualizada.
+
+## Primeros pasos en Termux
+
+Palabras clave: comandos de termux, como uso termux, primeros pasos en termux, usar termux, comandos basicos de linux, aprender terminal
+
+Primeros comandos en Termux:
+• pkg update: actualiza los paquetes.
+• pkg install git: instala git (cambia git por lo que necesites).
+• ls: lista archivos. cd carpeta: entra a una carpeta.
+• ping google.com: prueba tu conexión.
+• pkg install nmap: herramienta para ver los equipos de tu red.
+Usa solo herramientas de red en redes tuyas o con permiso.
+
+## Verificar o analizar tu red
+
+Palabras clave: verificar mi red privada, analizar mi red privada, verificar mi red, analizar mi red, revisar mi red, como reviso mi red, saber si mi red es segura, quien esta conectado a mi red, dispositivos conectados a mi red, diagnostico de red, como analizo mi red, como verifico mi red, como se que mi red es segura, mi red es segura, es segura mi red, como saber si mi red esta protegida
+
+Para revisar tu red:
+1. Mira en el router qué equipos están conectados y busca alguno que no reconozcas.
+2. Prueba la conexión: ping 8.8.8.8 (internet) y ping google.com (nombres). Si el primero funciona y el segundo no, el problema es el DNS.
+3. En Termux: pkg install nmap y luego nmap -sn 192.168.1.0/24 lista los equipos de tu red (ajusta el rango).
+4. Si ves un equipo desconocido, cambia la clave del wifi.
+Hazlo solo en redes tuyas o con permiso.
+
+## Verificar la red de CSN
+
+Palabras clave: verificar la red de chrono, analizar la red de ustedes, como verifico la red de ustedes, como se que su red es segura, puedo confiar en chrono, auditar chrono, es segura la red de chrono, verificar red de csn, verificar la red de ustedes, analizo la red privada de ustedes, analizar la red privada de ustedes, red privada de ustedes, red de ustedes, su red privada, verificar su red, como analizo la red de ustedes
+
+No tienes que creernos: puedes comprobarlo.
+• Nuestro código es abierto en github.com/contactochronoshield-cyber: puedes leerlo o pedir que alguien de confianza lo revise.
+• Chrono-Shield-Onion tiene whitepaper técnico publicado.
+• Usa mTLS: cada extremo demuestra quién es con certificados.
+• Publicamos un warrant canary, un aviso que dejaría de actualizarse si hubiera presiones para entregar datos.
+Y en tu propia red Chrono puedes probar el estado con ping y las herramientas de Termux.
+
+## Wifi seguro en casa
+
+Palabras clave: asegurar mi wifi, proteger mi wifi, wifi seguro, seguridad del router, router seguro, cambiar clave del wifi, wifi de mi casa, como asegurar mi wifi
+
+Para un wifi más seguro:
+• Cambia la clave y el usuario que trae el router de fábrica.
+• Usa WPA3 o, si no hay, WPA2.
+• Desactiva WPS.
+• Actualiza el firmware del router.
+• Crea una red de invitados para visitas y aparatos inteligentes.
+• No pongas tu nombre ni dirección en el nombre de la red.
+
+## Qué es un firewall
+
+Palabras clave: que es un firewall, firewall, cortafuegos, para que sirve un firewall
+
+Un firewall es como un portero: revisa lo que intenta entrar o salir de tu red y deja pasar solo lo que tú permitiste. Bloquea conexiones sospechosas y limita qué equipos pueden hablar con cuáles. Es una pieza clave en redes privadas, tanto en casa como en empresas.
+
+## Qué es el cifrado
+
+Palabras clave: que es el cifrado, cifrado, encriptacion, que es mtls, que es cifrar, que es encriptar
+
+Cifrar es convertir tu información en un código que solo puede leer quien tiene la llave. Si alguien intercepta el mensaje, solo ve símbolos sin sentido. mTLS va un paso más allá: los dos extremos de la conexión se identifican con certificados, así que ninguno puede hacerse pasar por el otro.
+
+## VPN, red privada y mesh: diferencias
+
+Palabras clave: diferencia entre vpn y red privada, vpn o red privada, diferencia entre mesh y vpn, que es mejor vpn o mesh, diferencias entre vpn mesh y red privada
+
+• Red privada: el concepto general, tus equipos conectados entre sí de forma cerrada.
+• VPN: un túnel cifrado que conecta tus dispositivos a esa red desde cualquier lugar.
+• Mesh: una red de nodos que se conectan entre sí y se cubren unos a otros, sin depender de un solo punto.
+Se pueden combinar: una mesh privada a la que entras por VPN.
+
+## Tipos de redes privadas
+
+Palabras clave: tipos de redes privadas, tipos de red privada, clases de redes, que tipos de redes hay
+
+Los tipos más comunes:
+• Red local (LAN): la de tu casa u oficina.
+• VPN de acceso remoto: para entrar a tu red desde fuera.
+• VPN entre sedes: conecta dos oficinas como si fueran una.
+• Red virtual sobre internet: los equipos se ven como si estuvieran juntos aunque estén lejos.
+• Mesh privada: nodos que se conectan entre sí y se respaldan.
+
+## Cómo te protege Chrono
+
+Palabras clave: como me protege chrono, como protege chrono, que protege chrono, chrono me protege, como protegen ustedes, como me protegen, como me cuidan, como protegen, como nos protegen
+
+Chrono puede ayudarte en cuatro frentes: tu casa, tu empresa, tu infraestructura y tu teléfono. Cada uno tiene herramientas distintas. Elige el tuyo y te cuento qué hacemos ahí.
+
+## Chrono para tu casa
+
+Palabras clave: como me protege chrono mi casa, como protege chrono mi casa, como me protege chrono en mi casa, chrono para mi casa, chrono en mi casa, proteger mi casa, seguridad digital para mi casa, para mi hogar, red privada para mi casa, como protegen mi casa
+
+En casa puedes tener tu propia red privada: acceso seguro a tus archivos y cámaras desde fuera con VPN (ChronoShieldVPN), cobertura sin zonas muertas con Chrono Mesh Node y monitoreo con Chrono Sentinel. Combínalo con un wifi bien configurado y contraseñas fuertes. Ninguna herramienta da 100% de garantía, pero esto reduce mucho el riesgo. Escríbenos y te orientamos según tu casa.
+
+## Chrono para tu empresa
+
+Palabras clave: como me protege chrono mi empresa, como protege chrono mi empresa, como me protege chrono en mi empresa, chrono para mi empresa, chrono para mi negocio, chrono en mi empresa, proteger mi empresa, seguridad para mi negocio, ciberseguridad para empresas, como protegen mi empresa
+
+Para empresas: red privada segmentada (separar lo sensible del resto), acceso remoto seguro para el equipo, nube propia con Chrono Cloud Sovereign, herramientas de detección de anomalías y, en el plan Enterprise, una IA que administra tu red de forma soberana. Todo bajo tu control, sin depender de proveedores extranjeros. Escríbenos a contactochronoshield@gmail.com para una evaluación.
+
+## Chrono para tu infraestructura
+
+Palabras clave: como me protege chrono mi infraestructura, como protege chrono mi infraestructura, como me protege chrono en mi infraestructura, chrono para mi infraestructura, chrono para mis servidores, proteger mi infraestructura, proteger mis servidores, seguridad para mi data center, como protegen mi infraestructura
+
+Para servidores y data centers: ChronoOS para armar infraestructura soberana (desde un equipo pequeño hasta un data center), Chrono Backbone para el enrutamiento propio, Chrono Cloud Sovereign, red mesh cifrada con mTLS y herramientas de detección de anomalías y de ataques físicos. Escríbenos y revisamos tu caso.
+
+## Chrono para tu teléfono
+
+Palabras clave: como me protege chrono mi telefono, como protege chrono mi telefono, como me protege chrono en mi telefono, como me protege chrono mi celular, chrono para mi celular, chrono para mi telefono, proteger mi celular, proteger mi telefono, seguridad para mi celular, mi telefono como lo protegen, como protegen mi telefono, como protegen mi celular, y mi telefono
+
+Para tu teléfono: ChronoShieldVPN para navegar cifrado en wifi públicos, el buscador de esta app con Escudo de enlaces y Escudo anti-estafa, Chrono Sentinel para monitoreo y, si te lo roban, nuestro servicio de respuesta de seguridad. Tú pones lo básico: sistema actualizado, apps de fuentes confiables y verificación en dos pasos.
+
+## Cámaras y aparatos inteligentes
+
+Palabras clave: camaras de seguridad, iot, seguridad de camaras, proteger camaras, dispositivos inteligentes, internet de las cosas, camaras en internet
+
+Cámaras, timbres y bombillos inteligentes son blancos fáciles si quedan abiertos a internet. Cambia la clave de fábrica, actualízalos, ponlos en una red aparte (invitados) y no expongas su puerto directamente. Lo más seguro es verlos a través de tu red privada o una VPN en vez de abrirlos al mundo.
+
+## Mesh o repetidor
+
+Palabras clave: mesh vs repetidor, diferencia entre mesh y repetidor, mesh o repetidor, zonas muertas, extender mi wifi, que es mejor mesh o repetidor
+
+Un repetidor copia la señal del router y suele bajar la velocidad. En una mesh cada nodo es parte de la red: tus equipos se conectan al nodo más cercano, con una sola red y sin zonas muertas. Eso sí, los nodos deben quedar a una distancia razonable entre ellos y conviene planear dónde ponerlos.
+
+## Ventajas y límites de la mesh
+
+Palabras clave: ventajas de mesh, ventajas de la red mesh, por que mesh, beneficios de mesh, desventajas de mesh, limites de la mesh
+
+Ventajas: sin punto único de falla, se amplía sumando nodos, cubre zonas grandes y se recupera sola si un nodo cae.
+Límites: cada salto entre nodos puede restar velocidad, necesita nodos a buena distancia y requiere algo de planeación.
+
+## Mesh sin internet y emergencias
+
+Palabras clave: mesh en emergencias, red sin internet, comunicacion sin internet, cuando se cae internet, desastres, comunicarnos sin internet
+
+Una red mesh puede seguir comunicando a los equipos entre sí aunque se caiga el proveedor de internet: sirve para mensajes y servicios locales dentro de la malla. Para salir a internet necesitas al menos un nodo con conexión. Es útil en comunidades, fincas, eventos y emergencias.
+
+## Red privada para empresas
+
+Palabras clave: red privada para empresas, red privada para mi empresa, vpn para empresas, conectar sedes, segmentar la red, vlan, teletrabajo seguro
+
+En una empresa una red privada sirve para: separar áreas (contabilidad, cámaras, invitados) para que un problema no se contagie, conectar varias sedes como una sola red, dar acceso remoto seguro al equipo y controlar quién entra a qué. Es la base de una buena defensa y de cumplir la protección de datos.
+
+## CSN y las telecomunicaciones
+
+Palabras clave: telco, telecomunicaciones, que hacen en telecomunicaciones, chrono telco, isp, operador de internet, conectividad soberana
+
+Telco es el mundo de las telecomunicaciones: redes, operadores y conectividad. En CSN lo abordamos con red mesh, un backbone propio de enrutamiento (Chrono Backbone) y una iniciativa de conectividad con respaldo entre operadores y satélite (Chrono Orbital, en desarrollo). La idea es que la conectividad también sea soberana.
+
+## Chrono Backbone y BGP
+
+Palabras clave: chrono backbone, backbone, que es bgp, bgp, enrutamiento, routing, que es un backbone
+
+Un backbone es la columna vertebral de una red: los enlaces principales por donde viaja el tráfico. BGP es el protocolo con el que las redes de internet se avisan unas a otras por dónde llegar a cada destino. Chrono Backbone es nuestro backbone propio, con enrutamiento BGP, para infraestructura soberana.
+
+## Internet de respaldo
+
+Palabras clave: failover, respaldo de internet, internet de respaldo, dos internet, chrono orbital, satelite, multi operador, wan failover, se me cae el internet, internet satelital
+
+El failover es tener una conexión de respaldo: si tu internet principal falla, el tráfico pasa solo a otra (otro operador, datos móviles o satélite) sin que lo notes. Chrono Orbital es nuestra iniciativa en esa línea: conectividad con varios operadores y satélite. Es clave para negocios que no pueden quedarse sin internet.
+
+## Divisiones de CSN
+
+Palabras clave: divisiones, areas de la empresa, ai foundry, chrono ai foundry, que areas tiene chrono, estructura de la empresa, en que areas trabajan
+
+CSN trabaja en varias líneas: Chrono Cloud Sovereign (nube soberana), Chrono AI Foundry (inteligencia artificial), redes mesh y privadas, ciberseguridad y Chrono Future Institute (educación). Pregúntame por cualquiera.
+
+## LWT y SOVEREIGN.md
+
+Palabras clave: lwt, liberacion web total, sovereign md, estandar sovereign, desplegar apps sin dependencias
+
+LWT (Liberación Web Total) es nuestro sistema para desplegar aplicaciones web de forma soberana, sin depender de servicios externos. SOVEREIGN.md es el estándar abierto que lo acompaña: un archivo que describe cómo desplegar una app de forma soberana, con un motor de referencia para comprobarlo.
+
+## Cómo funciona este asistente
+
+Palabras clave: como funciona esta ia, como funciona el asistente, de donde sacas la informacion, eres una ia, como respondes
+
+Este asistente consulta una biblioteca de conocimiento guardada en tu teléfono, con información de CSN, redes privadas y ciberseguridad, que el equipo va ampliando. Si no sabe algo, te lo dice y te propone temas relacionados o el contacto del equipo.
