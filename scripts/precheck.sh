@@ -53,6 +53,12 @@ if bad: sys.exit(1)
 print("  ok balanceado")
 PY
 
+echo "[6] Rutas de Termux en archivos de build"
+if grep -n "/data/data/com.termux" android/gradle.properties android/build.gradle* android/app/build.gradle* android/settings.gradle* 2>/dev/null | grep -q .; then
+  grep -n "/data/data/com.termux" android/gradle.properties android/build.gradle* android/app/build.gradle* android/settings.gradle* 2>/dev/null
+  bad "ruta de Termux en el repo: rompe CI (ponla en ~/.gradle/gradle.properties)"
+else ok "sin rutas locales"; fi
+
 echo
 [ $E -eq 0 ] && echo "TODO EN ORDEN" || echo "HAY PROBLEMAS: no subas todavia"
 exit $E
