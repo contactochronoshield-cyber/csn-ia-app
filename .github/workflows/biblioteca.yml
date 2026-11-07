@@ -1,0 +1,21 @@
+name: Biblioteca
+on:
+  push:
+    paths:
+      - 'android/app/src/main/assets/biblioteca*.js'
+      - 'android/app/src/main/assets/puente-biblioteca.js'
+      - 'scripts/validar_biblioteca.js'
+  pull_request:
+    paths:
+      - 'android/app/src/main/assets/biblioteca*.js'
+      - 'android/app/src/main/assets/puente-biblioteca.js'
+      - 'scripts/validar_biblioteca.js'
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar biblioteca de conocimiento
+        run: node scripts/validar_biblioteca.js

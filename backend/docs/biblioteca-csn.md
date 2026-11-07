@@ -65,13 +65,13 @@ Una red mesh es una malla: cada equipo se conecta con los de al lado y entre tod
 
 Palabras clave: mesh node, chrono mesh node, nodo fisico, placa, antena, hardware, comprar, mercado libre, dispositivo
 
-El Chrono Mesh Node es un equipo físico: una placa con antena que forma parte de tu red mesh privada. Lo conectas y se suma a tu red de forma segura. Está a la venta en Mercado Libre. Si quieres saber cuál te conviene, escríbenos y te orientamos.
+El Chrono Mesh Node es un equipo físico: una placa con antena que forma parte de tu red mesh privada. Lo conectas y se suma a tu red de forma segura. Está a la venta en Mercado Libre. Si quieres saber cuál te conviene, escríbenos y te orientamos. Cuesta 169.000 COP en Mercado Libre.
 
 ## Chrono Cloud Sovereign
 
 Palabras clave: cloud, nube, nube soberana, chrono cloud, chrono cloud sovereign, servidor, hosting, almacenamiento, guardar archivos
 
-Chrono Cloud Sovereign es una nube propia: guardas archivos y corres aplicaciones en infraestructura que tú controlas, sin entregar tus datos a grandes proveedores extranjeros. Es nuestro primer producto comercial.
+Chrono Cloud Sovereign es una nube propia: guardas archivos y corres aplicaciones en infraestructura que tú controlas, sin entregar tus datos a grandes proveedores extranjeros. Es nuestro primer producto comercial. Tiene tres planes; escríbenos y te ayudamos a elegir.
 
 ## ChronoOS
 
@@ -133,7 +133,7 @@ Si no sabes por dónde empezar, toca Mi red.
 
 Palabras clave: conectar mi computador, conectar computador, conectar pc, conectar mi pc, agregar dispositivo, unir computador, crear mi red, configurar mi red, como creo mi red
 
-Para crear tu red y conectar tu computador, entra a la pestaña Mi red. Tu computador solo se conecta cuando tú lo autorizas, y nunca sin tu permiso. Si algo no queda claro en el camino, vuelve aquí y te voy guiando paso a paso.
+Puedo ayudarte a conectar tu computador, siempre con tu permiso: te doy cada comando, tú lo ves y decides si lo ejecutas. Nada se instala ni se controla sin tu autorización. Para crear tu red, entra a la pestaña Mi red.
 
 ## Ser un nodo de la red
 
@@ -149,9 +149,9 @@ El plan Pro permite que la IA te ayude a configurar tu red, dispositivos y firew
 
 ## Precios
 
-Palabras clave: precios, precio, cuanto cuesta, costo, cuanto vale, tarifas, cobran, gratis
+Palabras clave: precios, precio, cuanto cuesta, costo, cuanto vale, tarifas, cobran, gratis, cuanto cuesta el mesh node, precio del nodo, planes de la nube
 
-Los precios dependen de cada producto o servicio. Para darte el valor correcto, consulta chronoshieldnetworks.com o escríbenos a contactochronoshield@gmail.com y te respondemos con claridad.
+El Chrono Mesh Node cuesta 169.000 COP en Mercado Libre. Chrono Cloud Sovereign tiene tres planes; escribe a contactochronoshield@gmail.com y te contamos cuál se ajusta a lo que necesitas.
 
 ## Repositorios y código abierto
 

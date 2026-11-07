@@ -62,7 +62,7 @@
     if (r.length && r[0].s >= 4) {
       return { encontrado: true, id: r[0].e.id, texto: r[0].e.respuesta, relacionados: chips(r[0].e.relacionados) };
     }
-    registrar(texto);
+    // el registro lo hace conv.js (unk)
     var sug = r.filter(function (x) { return x.s > 0; }).slice(0, 3).map(function (x) { return x.e.id; });
     if (!sug.length) sug = ["red_privada", "usos_red_privada", "empresa"];
     return {
