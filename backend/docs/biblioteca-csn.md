@@ -364,3 +364,89 @@ LWT (Liberación Web Total) es nuestro sistema para desplegar aplicaciones web d
 Palabras clave: como funciona esta ia, como funciona el asistente, de donde sacas la informacion, eres una ia, como respondes
 
 Este asistente consulta una biblioteca de conocimiento guardada en tu teléfono, con información de CSN, redes privadas y ciberseguridad, que el equipo va ampliando. Si no sabe algo, te lo dice y te propone temas relacionados o el contacto del equipo.
+
+## Tipos de virus y malware
+
+Palabras clave: tipos de virus, que tipos de virus hay, tipos de malware, virus informaticos, que es un virus, que es malware, que es un malware, clases de virus
+
+Los principales tipos:
+• Virus: se pega a archivos y se copia.
+• Gusano: se propaga solo por la red.
+• Troyano: parece una app normal pero trae algo oculto.
+• Ransomware: cifra tus archivos y pide dinero.
+• Spyware y stalkerware: te espían (mensajes, ubicación).
+• Keylogger: registra lo que escribes.
+• Adware: llena de anuncios.
+• Botnet: usa tu equipo para atacar a otros.
+• Rootkit: se esconde a fondo en el sistema.
+• Minero: gasta tu batería minando criptomonedas.
+
+## Señales de que tu celular tiene un virus
+
+Palabras clave: mi celular tiene virus, como saber si tengo virus, senales de virus, mi telefono esta infectado, me espian el celular, tengo un virus, celular lento y caliente, apps que no instale
+
+Señales de alerta:
+• La batería se agota muy rápido o el equipo se calienta sin usarlo.
+• Se disparan los datos móviles.
+• Hay apps que no instalaste.
+• Salen anuncios emergentes fuera de las apps.
+• Tus cuentas muestran inicios de sesión raros.
+• Se envían mensajes que no escribiste.
+Una sola señal no prueba nada, pero varias juntas sí merecen revisión.
+
+## Qué hacer si te infectaste
+
+Palabras clave: que hago si tengo virus, me infecte, como limpiar mi celular, como quitar un virus, eliminar virus, fui hackeado, me hackearon, que hacer si me hackean
+
+Pasos en orden:
+1. Pon el equipo en modo avión.
+2. Desde otro dispositivo, cambia las contraseñas de correo y banco y activa la verificación en dos pasos.
+3. Desinstala las apps sospechosas (en modo seguro si no te deja).
+4. Actualiza el sistema y pasa un antivirus confiable.
+5. Si persiste, haz copia de lo importante y restablece de fábrica.
+6. Si hubo datos del banco, avísale cuanto antes.
+Si quieres ayuda, escríbenos a contactochronoshield@gmail.com.
+
+## Phishing y estafas por mensaje
+
+Palabras clave: phishing, que es phishing, smishing, vishing, mensaje falso, enlace sospechoso, me llego un mensaje raro, fraude por internet, como evitar fraudes, correo falso
+
+El phishing es un engaño para que entregues claves o datos. Llega por correo (phishing), SMS (smishing) o llamada (vishing).
+Señales: urgencia, amenazas, remitente raro, enlace que no coincide con la empresa. Regla de oro: nadie legítimo te pide códigos de verificación ni claves. Ante la duda, no toques el enlace: entra tú mismo a la página oficial. El buscador de esta app incluye Escudo de enlaces y Escudo anti-estafa.
+
+## Robo de línea (SIM swap)
+
+Palabras clave: sim swap, clonaron mi sim, robaron mi numero, me quede sin senal de repente, clonacion de sim, duplicado de sim, robo de linea, cambio de sim fraudulento
+
+En el SIM swap un delincuente convence al operador de pasar tu número a otra SIM y así recibe tus códigos por SMS. Señal típica: te quedas sin señal de repente.
+Si pasa: llama ya a tu operador, avisa a tus bancos y cambia claves.
+Para prevenir: usa una app autenticadora en vez de SMS cuando puedas, pide a tu operador un PIN o bloqueo para cambios de SIM, y no compartas tus datos personales.
+
+## Contraseñas y verificación en dos pasos
+
+Palabras clave: contrasenas seguras, como creo una contrasena, autenticacion en dos pasos, 2fa, gestor de contrasenas, clave segura, verificacion en dos pasos, contrasena fuerte
+
+Lo esencial:
+• Usa frases largas (cuatro palabras al azar valen más que una clave rara y corta).
+• No repitas la misma clave en dos sitios.
+• Guárdalas en un gestor de contraseñas.
+• Activa la verificación en dos pasos, mejor con app autenticadora que por SMS.
+• Desconfía de quien te pida los códigos que recibes.
+
+## Ransomware
+
+Palabras clave: ransomware, secuestro de datos, me encriptaron mis archivos, me pidieron rescate, archivos cifrados por virus
+
+El ransomware cifra tus archivos y te pide dinero para devolverlos. Si te pasa: desconecta el equipo de la red de inmediato, no pagues (no hay garantía de que devuelvan nada), avisa a quien administre tus sistemas y recupera desde una copia de seguridad. Por eso las copias sin conexión son tu mejor defensa.
+
+## Copias de seguridad
+
+Palabras clave: copias de seguridad, backup, respaldo de datos, como respaldar, como hago una copia de seguridad, regla 3 2 1
+
+La regla 3-2-1: 3 copias de lo importante, en 2 tipos de medio distintos, y 1 fuera de tu casa u oficina. Mantén al menos una copia desconectada de la red, para que un virus no la alcance. Y prueba restaurar de vez en cuando: una copia que nunca se probó no es una garantía.
+
+## Qué es la ciberseguridad
+
+Palabras clave: que es ciberseguridad, que es la ciberseguridad, ciberseguridad basica, para que sirve la ciberseguridad, por que es importante la ciberseguridad
+
+La ciberseguridad es proteger tus dispositivos, redes y datos de accesos no autorizados, robos y daños. Se resume en tres cosas: que solo entre quien debe (confidencialidad), que nadie cambie tus datos sin que lo sepas (integridad) y que todo esté disponible cuando lo necesites. En CSN la trabajamos con redes privadas, cifrado, detección de anomalías y herramientas de código abierto.
