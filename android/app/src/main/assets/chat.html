@@ -156,6 +156,7 @@ function reply(raw){var t=N(raw);if(!t)return FB;var ri=repoInfo(t);if(ri)return
 var M=document.getElementById('msgs'),Q=document.getElementById('q');
 function add(t,c){var d=document.createElement('div');d.className='m '+c;d.textContent=t;M.appendChild(d);M.scrollTop=M.scrollHeight}
 var csnRequestCounter=0;
+var csnPendingRequests = Object.create(null);
 
 function localAsk(t){
  setTimeout(function(){
@@ -167,6 +168,7 @@ function ask(t){
  add(t,'usr');
  if(window.ChronoNetworkBrain && typeof window.ChronoNetworkBrain.analyze==='function'){
   var id='csn_'+(++csnRequestCounter)+'_'+Date.now();
+  csnPendingRequests[id] = t;
   add('Consultando Chrono Network Brain…','bot');
   window.ChronoNetworkBrain.analyze(t,id);
  }else{
@@ -174,8 +176,22 @@ function ask(t){
  }
 }
 
+function csnLocalFallback(question) {
+ add('Chrono Network Brain no está disponible. Continúo con el motor local.', 'bot');
+ if(question && typeof window.localAsk === 'function'){
+  window.localAsk(question);
+ }else if(question && typeof window.reply === 'function'){
+  add(window.reply(question),'bot');
+ }else{
+  add('La orientación local sigue disponible.','bot');
+ }
+}
+
 window.onChronoNetworkBrainResult=function(id,success,value){
+ var originalQuestion=csnPendingRequests[id]||'';
+ delete csnPendingRequests[id];
  var resultText='';
+
  if(success){
   try{
    var envelope=JSON.parse(value);
@@ -188,11 +204,12 @@ window.onChronoNetworkBrainResult=function(id,success,value){
     'Requiere autorización: '+(r.requires_authorization?'Sí':'No')+'\n'+
     ((r.suggested_checks&&r.suggested_checks.length)?'Comprobaciones sugeridas:\n- '+r.suggested_checks.join('\n- '):'');
   }catch(e){
-   resultText='Se recibió una respuesta, pero no se pudo interpretar.';
+   csnLocalFallback(originalQuestion);
+   return;
   }
  }else{
-  resultText='No se pudo conectar con Chrono Network Brain: '+value+'\n\n'+
-   'La orientación local sigue disponible y no ejecuta operaciones.';
+  csnLocalFallback(originalQuestion);
+  return;
  }
  add(resultText,'bot');
 };

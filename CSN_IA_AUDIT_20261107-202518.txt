@@ -1,0 +1,749 @@
+Fecha: Sat Nov  7 20:25:18 -05 2026
+Proyecto: /data/data/com.termux/files/home/csn-ia-app
+
+===== 1. RESPALDO =====
+Respaldo de chat.html creado.
+
+===== 2. REPARACION NETWORK BRAIN =====
+El respaldo conversacional ya está incorporado.
+OK: csnPendingRequests
+OK: csnLocalFallback
+
+===== 3. INVENTARIO =====
+./.github/workflows/biblioteca.yml
+./.github/workflows/build-apk.yml
+./.github/workflows/codeql.yml
+./.github/workflows/guardian.yml
+./.github/workflows/integridad.yml
+./.gitignore
+./CSN_IA_AUDIT.zip
+./CSN_IA_AUDIT_20261107-202518.txt
+./CSN_IA_AUDIT_REPORT.txt
+./LICENSE
+./README.md
+./README.md.backup-20261107-072641
+./README.md.backup-20261107-072655
+./README.md.backup-20261107-073927
+./SECURITY.md
+./android/app/build.gradle
+./android/app/src/main/AndroidManifest.xml
+./android/app/src/main/assets/auth.js
+./android/app/src/main/assets/biblioteca-data.js
+./android/app/src/main/assets/biblioteca.js
+./android/app/src/main/assets/buscador.js
+./android/app/src/main/assets/chat.html
+./android/app/src/main/assets/chat.html.backup-20261107-202240
+./android/app/src/main/assets/chat.html.gps-backup
+./android/app/src/main/assets/chat.html.guide-backup
+./android/app/src/main/assets/chat.html.integral-backup-20261107-202518
+./android/app/src/main/assets/chat.html.navigation-backup
+./android/app/src/main/assets/chat.html.pre-fallback-20261107-202047
+./android/app/src/main/assets/chat.html.pre-fallback-20261107-202111
+./android/app/src/main/assets/conv.js
+./android/app/src/main/assets/conversacion.js
+./android/app/src/main/assets/nodo.js
+./android/app/src/main/assets/noticias.js
+./android/app/src/main/assets/pro.js
+./android/app/src/main/assets/puente-biblioteca.js
+./android/app/src/main/java/net/chronoshield/iaapp/CrashActivity.kt
+./android/app/src/main/java/net/chronoshield/iaapp/CsnApp.kt
+./android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt
+./android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt.before-network-brain
+./android/app/src/main/java/net/chronoshield/iaapp/NewsBridge.kt
+./android/app/src/main/java/net/chronoshield/iaapp/SearchBridge.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/ChronoNetworkBrainClient.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/ChronoNetworkBrainConfig.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/ChronoSessionStore.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/CisaKevAdapter.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/CyberSourceAdapter.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/KnowledgeAIEngine.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/KnowledgeBase.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/LocalAIEngine.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/QueryRouter.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/ResearchType.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/SourceAdapter.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/ThreatIntelCollector.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/ThreatIntelDatabase.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/ThreatIntelRecord.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/ThreatIntelRouter.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/ThreatIntelStore.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/WebResearchEngine.kt
+./android/app/src/main/java/net/chronoshield/iaapp/ai/WebResearchResult.kt
+./android/app/src/main/java/net/chronoshield/iaapp/bridge/AIWebBridge.kt
+./android/app/src/main/java/net/chronoshield/iaapp/bridge/ChronoNetworkBrainBridge.kt
+./android/app/src/main/res/drawable/ic_launcher.xml
+./android/app/src/main/res/values/csn_theme.xml
+./android/app/src/main/res/values/strings.xml
+./android/app/src/main/res/values/styles.xml
+./android/build.gradle
+./android/build/reports/problems/problems-report.html
+./android/gradle.properties
+./android/local.properties
+./android/settings.gradle
+./backend-pro/.csn-mesh-test-config.json
+./backend-pro/.csn-mesh-test-token
+./backend-pro/DESPLIEGUE_EMPRESARIAL.md
+./backend-pro/__pycache__/app.cpython-314.pyc
+./backend-pro/__pycache__/chrono_mesh.cpython-314.pyc
+./backend-pro/__pycache__/deployment.cpython-314.pyc
+./backend-pro/__pycache__/generate_license_keys.cpython-314.pyc
+./backend-pro/__pycache__/identity.cpython-314.pyc
+./backend-pro/__pycache__/license_engine.cpython-314.pyc
+./backend-pro/__pycache__/network_brain.cpython-314.pyc
+./backend-pro/app.py
+./backend-pro/app.py.backup-20261104-221716
+./backend-pro/app.py.backup-auth-20261106-130147
+./backend-pro/app.py.before-mesh-20261105-053724
+./backend-pro/app.py.pre-roadmap-20261105-053503
+./backend-pro/chrono_mesh.py
+./backend-pro/chrono_mesh.py.auth-backup-20261105-053756
+./backend-pro/deployment.py
+./backend-pro/generate_license_keys.py
+./backend-pro/identity.py
+./backend-pro/identity.py.backup-auth-20261106-130147
+./backend-pro/license_engine.py
+./backend-pro/network_brain.py
+./backend-pro/requirements.txt
+./backend-pro/tests/__pycache__/test_identity.cpython-314.pyc
+./backend-pro/tests/__pycache__/test_network_brain.cpython-314.pyc
+./backend-pro/tests/test_identity.py
+./backend-pro/tests/test_network_brain.py
+./backend/__pycache__/app.cpython-314.pyc
+./backend/app.py
+./backend/docs/01-que-es-una-red-privada.md
+./backend/docs/02-soberania-digital.md
+./backend/docs/biblioteca-csn.md
+./backend/requirements.txt
+./backups/chat.html.companion-backup-20261107-071209
+./backups/chat.html.companion-backup-20261107-071417
+./backups/chat.html.companion-safety-20261107-071617
+./directorio-nodos/app.py
+./directorio-nodos/requirements.txt
+./fastlane/metadata/android/es-419/full_description.txt
+./fastlane/metadata/android/es-419/short_description.txt
+./scripts/agregar_backend_pro.sh
+./scripts/app_nueva.sh
+./scripts/conversacion_y_pro.sh
+./scripts/download_apk.sh
+./scripts/fix_all.sh
+./scripts/fix_antiabuso_y_servicios.sh
+./scripts/fix_completo.sh
+./scripts/fix_crash_guard.sh
+./scripts/fix_definitivo.sh
+./scripts/fix_enterprise_y_historia.sh
+./scripts/fix_final_sin_crash.sh
+./scripts/fix_log_definitivo.sh
+./scripts/fix_lowram.sh
+./scripts/fix_ondevice.sh
+./scripts/fix_permissions.sh
+./scripts/fix_prueba_minima.sh
+./scripts/fix_real_ai.sh
+./scripts/fix_workflow.sh
+./scripts/merge_temas.py
+./scripts/nodos_fase1.sh
+./scripts/noticias_y_cuenta.sh
+./scripts/parche_motor.py
+./scripts/precheck.sh
+./scripts/pruebas_biblioteca.json
+./scripts/push_seguro.sh
+./scripts/reporte_errores.sh
+./scripts/validar_biblioteca.js
+./scripts/ver_error.sh
+
+===== ESTRUCTURA PRINCIPAL =====
+android/app/src/main/AndroidManifest.xml
+android/app/src/main/assets/auth.js
+android/app/src/main/assets/biblioteca-data.js
+android/app/src/main/assets/biblioteca.js
+android/app/src/main/assets/buscador.js
+android/app/src/main/assets/chat.html
+android/app/src/main/assets/chat.html.backup-20261107-202240
+android/app/src/main/assets/chat.html.gps-backup
+android/app/src/main/assets/chat.html.guide-backup
+android/app/src/main/assets/chat.html.integral-backup-20261107-202518
+android/app/src/main/assets/chat.html.navigation-backup
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111
+android/app/src/main/assets/conv.js
+android/app/src/main/assets/conversacion.js
+android/app/src/main/assets/nodo.js
+android/app/src/main/assets/noticias.js
+android/app/src/main/assets/pro.js
+android/app/src/main/assets/puente-biblioteca.js
+android/app/src/main/java/net/chronoshield/iaapp/CrashActivity.kt
+android/app/src/main/java/net/chronoshield/iaapp/CsnApp.kt
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt.before-network-brain
+android/app/src/main/java/net/chronoshield/iaapp/NewsBridge.kt
+android/app/src/main/java/net/chronoshield/iaapp/SearchBridge.kt
+android/app/src/main/res/drawable/ic_launcher.xml
+android/app/src/main/res/values/csn_theme.xml
+android/app/src/main/res/values/strings.xml
+android/app/src/main/res/values/styles.xml
+
+===== 4. JAVASCRIPT =====
+OK JS: android/app/src/main/assets/conv.js
+OK JS: android/app/src/main/assets/nodo.js
+OK JS: android/app/src/main/assets/pro.js
+OK JS: android/app/src/main/assets/auth.js
+OK JS: android/app/src/main/assets/buscador.js
+OK JS: android/app/src/main/assets/noticias.js
+OK JS: android/app/src/main/assets/puente-biblioteca.js
+OK JS: android/app/src/main/assets/conversacion.js
+OK JS: android/app/src/main/assets/biblioteca-data.js
+OK JS: android/app/src/main/assets/biblioteca.js
+Archivos JS: 10
+Errores JS: 0
+
+===== 5. PYTHON =====
+OK PY: scripts/merge_temas.py
+OK PY: scripts/parche_motor.py
+OK PY: backend-pro/app.py
+OK PY: backend-pro/chrono_mesh.py
+OK PY: backend-pro/network_brain.py
+OK PY: backend-pro/identity.py
+OK PY: backend-pro/license_engine.py
+OK PY: backend-pro/deployment.py
+OK PY: backend-pro/generate_license_keys.py
+OK PY: backend/app.py
+OK PY: directorio-nodos/app.py
+OK PY: backend-pro/tests/test_network_brain.py
+OK PY: backend-pro/tests/test_identity.py
+Archivos Python: 13
+Errores Python: 0
+
+===== 6. JSON =====
+OK JSON: scripts/pruebas_biblioteca.json
+OK JSON: backend-pro/.csn-mesh-test-config.json
+JSON revisados: 2
+Errores JSON: 0
+
+===== 7. MANIFEST ANDROID =====
+XML válido.
+OK: android.permission.INTERNET
+OK: android.permission.ACCESS_FINE_LOCATION
+OK: android.permission.ACCESS_COARSE_LOCATION
+
+===== 8. CHRONO GPS =====
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:93:                ChronoLocationBridge(),
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:94:                "ChronoLocation"
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:160:    private inner class ChronoLocationBridge {
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:281:                "window.onChronoLocationResult && " +
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:282:                    "window.onChronoLocationResult($safeValue);",
+android/app/src/main/assets/chat.html:259:    if (window.ChronoLocation &&
+android/app/src/main/assets/chat.html:260:        typeof window.ChronoLocation.requestLocation === 'function') {
+android/app/src/main/assets/chat.html:262:        window.ChronoLocation.requestLocation();
+android/app/src/main/assets/chat.html:269:window.onChronoLocationResult = function (raw) {
+LOCALIZADO: ChronoLocation
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:163:        fun requestLocation() {
+android/app/src/main/assets/chat.html:260:        typeof window.ChronoLocation.requestLocation === 'function') {
+android/app/src/main/assets/chat.html:262:        window.ChronoLocation.requestLocation();
+LOCALIZADO: requestLocation
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:281:                "window.onChronoLocationResult && " +
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:282:                    "window.onChronoLocationResult($safeValue);",
+android/app/src/main/assets/chat.html:269:window.onChronoLocationResult = function (raw) {
+LOCALIZADO: onChronoLocationResult
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:166:                    Manifest.permission.ACCESS_FINE_LOCATION
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:176:                            Manifest.permission.ACCESS_FINE_LOCATION,
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:233:                checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:302:                Manifest.permission.ACCESS_FINE_LOCATION
+android/app/src/main/AndroidManifest.xml:5:    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+LOCALIZADO: ACCESS_FINE_LOCATION
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:170:                    Manifest.permission.ACCESS_COARSE_LOCATION
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:177:                            Manifest.permission.ACCESS_COARSE_LOCATION
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:235:                checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+android/app/src/main/java/net/chronoshield/iaapp/MainActivity.kt:306:                Manifest.permission.ACCESS_COARSE_LOCATION
+android/app/src/main/AndroidManifest.xml:4:    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+LOCALIZADO: ACCESS_COARSE_LOCATION
+
+===== UBICACION Y GUIA =====
+android/app/src/main/assets/chat.html:63:<h3>Mi ubicación</h3>
+android/app/src/main/assets/chat.html:65:Ubicación pendiente. Activa el GPS para consultar tu posición.
+android/app/src/main/assets/chat.html:68:Obtener mi ubicación GPS
+android/app/src/main/assets/chat.html:75:<h3>¿Te has perdido?</h3>
+android/app/src/main/assets/chat.html:86:<div class="note companion-status" id="companion-status">GPS: integrado; pendiente de prueba real.<br>Seguimiento continuo: pendiente.<br>Mapas y rutas offline: pendientes de instalación.</div>
+android/app/src/main/assets/chat.html:97:GPS del dispositivo: integrado; pendiente de prueba real.<br>
+android/app/src/main/assets/chat.html:127:K('paises|presencia|donde estan|mercados|ubicacion|sedes','Tenemos presencia, operaciones, investigación o procesos de expansión en Colombia, Perú, Honduras, El Salvador, Brasil, Estonia y Barcelona (España). Nuestra base está en Bogotá.');
+android/app/src/main/assets/chat.html:141:K('robo de celular|celular robado|me robaron|localizar celular','Ofrecemos un servicio de pago de localización y respuesta de seguridad para clientes a quienes les robaron el celular. Escríbenos a contactochronoshield@gmail.com para activarlo.');
+android/app/src/main/assets/chat.html:249:    add('CHRONO COMPANION: voy a comprobar tu ubicación para ayudarte.', 'bot');
+android/app/src/main/assets/chat.html:255:    ask('Quiero que seas mi acompañante de orientación. Ayúdame a orientarme y pregúntame a dónde necesito llegar. No inventes calles, rutas ni ubicaciones.');
+android/app/src/main/assets/chat.html:259:    if (window.ChronoLocation &&
+android/app/src/main/assets/chat.html:260:        typeof window.ChronoLocation.requestLocation === 'function') {
+android/app/src/main/assets/chat.html:261:        add('Solicitando ubicación GPS al dispositivo...', 'bot');
+android/app/src/main/assets/chat.html:262:        window.ChronoLocation.requestLocation();
+android/app/src/main/assets/chat.html:265:        add('El servicio GPS de Chrono todavía no está disponible.', 'bot');
+android/app/src/main/assets/chat.html:269:window.onChronoLocationResult = function (raw) {
+android/app/src/main/assets/chat.html:276:            if (panelError) panelError.textContent = 'GPS: ' + result.error;
+android/app/src/main/assets/chat.html:277:            add('Chrono GPS: ' + result.error, 'bot');
+android/app/src/main/assets/chat.html:284:                'Ubicación GPS obtenida\n' +
+android/app/src/main/assets/chat.html:294:                'GPS: ubicación recibida. Precisión: ' +
+android/app/src/main/assets/chat.html:300:            'CHRONO GPS · UBICACIÓN OBTENIDA\n' +
+android/app/src/main/assets/chat.html:311:            ask('Me he perdido y necesito orientación. Ayúdame a identificar qué información necesitas para guiarme. No inventes mi ubicación, calles ni rutas.');
+android/app/src/main/assets/chat.html:315:        add('No se pudo interpretar la ubicación GPS.', 'bot');
+android/app/src/main/assets/chat.html.gps-backup:61:K('paises|presencia|donde estan|mercados|ubicacion|sedes','Tenemos presencia, operaciones, investigación o procesos de expansión en Colombia, Perú, Honduras, El Salvador, Brasil, Estonia y Barcelona (España). Nuestra base está en Bogotá.');
+android/app/src/main/assets/chat.html.gps-backup:75:K('robo de celular|celular robado|me robaron|localizar celular','Ofrecemos un servicio de pago de localización y respuesta de seguridad para clientes a quienes les robaron el celular. Escríbenos a contactochronoshield@gmail.com para activarlo.');
+android/app/src/main/assets/chat.html.gps-backup:162:    if (window.ChronoLocation &&
+android/app/src/main/assets/chat.html.gps-backup:163:        typeof window.ChronoLocation.requestLocation === 'function') {
+android/app/src/main/assets/chat.html.gps-backup:164:        add('Solicitando ubicación GPS al dispositivo...', 'bot');
+android/app/src/main/assets/chat.html.gps-backup:165:        window.ChronoLocation.requestLocation();
+android/app/src/main/assets/chat.html.gps-backup:167:        add('El servicio GPS de Chrono todavía no está disponible.', 'bot');
+android/app/src/main/assets/chat.html.gps-backup:171:window.onChronoLocationResult = function (raw) {
+android/app/src/main/assets/chat.html.gps-backup:176:            add('Chrono GPS: ' + result.error, 'bot');
+android/app/src/main/assets/chat.html.gps-backup:181:            'CHRONO GPS · UBICACIÓN OBTENIDA\n' +
+android/app/src/main/assets/chat.html.gps-backup:189:        add('No se pudo interpretar la ubicación GPS.', 'bot');
+android/app/src/main/assets/chat.html.guide-backup:61:K('paises|presencia|donde estan|mercados|ubicacion|sedes','Tenemos presencia, operaciones, investigación o procesos de expansión en Colombia, Perú, Honduras, El Salvador, Brasil, Estonia y Barcelona (España). Nuestra base está en Bogotá.');
+android/app/src/main/assets/chat.html.guide-backup:75:K('robo de celular|celular robado|me robaron|localizar celular','Ofrecemos un servicio de pago de localización y respuesta de seguridad para clientes a quienes les robaron el celular. Escríbenos a contactochronoshield@gmail.com para activarlo.');
+android/app/src/main/assets/chat.html.guide-backup:161:    if (window.ChronoLocation &&
+android/app/src/main/assets/chat.html.guide-backup:162:        typeof window.ChronoLocation.requestLocation === 'function') {
+android/app/src/main/assets/chat.html.guide-backup:163:        add('Solicitando ubicación GPS al dispositivo...', 'bot');
+android/app/src/main/assets/chat.html.guide-backup:164:        window.ChronoLocation.requestLocation();
+android/app/src/main/assets/chat.html.guide-backup:166:        add('El servicio GPS de Chrono todavía no está disponible.', 'bot');
+android/app/src/main/assets/chat.html.guide-backup:170:window.onChronoLocationResult = function (raw) {
+android/app/src/main/assets/chat.html.guide-backup:175:            add('Chrono GPS: ' + result.error, 'bot');
+android/app/src/main/assets/chat.html.guide-backup:180:            'CHRONO GPS · UBICACIÓN OBTENIDA\n' +
+android/app/src/main/assets/chat.html.guide-backup:188:        add('No se pudo interpretar la ubicación GPS.', 'bot');
+android/app/src/main/assets/chat.html.navigation-backup:61:K('paises|presencia|donde estan|mercados|ubicacion|sedes','Tenemos presencia, operaciones, investigación o procesos de expansión en Colombia, Perú, Honduras, El Salvador, Brasil, Estonia y Barcelona (España). Nuestra base está en Bogotá.');
+android/app/src/main/assets/chat.html.navigation-backup:75:K('robo de celular|celular robado|me robaron|localizar celular','Ofrecemos un servicio de pago de localización y respuesta de seguridad para clientes a quienes les robaron el celular. Escríbenos a contactochronoshield@gmail.com para activarlo.');
+android/app/src/main/assets/conversacion.js:293:    "Revisa los permisos de tus apps en Ajustes: pocas necesitan tu cámara, micrófono y ubicación.",
+android/app/src/main/assets/conversacion.js:306:    "No publiques tu ubicación en tiempo real ni fotos de tiquetes o documentos.",
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:63:<h3>Mi ubicación</h3>
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:65:Ubicación pendiente. Activa el GPS para consultar tu posición.
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:68:Obtener mi ubicación GPS
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:75:<h3>¿Te has perdido?</h3>
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:86:<div class="note companion-status" id="companion-status">GPS: integrado; pendiente de prueba real.<br>Seguimiento continuo: pendiente.<br>Mapas y rutas offline: pendientes de instalación.</div>
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:97:GPS del dispositivo: integrado; pendiente de prueba real.<br>
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:127:K('paises|presencia|donde estan|mercados|ubicacion|sedes','Tenemos presencia, operaciones, investigación o procesos de expansión en Colombia, Perú, Honduras, El Salvador, Brasil, Estonia y Barcelona (España). Nuestra base está en Bogotá.');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:141:K('robo de celular|celular robado|me robaron|localizar celular','Ofrecemos un servicio de pago de localización y respuesta de seguridad para clientes a quienes les robaron el celular. Escríbenos a contactochronoshield@gmail.com para activarlo.');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:232:    add('CHRONO COMPANION: voy a comprobar tu ubicación para ayudarte.', 'bot');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:238:    ask('Quiero que seas mi acompañante de orientación. Ayúdame a orientarme y pregúntame a dónde necesito llegar. No inventes calles, rutas ni ubicaciones.');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:242:    if (window.ChronoLocation &&
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:243:        typeof window.ChronoLocation.requestLocation === 'function') {
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:244:        add('Solicitando ubicación GPS al dispositivo...', 'bot');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:245:        window.ChronoLocation.requestLocation();
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:248:        add('El servicio GPS de Chrono todavía no está disponible.', 'bot');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:252:window.onChronoLocationResult = function (raw) {
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:259:            if (panelError) panelError.textContent = 'GPS: ' + result.error;
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:260:            add('Chrono GPS: ' + result.error, 'bot');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:267:                'Ubicación GPS obtenida\n' +
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:277:                'GPS: ubicación recibida. Precisión: ' +
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:283:            'CHRONO GPS · UBICACIÓN OBTENIDA\n' +
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:294:            ask('Me he perdido y necesito orientación. Ayúdame a identificar qué información necesitas para guiarme. No inventes mi ubicación, calles ni rutas.');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202047:298:        add('No se pudo interpretar la ubicación GPS.', 'bot');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:63:<h3>Mi ubicación</h3>
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:65:Ubicación pendiente. Activa el GPS para consultar tu posición.
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:68:Obtener mi ubicación GPS
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:75:<h3>¿Te has perdido?</h3>
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:86:<div class="note companion-status" id="companion-status">GPS: integrado; pendiente de prueba real.<br>Seguimiento continuo: pendiente.<br>Mapas y rutas offline: pendientes de instalación.</div>
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:97:GPS del dispositivo: integrado; pendiente de prueba real.<br>
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:127:K('paises|presencia|donde estan|mercados|ubicacion|sedes','Tenemos presencia, operaciones, investigación o procesos de expansión en Colombia, Perú, Honduras, El Salvador, Brasil, Estonia y Barcelona (España). Nuestra base está en Bogotá.');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:141:K('robo de celular|celular robado|me robaron|localizar celular','Ofrecemos un servicio de pago de localización y respuesta de seguridad para clientes a quienes les robaron el celular. Escríbenos a contactochronoshield@gmail.com para activarlo.');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:232:    add('CHRONO COMPANION: voy a comprobar tu ubicación para ayudarte.', 'bot');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:238:    ask('Quiero que seas mi acompañante de orientación. Ayúdame a orientarme y pregúntame a dónde necesito llegar. No inventes calles, rutas ni ubicaciones.');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:242:    if (window.ChronoLocation &&
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:243:        typeof window.ChronoLocation.requestLocation === 'function') {
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:244:        add('Solicitando ubicación GPS al dispositivo...', 'bot');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:245:        window.ChronoLocation.requestLocation();
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:248:        add('El servicio GPS de Chrono todavía no está disponible.', 'bot');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:252:window.onChronoLocationResult = function (raw) {
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:259:            if (panelError) panelError.textContent = 'GPS: ' + result.error;
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:260:            add('Chrono GPS: ' + result.error, 'bot');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:267:                'Ubicación GPS obtenida\n' +
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:277:                'GPS: ubicación recibida. Precisión: ' +
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:283:            'CHRONO GPS · UBICACIÓN OBTENIDA\n' +
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:294:            ask('Me he perdido y necesito orientación. Ayúdame a identificar qué información necesitas para guiarme. No inventes mi ubicación, calles ni rutas.');
+android/app/src/main/assets/chat.html.pre-fallback-20261107-202111:298:        add('No se pudo interpretar la ubicación GPS.', 'bot');
+android/app/src/main/assets/biblioteca-data.js:16:{"id": "robo_celular", "titulo": "Respuesta ante robo de celular", "claves": ["robo de celular", "me robaron el celular", "celular robado", "perdi mi celular", "localizar celular", "emergencia celular"], "respuesta": "Si te robaron el celular, tenemos un servicio de pago de respuesta de seguridad: localización y acciones para proteger tu información. Escríbenos cuanto antes a contactochronoshield@gmail.com y te guiamos.", "relacionados": ["contacto", "guardian", "precios"]},
+android/app/src/main/assets/biblioteca-data.js:53:{"id": "tipos_virus", "titulo": "Tipos de virus y malware", "claves": ["tipos de virus", "que tipos de virus hay", "tipos de malware", "virus informaticos", "que es un virus", "que es malware", "que es un malware", "clases de virus"], "respuesta": "Los principales tipos:\n• Virus: se pega a archivos y se copia.\n• Gusano: se propaga solo por la red.\n• Troyano: parece una app normal pero trae algo oculto.\n• Ransomware: cifra tus archivos y pide dinero.\n• Spyware y stalkerware: te espían (mensajes, ubicación).\n• Keylogger: registra lo que escribes.\n• Adware: llena de anuncios.\n• Botnet: usa tu equipo para atacar a otros.\n• Rootkit: se esconde a fondo en el sistema.\n• Minero: gasta tu batería minando criptomonedas.", "relacionados": ["senales_infeccion", "que_hacer_infectado", "phishing"]},
+android/app/src/main/assets/biblioteca-data.js:64:{"id": "es_caro", "titulo": "Presupuesto y opciones", "claves": ["es caro", "muy caro", "esta caro", "me parece caro", "es costoso", "no tengo presupuesto", "algo mas barato", "opcion economica", "hay algo gratis"], "respuesta": "Te entiendo: el presupuesto importa. Hay opciones por etapas: el Chrono Mesh Node cuesta 169.000 COP, y los hábitos gratuitos (contraseñas, verificación en dos pasos, copias de seguridad) ya reducen mucho el riesgo. Piensa también en lo que cuesta un incidente: dinero robado, datos perdidos, días sin trabajar. Cuéntame tu caso y te sugiero por dónde empezar con lo mínimo.", "relacionados": ["precios", "contrasenas", "mesh_node"]},
+android/app/src/main/assets/biblioteca-data.js:72:{"id": "control_parental", "titulo": "Cuidar a niños y adolescentes en línea", "claves": ["control parental", "proteger a mis hijos", "ninos en internet", "hijos y redes sociales", "seguridad infantil en internet", "cuidar a mis hijos en linea"], "respuesta": "Lo más efectivo es hablar sin regaños: que sepan que pueden contarte si algo los incomoda. Además: cuentas privadas, no compartir datos ni ubicación, usar los controles parentales del sistema, revisar la edad recomendada de cada app y acordar horarios de pantalla. Enséñales que nadie legítimo les pide fotos íntimas ni secretos.", "relacionados": ["privacidad_redes", "wifi_casa"]},
+android/app/src/main/assets/biblioteca-data.js:75:{"id": "privacidad_redes", "titulo": "Privacidad en redes sociales", "claves": ["privacidad en redes sociales", "configurar privacidad", "proteger mi instagram", "proteger mi whatsapp", "cuenta privada", "que no me roben la cuenta"], "respuesta": "Para proteger tus cuentas: activa la verificación en dos pasos (en WhatsApp también existe), usa cuenta privada si no necesitas ser público, limita quién ve tus fotos y tu ubicación, revisa las sesiones abiertas y nunca compartas los códigos que te llegan, ni con amigos.", "relacionados": ["contrasenas", "phishing", "control_parental"]},
+android/app/src/main/assets/chat.html.backup-20261107-202240:63:<h3>Mi ubicación</h3>
+android/app/src/main/assets/chat.html.backup-20261107-202240:65:Ubicación pendiente. Activa el GPS para consultar tu posición.
+android/app/src/main/assets/chat.html.backup-20261107-202240:68:Obtener mi ubicación GPS
+android/app/src/main/assets/chat.html.backup-20261107-202240:75:<h3>¿Te has perdido?</h3>
+android/app/src/main/assets/chat.html.backup-20261107-202240:86:<div class="note companion-status" id="companion-status">GPS: integrado; pendiente de prueba real.<br>Seguimiento continuo: pendiente.<br>Mapas y rutas offline: pendientes de instalación.</div>
+android/app/src/main/assets/chat.html.backup-20261107-202240:97:GPS del dispositivo: integrado; pendiente de prueba real.<br>
+android/app/src/main/assets/chat.html.backup-20261107-202240:127:K('paises|presencia|donde estan|mercados|ubicacion|sedes','Tenemos presencia, operaciones, investigación o procesos de expansión en Colombia, Perú, Honduras, El Salvador, Brasil, Estonia y Barcelona (España). Nuestra base está en Bogotá.');
+android/app/src/main/assets/chat.html.backup-20261107-202240:141:K('robo de celular|celular robado|me robaron|localizar celular','Ofrecemos un servicio de pago de localización y respuesta de seguridad para clientes a quienes les robaron el celular. Escríbenos a contactochronoshield@gmail.com para activarlo.');
+android/app/src/main/assets/chat.html.backup-20261107-202240:232:    add('CHRONO COMPANION: voy a comprobar tu ubicación para ayudarte.', 'bot');
+android/app/src/main/assets/chat.html.backup-20261107-202240:238:    ask('Quiero que seas mi acompañante de orientación. Ayúdame a orientarme y pregúntame a dónde necesito llegar. No inventes calles, rutas ni ubicaciones.');
+android/app/src/main/assets/chat.html.backup-20261107-202240:242:    if (window.ChronoLocation &&
+android/app/src/main/assets/chat.html.backup-20261107-202240:243:        typeof window.ChronoLocation.requestLocation === 'function') {
+android/app/src/main/assets/chat.html.backup-20261107-202240:244:        add('Solicitando ubicación GPS al dispositivo...', 'bot');
+android/app/src/main/assets/chat.html.backup-20261107-202240:245:        window.ChronoLocation.requestLocation();
+android/app/src/main/assets/chat.html.backup-20261107-202240:248:        add('El servicio GPS de Chrono todavía no está disponible.', 'bot');
+android/app/src/main/assets/chat.html.backup-20261107-202240:252:window.onChronoLocationResult = function (raw) {
+android/app/src/main/assets/chat.html.backup-20261107-202240:259:            if (panelError) panelError.textContent = 'GPS: ' + result.error;
+android/app/src/main/assets/chat.html.backup-20261107-202240:260:            add('Chrono GPS: ' + result.error, 'bot');
+android/app/src/main/assets/chat.html.backup-20261107-202240:267:                'Ubicación GPS obtenida\n' +
+android/app/src/main/assets/chat.html.backup-20261107-202240:277:                'GPS: ubicación recibida. Precisión: ' +
+
+===== 9. MODULOS CSN IA =====
+OK MODULO: nodo.js
+OK MODULO: pro.js
+OK MODULO: conv.js
+OK MODULO: auth.js
+OK MODULO: noticias.js
+OK MODULO: buscador.js
+OK MODULO: biblioteca-data.js
+OK MODULO: biblioteca.js
+OK MODULO: puente-biblioteca.js
+OK MODULO: conversacion.js
+
+===== REFERENCIAS DE CARGA EN CHAT =====
+113:<script>
+240:</script><script src="nodo.js"></script><script src="pro.js"></script><script src="conv.js"></script><script src="auth.js"></script>
+241:<script src="noticias.js"></script><script src="buscador.js"></script>
+242:<script src="biblioteca-data.js"></script><script src="biblioteca.js"></script><script src="puente-biblioteca.js"></script><script src="conversacion.js"></script>
+243:<script>
+319:</body></html>
+
+===== 10. GIT =====
+feature/biblioteca-ia
+origin	https://github.com/contactochronoshield-cyber/csn-ia-app.git (fetch)
+origin	https://github.com/contactochronoshield-cyber/csn-ia-app.git (push)
+
+===== CAMBIOS TRACKED =====
+ android/app/src/main/assets/chat.html | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
+
+===== ESTADO COMPLETO =====
+ M android/app/src/main/assets/chat.html
+?? CSN_IA_AUDIT_20261107-202518.txt
+?? android/app/src/main/assets/chat.html.integral-backup-20261107-202518
+
+===== 11. COMPILACION ANDROID =====
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Warning: Unable to set daemon's environment variables to match the client because: 
+  There is no native integration with this operating environment.
+  If the daemon was started with a significantly different environment from the client, and your build 
+  relies on environment variables, you may experience unexpected behavior.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.aapt2FromMavenOverride=/data/data/com.termux/files/usr/bin/aapt2' is experimental.
+Observed package id 'build-tools;34.0.0' in inconsistent location '/data/data/com.termux/files/home/android-sdk/build-tools/34.0.0-2' (Expected '/data/data/com.termux/files/home/android-sdk/build-tools/34.0.0')
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:compressDebugAssets
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:processDebugManifestForPackage
+> Task :app:mergeExtDexDebug
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeLibDexDebug
+> Task :app:mergeDebugNativeLibs NO-SOURCE
+> Task :app:stripDebugDebugSymbols NO-SOURCE
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+11-07 20:27:20.343 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300b7.
+11-07 20:27:20.351 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030069.
+11-07 20:27:20.352 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03010b.
+11-07 20:27:20.352 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300e6.
+11-07 20:27:20.352 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030093.
+11-07 20:27:20.352 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030033.
+11-07 20:27:20.352 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030035.
+11-07 20:27:20.352 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030034.
+11-07 20:27:20.352 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030064.
+11-07 20:27:20.353 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03008f.
+11-07 20:27:20.353 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030092.
+11-07 20:27:20.353 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300c7.
+11-07 20:27:20.353 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030098.
+11-07 20:27:20.353 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300c6.
+11-07 20:27:20.353 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030091.
+11-07 20:27:20.353 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03009b.
+11-07 20:27:20.353 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030090.
+11-07 20:27:20.354 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03007d.
+11-07 20:27:20.354 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03004d.
+11-07 20:27:20.354 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030099.
+11-07 20:27:20.354 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03007f.
+11-07 20:27:20.354 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030042.
+11-07 20:27:20.355 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300a5.
+11-07 20:27:20.355 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300b4.
+11-07 20:27:20.355 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300da.
+11-07 20:27:20.355 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300a4.
+11-07 20:27:20.355 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300d9.
+11-07 20:27:20.355 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030041.
+11-07 20:27:20.356 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300df.
+11-07 20:27:20.356 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030100.
+11-07 20:27:20.356 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030101.
+11-07 20:27:20.356 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300fd.
+11-07 20:27:20.356 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300fe.
+11-07 20:27:20.356 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ff.
+11-07 20:27:20.357 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030032.
+11-07 20:27:20.357 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030031.
+11-07 20:27:20.357 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030030.
+11-07 20:27:20.357 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03002f.
+11-07 20:27:20.357 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03002e.
+11-07 20:27:20.357 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03009f.
+11-07 20:27:20.357 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030080.
+11-07 20:27:20.357 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03009d.
+11-07 20:27:20.358 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03008b.
+11-07 20:27:20.358 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030070.
+11-07 20:27:20.358 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030076.
+11-07 20:27:20.358 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030071.
+11-07 20:27:20.358 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03006e.
+11-07 20:27:20.358 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030073.
+11-07 20:27:20.358 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03006f.
+11-07 20:27:20.358 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030074.
+11-07 20:27:20.358 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030075.
+11-07 20:27:20.359 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03007e.
+11-07 20:27:20.359 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030117.
+11-07 20:27:20.359 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030120.
+11-07 20:27:20.359 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030118.
+11-07 20:27:20.359 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030119.
+11-07 20:27:20.360 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03011c.
+11-07 20:27:20.360 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03011b.
+11-07 20:27:20.360 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03011d.
+11-07 20:27:20.360 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03011a.
+11-07 20:27:20.360 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03011e.
+11-07 20:27:20.360 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03011f.
+11-07 20:27:20.360 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030007.
+11-07 20:27:20.361 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030006.
+11-07 20:27:20.361 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030008.
+11-07 20:27:20.361 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03001f.
+11-07 20:27:20.361 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030020.
+11-07 20:27:20.361 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030002.
+11-07 20:27:20.361 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030005.
+11-07 20:27:20.362 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030004.
+11-07 20:27:20.362 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030009.
+11-07 20:27:20.362 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03001d.
+11-07 20:27:20.362 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03000a.
+11-07 20:27:20.362 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030003.
+11-07 20:27:20.362 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030000.
+11-07 20:27:20.362 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030001.
+11-07 20:27:20.362 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03000e.
+11-07 20:27:20.362 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03000f.
+11-07 20:27:20.363 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03001c.
+11-07 20:27:20.363 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030011.
+11-07 20:27:20.363 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030010.
+11-07 20:27:20.363 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03001b.
+11-07 20:27:20.363 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030013.
+11-07 20:27:20.363 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030015.
+11-07 20:27:20.363 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030014.
+11-07 20:27:20.363 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030017.
+11-07 20:27:20.364 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030019.
+11-07 20:27:20.364 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03001a.
+11-07 20:27:20.364 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030016.
+11-07 20:27:20.364 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03001e.
+11-07 20:27:20.364 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030012.
+11-07 20:27:20.364 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030018.
+11-07 20:27:20.364 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ed.
+11-07 20:27:20.365 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300f4.
+11-07 20:27:20.365 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300f1.
+11-07 20:27:20.365 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030068.
+11-07 20:27:20.365 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030067.
+11-07 20:27:20.365 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300a3.
+11-07 20:27:20.365 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030066.
+11-07 20:27:20.365 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03000c.
+11-07 20:27:20.365 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030079.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300dc.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03000b.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03003e.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03003a.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300d3.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300d4.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030039.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03006d.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03006b.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030023.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03010d.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03010c.
+11-07 20:27:20.366 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300c2.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300c4.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03007b.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03007a.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030097.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300f3.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300f2.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300f6.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300d1.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300a8.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300aa.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300a9.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ac.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ad.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ae.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ab.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030078.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300a7.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ee.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ef.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300f0.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300bf.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300c1.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300c0.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300a0.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030058.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030059.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030051.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030056.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030054.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030055.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030053.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03005a.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030063.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030052.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030026.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030024.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030025.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030027.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300f5.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03003d.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03003b.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03003c.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03002d.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030043.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030044.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03004a.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03004b.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03007c.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300cb.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300cc.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300cd.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ce.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300d2.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300dd.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ea.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300a6.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03010f.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03010e.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030057.
+11-07 20:27:20.367 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030115.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300a2.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300a1.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030028.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ca.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300d5.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030047.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030048.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030049.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030029.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03009c.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03003f.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030045.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030046.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030050.
+11-07 20:27:20.368 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300db.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030072.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03008d.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03002b.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03002c.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030038.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300f9.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030083.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030087.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030088.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030084.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030085.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030086.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030089.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03008a.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030081.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03008c.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03008b.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030114.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300b2.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03006a.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300d7.
+11-07 20:27:20.369 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03006c.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03002a.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300b9.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300d6.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03000d.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030022.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030021.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03005c.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030110.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030094.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030095.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300c5.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300e1.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ba.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300e0.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300bb.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300be.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03009e.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030096.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300c9.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030065.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03004c.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03008e.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300d0.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300cf.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030116.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03005b.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300e7.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300c8.
+11-07 20:27:20.370 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300e2.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300c3.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300fb.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300fc.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030111.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030112.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030113.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300fa.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300eb.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300e8.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300e9.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300de.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300d8.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030082.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300ec.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300f7.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03008b.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030109.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300e4.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030102.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300e3.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030103.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030106.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030105.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030107.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030104.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030108.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030061.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03005d.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03005f.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030060.
+11-07 20:27:20.371 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030062.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03005e.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300b1.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030040.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03004f.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03004e.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300b6.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300b5.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300af.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300b0.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f03010a.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300e5.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300b3.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300bd.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300bc.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f0300f8.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030036.
+11-07 20:27:20.372 20045 20045 E aapt2   : No package ID 7f found for resource ID 0x7f030037.
+
+> Task :app:processDebugResources
+> Task :app:compileDebugKotlin
