@@ -87,7 +87,7 @@ Chrono Sentinel es una app Android para monitorear tus equipos y nodos y avisart
 
 ## ChronoShieldVPN
 
-Palabras clave: vpn, wireguard, chronoshieldvpn, tunel, navegar seguro, wifi publico
+Palabras clave: vpn, wireguard, chronoshieldvpn, tunel, navegar seguro
 
 ChronoShieldVPN usa WireGuard, una tecnología moderna, rápida y segura. Crea un túnel cifrado entre tu dispositivo y tu red: nadie en medio puede ver lo que haces. Es útil en wifi públicos o para entrar a tu red desde fuera de casa.
 
@@ -450,3 +450,123 @@ La regla 3-2-1: 3 copias de lo importante, en 2 tipos de medio distintos, y 1 fu
 Palabras clave: que es ciberseguridad, que es la ciberseguridad, ciberseguridad basica, para que sirve la ciberseguridad, por que es importante la ciberseguridad
 
 La ciberseguridad es proteger tus dispositivos, redes y datos de accesos no autorizados, robos y daños. Se resume en tres cosas: que solo entre quien debe (confidencialidad), que nadie cambie tus datos sin que lo sepas (integridad) y que todo esté disponible cuando lo necesites. En CSN la trabajamos con redes privadas, cifrado, detección de anomalías y herramientas de código abierto.
+
+## Por qué elegir Chrono
+
+Palabras clave: por que elegir chrono, por que chrono, que los hace diferentes, que los diferencia, por que deberia confiar en csn, ventajas de chrono, por que contratar a chrono, que ofrecen de especial, convenceme, vendeme chrono, por que deberia comprar
+
+Lo que nos hace distintos:
+• Soberanía real: tus datos y tu red son tuyos, sin depender de proveedores extranjeros.
+• Código abierto: puedes revisar lo que hacemos en vez de creernos a ciegas.
+• Hecho en Bogotá, para Latinoamérica y en español.
+• Del hogar al data center con la misma filosofía.
+• Tú eres dueño de la red; no alquilas el acceso.
+Compáranos con calma y decide con información.
+
+## Chrono frente a una VPN comercial
+
+Palabras clave: diferencia con nordvpn, diferencia con otras vpn, por que no usar una vpn comercial, chrono vs vpn comercial, vpn comercial, es mejor que nordvpn, que tiene chrono que no tengan otros, competencia
+
+Las VPN comerciales son útiles: te dan un túnel cifrado, pero tu tráfico pasa por servidores de una empresa en la que tienes que confiar. Con Chrono construyes tu propia red privada: tú controlas los nodos, quién entra y dónde viven los datos, y el código es revisable. No son lo mismo: una resuelve la privacidad al navegar; la otra, tener infraestructura propia. Muchas personas usan ambas.
+
+## Presupuesto y opciones
+
+Palabras clave: es caro, muy caro, esta caro, me parece caro, es costoso, no tengo presupuesto, algo mas barato, opcion economica, hay algo gratis
+
+Te entiendo: el presupuesto importa. Hay opciones por etapas: el Chrono Mesh Node cuesta 169.000 COP, y los hábitos gratuitos (contraseñas, verificación en dos pasos, copias de seguridad) ya reducen mucho el riesgo. Piensa también en lo que cuesta un incidente: dinero robado, datos perdidos, días sin trabajar. Cuéntame tu caso y te sugiero por dónde empezar con lo mínimo.
+
+## Ya tengo antivirus
+
+Palabras clave: ya tengo antivirus, con mi antivirus basta, para que necesito esto si tengo antivirus, necesito antivirus, antivirus
+
+El antivirus es un buen primer escudo, pero protege el dispositivo. No protege tu red, tu wifi, tus cámaras ni lo que hacen otros equipos conectados, y tampoco te salva de una estafa en la que tú entregas la clave. Una red privada, buenos hábitos y copias de seguridad lo complementan: se suman, no se reemplazan.
+
+## No soy técnico
+
+Palabras clave: no soy tecnico, no se de tecnologia, soy principiante, es muy complicado, no entiendo de redes, soy nuevo en esto, es dificil de usar
+
+No necesitas serlo. La idea es que lo difícil lo hagamos nosotros y a ti te quede lo simple. Esta app te explica en palabras sencillas, paso a paso, y el equipo te acompaña. Empieza por lo más fácil: el mini diagnóstico de 1 minuto o el consejo del día.
+
+## Por qué actualizar
+
+Palabras clave: por que actualizar, actualizaciones, debo actualizar mi celular, actualizar el sistema, parches de seguridad
+
+Cada actualización suele tapar huecos de seguridad que ya se conocen: los atacantes los aprovechan justo en quienes no actualizan. Activa las actualizaciones automáticas del celular, el computador y el router, y reinicia de vez en cuando para que se apliquen.
+
+## Estafas con códigos QR
+
+Palabras clave: qr falso, qr falsos, codigo qr, estafa con qr, escanear qr seguro
+
+Un QR es solo un enlace disfrazado. Los estafadores pegan QR falsos sobre los originales (parqueaderos, menús, cajeros) para llevarte a páginas que roban datos. Antes de abrir, mira la dirección que muestra tu cámara, desconfía si te pide claves o pagos inesperados y, si el QR parece pegado encima de otro, no lo escanees.
+
+## Wifi público: cómo usarlo
+
+Palabras clave: wifi publico, wifi de cafe, wifi del aeropuerto, wifi gratis, red wifi abierta
+
+Un wifi abierto lo comparte cualquiera, y alguien malintencionado podría espiar o falsificar la red. Evita entrar al banco o a cuentas importantes, prefiere tus datos móviles y, si tienes que usarlo, conecta una VPN. Desactiva la conexión automática a redes abiertas.
+
+## Cargadores y puertos USB públicos
+
+Palabras clave: cargador publico, cargar el celular en publico, juice jacking, puertos usb publicos
+
+Un puerto USB público podría transmitir datos además de energía. Lo más seguro es llevar tu propio cargador y enchufarlo a la pared, o usar un cable solo de carga. Si no queda otra, mantén el celular bloqueado y responde "no" si te pregunta si confías en el equipo.
+
+## Estafas con inteligencia artificial
+
+Palabras clave: deepfake, estafa con ia, voz clonada, clonacion de voz, video falso, estafas con inteligencia artificial
+
+Hoy, con pocos segundos de audio, se puede imitar una voz, y existen videos falsos muy creíbles. Defensas simples: acuerden en la familia una palabra clave para emergencias, cuelga y devuelve la llamada al número de siempre, y desconfía de cualquier urgencia que pida dinero o códigos, aunque la voz suene conocida.
+
+## Cuidar a niños y adolescentes en línea
+
+Palabras clave: control parental, proteger a mis hijos, ninos en internet, hijos y redes sociales, seguridad infantil en internet, cuidar a mis hijos en linea
+
+Lo más efectivo es hablar sin regaños: que sepan que pueden contarte si algo los incomoda. Además: cuentas privadas, no compartir datos ni ubicación, usar los controles parentales del sistema, revisar la edad recomendada de cada app y acordar horarios de pantalla. Enséñales que nadie legítimo les pide fotos íntimas ni secretos.
+
+## Proteger a los adultos mayores
+
+Palabras clave: adultos mayores, proteger a mis papas, abuelos y estafas, mis papas caen en estafas, tecnologia para mayores
+
+Los mayores son blanco frecuente de estafas por llamada y mensaje. Lo que más ayuda: repasar con ellos la estafa del "soy tu hijo o nieto", acordar una palabra clave familiar, activar alertas del banco en tu teléfono también, y la regla de oro: antes de transferir dinero o dar un código, consultar con un familiar.
+
+## Compras en línea seguras
+
+Palabras clave: compras seguras, comprar en linea seguro, como comprar por internet, tienda falsa, pagos seguros, evitar estafas al comprar
+
+Compra en tiendas conocidas, escribe tú mismo la dirección en vez de usar enlaces de anuncios, desconfía de precios regalados y de quien te pida pagar por fuera de la plataforma. Usa tarjeta virtual o métodos con protección al comprador, y guarda capturas del pedido y la conversación.
+
+## Privacidad en redes sociales
+
+Palabras clave: privacidad en redes sociales, configurar privacidad, proteger mi instagram, proteger mi whatsapp, cuenta privada, que no me roben la cuenta
+
+Para proteger tus cuentas: activa la verificación en dos pasos (en WhatsApp también existe), usa cuenta privada si no necesitas ser público, limita quién ve tus fotos y tu ubicación, revisa las sesiones abiertas y nunca compartas los códigos que te llegan, ni con amigos.
+
+## Si caíste en una estafa
+
+Palabras clave: me estafaron, caí en una estafa, me robaron plata, me hicieron una transferencia, me quitaron plata, estafa bancaria
+
+Lamento que te haya pasado. Actúa rápido:
+1. Llama a tu banco ya y pide bloquear cuentas y tarjetas.
+2. Cambia tus claves desde un equipo seguro.
+3. Guarda capturas, números y mensajes como prueba.
+4. Denuncia ante la autoridad de tu país (en Colombia, el CAI Virtual de la Policía Nacional).
+5. Avisa a tus contactos si usaron tu cuenta.
+Nadie está libre de caer: lo importante es reaccionar pronto.
+
+## Extorsión o chantaje en línea
+
+Palabras clave: me extorsionan, me estan extorsionando, me amenazan con publicar, sextorsion, chantaje en internet, me chantajean
+
+No estás solo y no es tu culpa. No pagues (suelen seguir pidiendo) y no borres la conversación: es prueba. Guarda capturas y datos del perfil, bloquea y reporta la cuenta en la plataforma, activa la privacidad y la verificación en dos pasos, y denuncia ante la autoridad de tu país (en Colombia, el CAI Virtual de la Policía Nacional). Habla con alguien de confianza; y si hay menores, busca apoyo de un adulto y de la autoridad cuanto antes.
+
+## Compartir la app
+
+Palabras clave: recomendar la app, compartir la app, invitar amigos, quiero compartir esto, como le cuento a mis amigos
+
+¡Gracias por querer compartirla! Cuéntale a quien quieras que existe este asistente gratuito para entender redes privadas y ciberseguridad sin tecnicismos, y que pueden conocer más de CSN en chronoshieldnetworks.com. Entre más gente sepa lo básico, más difícil es para los estafadores.
+
+## Dónde estamos
+
+Palabras clave: donde estan, donde estan ubicados, donde queda csn, de que pais son, en que ciudad estan
+
+Estamos en Bogotá, Colombia, y trabajamos para toda Latinoamérica. Puedes escribirnos a contactochronoshield@gmail.com o visitar chronoshieldnetworks.com.
