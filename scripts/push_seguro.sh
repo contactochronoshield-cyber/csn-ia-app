@@ -1,14 +1,40 @@
 #!/data/data/com.termux/files/usr/bin/bash
-# Uso: bash scripts/push_seguro.sh "mensaje del commit"
-cd "$(git rev-parse --show-toplevel)" || exit 1
-MSG="${1:-Actualizacion}"
-bash scripts/precheck.sh || { echo "Corrige lo de arriba y repite. No se subio nada."; exit 1; }
-git add -A
-git commit -qm "$MSG" || echo "(nada nuevo que commitear)"
-if ! git pull --rebase origin main; then
-  echo "Conflicto real. Pasame la salida de: git status"
-  echo "Para volver atras: git rebase --abort"
-  exit 1
+
+# Guardian CI - Preparacion segura.
+# No hace add, commit, pull ni push.
+
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+if [ -z "$ROOT" ]; then
+    echo "No se encontro el repositorio."
+else
+    cd "$ROOT"
+
+    echo "=========================================="
+    echo " GUARDIAN CI - REVISION ANTES DE PUBLICAR"
+    echo "=========================================="
+
+    bash scripts/precheck.sh
+    RESULT="$?"
+
+    echo
+    echo "===== CAMBIOS ACTUALES ====="
+    git status --short
+    echo
+    git diff --stat
+
+    if [ "$RESULT" -eq 0 ]; then
+        echo
+        echo "PREPARACION COMPLETADA."
+        echo "No se preparo ni publico ningun archivo."
+        echo "Revisa los cambios antes de usar Git."
+        echo
+        echo "Para preparar archivos especificos manualmente:"
+        echo "git add ruta/al/archivo"
+        echo "git diff --cached"
+        echo "git commit"
+        echo "git push"
+    else
+        echo
+        echo "PREPARACION DETENIDA: corrige los errores primero."
+    fi
 fi
-bash scripts/precheck.sh || { echo "Tras integrar el remoto aparecio un problema. No se subio."; exit 1; }
-git push origin HEAD:main

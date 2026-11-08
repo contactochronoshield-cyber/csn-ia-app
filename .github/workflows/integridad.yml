@@ -1,24 +1,61 @@
-name: Integridad
+name: Guardian Integrity Verification
+
 on:
-  workflow_run:
-    workflows: ["Build APK"]
-    types: [completed]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: ID de la ejecucion Build APK que se desea verificar
+        required: true
+        type: string
+
 permissions:
-  contents: write
+  actions: read
+  contents: read
+  attestations: read
+
 jobs:
-  sumas:
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' }}
+  verify:
+    name: Verify APK SHA-256 and Provenance
     runs-on: ubuntu-latest
-    continue-on-error: true
+
+    permissions:
+      actions: read
+      contents: read
+      attestations: read
+
     steps:
-      - name: SHA-256 del APK publicado
+      - name: Descargar artefacto de la ejecucion indicada
+        uses: actions/download-artifact@v4
+        with:
+          name: csn-ia-debug-apk
+          path: verified
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+
+      - name: Verificar SHA-256
+        working-directory: verified
+        run: |
+          test -s CSN-IA-debug.apk
+          test -s SHA256SUMS.txt
+          sha256sum --check SHA256SUMS.txt
+
+      - name: Comprobar version segura de GitHub CLI
+        run: |
+          gh version
+          GH_VERSION="$(gh version | awk 'NR==1 {print $3}')"
+          dpkg --compare-versions "$GH_VERSION" ge "2.102.0"
+          echo "GitHub CLI compatible: $GH_VERSION"
+
+      - name: Verificar firma y procedencia del APK
         env:
           GH_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
         run: |
-          TAG=$(gh release view -R "$REPO" --json tagName -q .tagName) || exit 0
-          mkdir w && cd w
-          gh release download "$TAG" -R "$REPO" -p '*.apk' || exit 0
-          sha256sum *.apk > SHA256SUMS.txt
-          cat SHA256SUMS.txt >> "$GITHUB_STEP_SUMMARY"
-          gh release upload "$TAG" SHA256SUMS.txt -R "$REPO" --clobber
+          gh attestation verify verified/CSN-IA-debug.apk \
+            --repo "$GITHUB_REPOSITORY" \
+            --signer-workflow "$GITHUB_REPOSITORY/.github/workflows/build-apk.yml" \
+            --source-ref refs/heads/main
+
+      - name: Resultado
+        run: |
+          echo "Guardian Integrity: SHA-256 y procedencia verificados."

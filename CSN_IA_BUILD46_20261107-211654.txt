@@ -60,11 +60,11 @@ OK: conversacion.js
 
 ===== 10. COMPILACIÓN =====
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
-Warning: Unable to set daemon's environment variables to match the client because: 
+Warning: Unable to set daemon's environment variables to match the client because:
   There is no native integration with this operating environment.
-  If the daemon was started with a significantly different environment from the client, and your build 
+  If the daemon was started with a significantly different environment from the client, and your build
   relies on environment variables, you may experience unexpected behavior.
-Daemon will be stopped at the end of the build 
+Daemon will be stopped at the end of the build
 
 > Configure project :app
 WARNING: The option setting 'android.aapt2FromMavenOverride=/data/data/com.termux/files/usr/bin/aapt2' is experimental.
@@ -407,11 +407,11 @@ BUILD SUCCESSFUL in 2m 5s
 20 actionable tasks: 11 executed, 9 up-to-date
 Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.2/userguide/configuration_cache_enabling.html
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
-Warning: Unable to set daemon's environment variables to match the client because: 
+Warning: Unable to set daemon's environment variables to match the client because:
   There is no native integration with this operating environment.
-  If the daemon was started with a significantly different environment from the client, and your build 
+  If the daemon was started with a significantly different environment from the client, and your build
   relies on environment variables, you may experience unexpected behavior.
-Daemon will be stopped at the end of the build 
+Daemon will be stopped at the end of the build
 
 > Configure project :app
 WARNING: The option setting 'android.aapt2FromMavenOverride=/data/data/com.termux/files/usr/bin/aapt2' is experimental.
@@ -481,3 +481,172 @@ Fecha: 2026-11-07 21:20:17.607986698 -0500
 14c923f9a40d4a07e48d5cda019743ab594cca326d8df577b5f0c6d4d64821a8  android/app/build/outputs/apk/debug/app-debug.apk
 
 ===== 12. GIT =====
+
+===== ARCHIVOS PREPARADOS =====
+CSN_IA_AUDIT_20261107-202518.txt
+CSN_IA_BUILD46_20261107-211654.txt
+android/app/build.gradle
+android/app/src/main/assets/chat.html
+
+===== VALIDACIÓN DE CAMBIOS =====
+CSN_IA_AUDIT_20261107-202518.txt:417: trailing whitespace.
++Warning: Unable to set daemon's environment variables to match the client because:
+CSN_IA_AUDIT_20261107-202518.txt:419: trailing whitespace.
++  If the daemon was started with a significantly different environment from the client, and your build
+CSN_IA_AUDIT_20261107-202518.txt:421: trailing whitespace.
++Daemon will be stopped at the end of the build
+CSN_IA_BUILD46_20261107-211654.txt:63: trailing whitespace.
++Warning: Unable to set daemon's environment variables to match the client because:
+CSN_IA_BUILD46_20261107-211654.txt:65: trailing whitespace.
++  If the daemon was started with a significantly different environment from the client, and your build
+CSN_IA_BUILD46_20261107-211654.txt:67: trailing whitespace.
++Daemon will be stopped at the end of the build
+CSN_IA_BUILD46_20261107-211654.txt:410: trailing whitespace.
++Warning: Unable to set daemon's environment variables to match the client because:
+CSN_IA_BUILD46_20261107-211654.txt:412: trailing whitespace.
++  If the daemon was started with a significantly different environment from the client, and your build
+CSN_IA_BUILD46_20261107-211654.txt:414: trailing whitespace.
++Daemon will be stopped at the end of the build
+
+===== 13. PUBLICACIÓN GITHUB =====
+Rama: feature/biblioteca-ia
+Remoto: https://github.com/contactochronoshield-cyber/csn-ia-app.git
+[feature/biblioteca-ia 61ec3f6] Release CSN IA build 46: conversational recovery and validation
+ 4 files changed, 1254 insertions(+), 5 deletions(-)
+ create mode 100644 CSN_IA_AUDIT_20261107-202518.txt
+ create mode 100644 CSN_IA_BUILD46_20261107-211654.txt
+To https://github.com/contactochronoshield-cyber/csn-ia-app.git
+   7343ccf..61ec3f6  feature/biblioteca-ia -> feature/biblioteca-ia
+CÓDIGO SUBIDO A GITHUB.
+To https://github.com/contactochronoshield-cyber/csn-ia-app.git
+ * [new tag]         build-46 -> build-46
+https://github.com/contactochronoshield-cyber/csn-ia-app/releases/tag/build-46
+LANZAMIENTO BUILD 46 PUBLICADO.
+
+===== 14. VERIFICACIÓN FINAL =====
+ M CSN_IA_BUILD46_20261107-211654.txt
+?? android/app/src/main/assets/chat.html.integral-backup-20261107-202518
+61ec3f6 Release CSN IA build 46: conversational recovery and validation
+CSN IA - build 46	Latest	build-46	2026-11-08T02:20:34Z
+CSN IA - build 45		build-45	2026-11-07T12:40:39Z
+CSN IA - build 44		build-44	2026-11-07T12:25:29Z
+CSN IA - build 43		build-43	2026-11-07T12:04:14Z
+CSN IA - build 42		build-42	2026-11-07T00:46:28Z
+
+INFORME: /data/data/com.termux/files/home/csn-ia-app/CSN_IA_BUILD46_20261107-211654.txt
+==================================================
+ PROCESO TERMINADO
+==================================================
+[?2004h[0;32m~/csn-ia-app[0m [0;97m$[0m [K[0;32m~/csn-ia-app[0m [0;97m$[0m [K[0;32m~/csn-ia-app[0m [0;97m$[0m [K[0;32m~/csn-ia-app[0m [0;97m$[0m [H[2J[0;32m~/csn-ia-app[0m [0;97m$[0m
+cd ~/csn-ia-app
+
+echo "============================================"
+echo " CSN IA - AUDITORIA DEL MENU CONFIGURACION"
+echo "============================================"
+
+python - <<'PY'
+from pathlib import Path
+import re
+
+root = Path("android/app/src/main")
+files = [root / "assets/chat.html"]
+files += list((root / "assets").glob("*.js"))
+files += list((root / "java").rglob("*.kt"))
+
+[7mpatterns = re.compile([27m
+[7m    r'configuraci[oó]n|settings|preferences|ajustes|'[27m
+[7m    r'openSettings|showSettings|toggleSettings|'[27m
+[7m    r'settingsModal|settings-menu|settings-panel|'[27m
+[7m    r'onclick|addEventListener|localStorage',[27m
+[7m    re.I[27m
+[7m)[27m
+
+[7mfor p in files:[27m
+[7m    if not p.is_file():[27m
+[7m        continue[27m
+
+[7m    try:[27m
+[7m        lines = p.read_text(errors="replace").splitlines()[27m
+[7m    except Exception:[27m
+[7m        continue[27m
+
+[7m    matches = [i for i, line in enumerate(lines) if patterns.search(line)][27m
+
+[7m    if not matches:[27m
+[7m        continue[27m
+
+[7m    print("\n" + "=" * 65)[27m
+[7m    print("ARCHIVO:", p)[27m
+[7m    print("COINCIDENCIAS:", len(matches))[27m
+[7m    print("=" * 65)[27m
+
+[7m    ranges = [][27m
+[7m    for i in matches:[27m
+[7m        start, end = max(0, i-4), min(len(lines), i+6)[27m
+[7m        if ranges and start <= ranges[-1][1]:[27m
+[7m            ranges[-1] = (ranges[-1][0], max(ranges[-1][1], end))[27m
+[7m        else:[27m
+[7m            ranges.append((start, end))[27m
+
+[7m    for start, end in ranges:[27m
+[7m        print(f"\n--- Líneas {start+1}-{end} ---")[27m
+[7m        for i in range(start, end):[27m
+[7m            print(f"{i+1:4}: {lines[i]}")[27m
+
+[7mprint("\n===== FIN DE AUDITORIA =====")[27m
+[7mPY[27m
+
+[7mecho[27m
+[7mecho "===== VALIDACION DEL REPOSITORIO ====="[27m
+[7mgit status --short[27m
+[7mecho[27m
+[7mecho "AUDITORIA TERMINADA - SIN MODIFICAR ARCHIVOS"[27m
+[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[Apatterns = re.compile(
+    r'configuraci[oó]n|settings|preferences|ajustes|'
+    r'openSettings|showSettings|toggleSettings|'
+    r'settingsModal|settings-menu|settings-panel|'
+    r'onclick|addEventListener|localStorage',
+    re.I
+)
+
+for p in files:
+    if not p.is_file():
+        continue
+
+    try:
+        lines = p.read_text(errors="replace").splitlines()
+    except Exception:
+        continue
+
+    matches = [i for i, line in enumerate(lines) if patterns.search(line)]
+
+    if not matches:
+        continue
+
+    print("\n" + "=" * 65)
+    print("ARCHIVO:", p)
+    print("COINCIDENCIAS:", len(matches))
+    print("=" * 65)
+
+    ranges = []
+    for i in matches:
+        start, end = max(0, i-4), min(len(lines), i+6)
+        if ranges and start <= ranges[-1][1]:
+            ranges[-1] = (ranges[-1][0], max(ranges[-1][1], end))
+        else:
+            ranges.append((start, end))
+
+    for start, end in ranges:
+        print(f"\n--- Líneas {start+1}-{end} ---")
+        for i in range(start, end):
+            print(f"{i+1:4}: {lines[i]}")
+
+print("\n===== FIN DE AUDITORIA =====")
+PY
+
+echo
+echo "===== VALIDACION DEL REPOSITORIO ====="
+git status --short
+echo
+echo "AUDITORIA TERMINADA - SIN MODIFICAR ARCHIVOS"
+C

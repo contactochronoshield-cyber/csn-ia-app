@@ -1,27 +1,66 @@
 name: CodeQL
+
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   schedule:
-    - cron: "17 5 * * 1"
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+
 permissions:
   contents: read
-  actions: read
-  security-events: write
+
 jobs:
-  analizar:
+  analyze:
+    name: Analyze ${{ matrix.language }}
     runs-on: ubuntu-latest
-    continue-on-error: true
+
+    permissions:
+      contents: read
+      security-events: write
+
     strategy:
       fail-fast: false
       matrix:
-        language: [javascript-typescript, java-kotlin]
+        include:
+          - language: javascript-typescript
+            build-mode: none
+          - language: java-kotlin
+            build-mode: manual
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: github/codeql-action/init@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
-          build-mode: none
-      - uses: github/codeql-action/analyze@v4
+          build-mode: ${{ matrix.build-mode }}
+
+      - name: Configurar Java 17
+        if: matrix.language == 'java-kotlin'
+        uses: actions/setup-java@v4
         with:
-          category: "/language:${{ matrix.language }}"
+          distribution: temurin
+          java-version: '17'
+
+      - name: Configurar Gradle 8.5
+        if: matrix.language == 'java-kotlin'
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.5'
+
+      - name: Compilar para analizar Java y Kotlin
+        if: matrix.language == 'java-kotlin'
+        working-directory: android
+        run: gradle --no-daemon :app:assembleDebug --stacktrace
+
+      - name: Analyze
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: /language:${{ matrix.language }}

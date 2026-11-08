@@ -42,3 +42,6 @@ local.properties
 CSN_IA_AUDIT.zip
 CSN_IA_AUDIT_REPORT.txt
 *-backup
+
+# Guardian CI local backups
+.guardian-backups/

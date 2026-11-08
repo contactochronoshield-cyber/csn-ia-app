@@ -45,8 +45,82 @@ pre{background:var(--ink);color:#E8F0FA;padding:12px;border-radius:12px;font-siz
 #t-guide #guide-location{white-space:pre-line}
 #t-guide .companion-status{font-size:13px;color:var(--muted);line-height:1.5}
 
+
+/* CHRONO SETTINGS */
+#csn-settings-style {}
+#sr #sp.csn-settings {
+  width:min(94vw,520px);
+  max-height:86vh;
+  overflow-y:auto;
+  box-sizing:border-box;
+  padding:22px;
+  border-radius:20px;
+}
+#sr .csn-settings-head {
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;margin-bottom:8px
+}
+#sr .csn-settings-head h1 {margin:0}
+#sr .csn-settings-section {
+  margin:18px 0 8px;padding:0 0 12px;
+  border-bottom:1px solid var(--line,#334155)
+}
+#sr .csn-settings-section h3 {
+  margin:0 0 10px;font-size:14px;
+  color:var(--muted,#94a3b8);letter-spacing:.7px;
+  text-transform:uppercase
+}
+#sr .csn-setting-row {
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:12px 0;border-bottom:1px solid var(--line,#334155)
+}
+#sr .csn-setting-row:last-child {border-bottom:0}
+#sr .csn-setting-copy {min-width:0;flex:1}
+#sr .csn-setting-copy strong {display:block;font-size:14px}
+#sr .csn-setting-copy small {
+  display:block;margin-top:4px;color:var(--muted,#94a3b8);
+  line-height:1.4;font-size:12px
+}
+#sr .csn-settings button,
+#sr .csn-settings input {
+  box-sizing:border-box;font:inherit
+}
+#sr .csn-settings .csn-action {
+  border:1px solid var(--line,#334155);
+  border-radius:11px;padding:10px 13px;
+  background:var(--panel,#172033);color:inherit;
+  cursor:pointer
+}
+#sr .csn-settings .csn-primary {
+  background:#087fc1;color:white;border:0
+}
+#sr .csn-settings input[type=text] {
+  width:100%;padding:12px;border-radius:10px;
+  border:1px solid var(--line,#64748b);
+  background:var(--bg,#101827);color:inherit
+}
+#sr .csn-settings .csn-status {
+  padding:12px;border-radius:12px;
+  background:var(--panel,#172033);
+  line-height:1.6;font-size:13px;white-space:pre-line
+}
+#sr .csn-settings .csn-actions {
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:10px
+}
+body.csn-light {
+  --bg:#f4f7fb;--panel:#ffffff;--line:#d7e0ea;
+  --text:#172033;--muted:#64748b;
+  background:#f4f7fb!important;color:#172033!important
+}
+body.csn-light #sr #sp {
+  background:#fff!important;color:#172033!important
+}
+body.csn-light #sr .csn-action {
+  background:#f1f5f9!important;color:#172033!important
+}
+
 </style></head><body>
-<header><svg viewBox="0 0 120 140" width="28" height="33" aria-label="CSN"><path d="M60 6 108 24v44c0 30-22 54-48 66C34 122 12 98 12 68V24z" fill="#0B2342" stroke="#19B6FF" stroke-width="6" stroke-linejoin="round"/><path d="M60 66C68 50 90 50 90 66C90 82 68 82 60 66C52 50 30 50 30 66C30 82 52 82 60 66" fill="none" stroke="#19B6FF" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="66" r="9" fill="#17B26A"/></svg><b>CSN IA</b><span class="sp"></span><span class="chip"><i></i>Red protegida</span><button class="ib" aria-label="Configuración" onclick="document.getElementById('sr').style.display='block'">&#9881;</button></header>
+<header><svg viewBox="0 0 120 140" width="28" height="33" aria-label="CSN"><path d="M60 6 108 24v44c0 30-22 54-48 66C34 122 12 98 12 68V24z" fill="#0B2342" stroke="#19B6FF" stroke-width="6" stroke-linejoin="round"/><path d="M60 66C68 50 90 50 90 66C90 82 68 82 60 66C52 50 30 50 30 66C30 82 52 82 60 66" fill="none" stroke="#19B6FF" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="66" r="9" fill="#17B26A"/></svg><b>CSN IA</b><span class="sp"></span><span class="chip"><i></i>Red protegida</span><button class="ib" aria-label="Configuración" onclick="openCSNSettings()">&#9881;</button></header>
 <nav><button class="on" id="n-chat" onclick="tab('chat')">Chat</button><button id="n-red" onclick="tab('red')">Mi red</button><button id="n-web" onclick="tab('web')">Buscar</button><button id="n-guide" onclick="tab('guide')">Guía</button><button id="n-nodo" onclick="tab('nodo')">Nodo</button><button id="n-pro" onclick="tab('pro')">Pro</button></nav>
 <div class="tab on" id="t-chat"><div id="msgs"></div><div class="chips" id="qc"></div><div id="bar"><input id="q" aria-label="Escribe tu pregunta" placeholder="Escribe tu pregunta"><button aria-label="Enviar" onclick="send()">&#10148;</button></div></div>
 <div class="tab" id="t-red"><div class="pad" id="wz"></div></div>
@@ -107,10 +181,233 @@ Consultar sobre Chrono Offline Guide
 </div>
 </div>
 <div class="tab" id="t-web"><div id="bar" style="border-top:0;border-bottom:1px solid var(--line)"><input id="wq" aria-label="Buscar en internet" placeholder="Buscar en internet"><button aria-label="Buscar" onclick="web()">&#8594;</button></div><iframe id="bf" src="about:blank"></iframe></div>
-<div id="sr" onclick="if(event.target===this)this.style.display='none'"><div id="sp"><h1>Configuración</h1>
-<div><span>App</span>CSN IA · versión 0.8.0</div><div><span>Sitio</span>chronoshieldnetworks.com</div><div><span>GitHub</span>github.com/contactochronoshield-cyber</div><div><span>Contacto</span>contactochronoshield@gmail.com</div><div><span>Privacidad</span>Tus preguntas no salen del teléfono. Solo se consulta la lista pública de repositorios de GitHub y, si buscas, la pestaña Buscar.</div>
-<button class="btn g" onclick="clr()">Borrar conversación</button><button class="btn" onclick="document.getElementById('sr').style.display='none'">Cerrar</button></div></div>
+<div id="sr" onclick="if(event.target===this)closeCSNSettings()">
+<div id="sp" class="csn-settings">
+  <div class="csn-settings-head">
+    <h1>Configuración</h1>
+    <button class="csn-action" onclick="closeCSNSettings()">Cerrar ✕</button>
+  </div>
+  <p class="s">Tu cuenta, tu privacidad y el control de tu experiencia CSN.</p>
+
+  <div class="csn-settings-section">
+    <h3>Mi perfil</h3>
+    <div class="csn-setting-copy">
+      <strong>Nombre o identificación visible</strong>
+      <small>Se guarda localmente en este dispositivo.</small>
+    </div>
+    <input id="csn-profile-name" type="text" maxlength="70"
+      placeholder="¿Cómo quieres que te llamemos?">
+    <div class="csn-actions">
+      <button class="csn-action csn-primary" onclick="csnSaveProfile()">Guardar perfil</button>
+    </div>
+    <div id="csn-profile-status" class="csn-setting-copy"></div>
+  </div>
+
+  <div class="csn-settings-section">
+    <h3>Experiencia</h3>
+    <div class="csn-setting-row">
+      <div class="csn-setting-copy">
+        <strong>Apariencia clara / oscura</strong>
+        <small>Cambia el aspecto visual de la aplicación.</small>
+      </div>
+      <button id="csn-theme-button" class="csn-action" onclick="csnToggleTheme()">Cambiar tema</button>
+    </div>
+  </div>
+
+  <div class="csn-settings-section">
+    <h3>Inteligencia artificial</h3>
+    <div class="csn-setting-row">
+      <div class="csn-setting-copy">
+        <strong>Preferencias de conversación</strong>
+        <small>CSN IA mantiene su motor conversacional y sus módulos actuales.</small>
+      </div>
+      <button class="csn-action" onclick="csnShowAIInfo()">Consultar</button>
+    </div>
+    <div id="csn-ai-status" class="csn-status">
+      Motor local: disponible según los módulos instalados.
+      Network Brain: depende de la conexión y configuración del servicio.
+    </div>
+  </div>
+
+  <div class="csn-settings-section">
+    <h3>Privacidad y seguridad</h3>
+    <div class="csn-setting-row">
+      <div class="csn-setting-copy">
+        <strong>Información de privacidad</strong>
+        <small>Consulta qué funciones pueden utilizar internet y cuáles operan localmente.</small>
+      </div>
+      <button class="csn-action" onclick="csnShowPrivacy()">Ver</button>
+    </div>
+    <div id="csn-privacy-status" class="csn-status" style="display:none">
+      La conversación puede utilizar servicios configurados en la aplicación.
+      La búsqueda web y la consulta de repositorios públicos requieren conexión.
+      No introduzcas contraseñas, códigos bancarios ni información sensible.
+    </div>
+  </div>
+
+  <div class="csn-settings-section">
+    <h3>Ubicación y conectividad</h3>
+    <div class="csn-setting-row">
+      <div class="csn-setting-copy">
+        <strong>GPS y orientación</strong>
+        <small>Solicita ubicación únicamente cuando pulses el botón.</small>
+      </div>
+      <button class="csn-action csn-primary" onclick="csnOpenGPS()">Probar GPS</button>
+    </div>
+    <div class="csn-setting-row">
+      <div class="csn-setting-copy">
+        <strong>Estado de conexión</strong>
+        <small>Comprueba la conectividad básica del dispositivo.</small>
+      </div>
+      <button class="csn-action" onclick="csnDiagnostics()">Diagnosticar</button>
+    </div>
+    <div id="csn-diagnostics" class="csn-status">
+      Pulsa Diagnosticar para consultar el estado.
+    </div>
+  </div>
+
+  <div class="csn-settings-section">
+    <h3>Clientes y empresas</h3>
+    <div class="csn-setting-row">
+      <div class="csn-setting-copy">
+        <strong>Servicios corporativos</strong>
+        <small>Información y contacto para redes privadas, infraestructura y soluciones empresariales.</small>
+      </div>
+      <button class="csn-action" onclick="csnEnterpriseContact()">Consultar</button>
+    </div>
+    <div class="csn-setting-row">
+      <div class="csn-setting-copy">
+        <strong>Licencias y administración</strong>
+        <small>La administración empresarial requiere servicios y permisos habilitados.</small>
+      </div>
+      <span class="s">Según licencia</span>
+    </div>
+  </div>
+
+  <div class="csn-settings-section">
+    <h3>Ayuda y soporte</h3>
+    <div class="csn-setting-row">
+      <div class="csn-setting-copy">
+        <strong>Contactar con Chrono Shield Networks</strong>
+        <small>Soporte e información comercial.</small>
+      </div>
+      <button class="csn-action" onclick="csnSupport()">Contactar</button>
+    </div>
+    <div class="csn-setting-row">
+      <div class="csn-setting-copy">
+        <strong>Información de la aplicación</strong>
+        <small>CSN IA · Chrono Shield Networks.</small>
+      </div>
+      <button class="csn-action" onclick="csnAbout()">Ver</button>
+    </div>
+  </div>
+
+  <div class="csn-settings-section">
+    <h3>Conversación</h3>
+    <button class="csn-action" onclick="csnClearConversation()">Borrar conversación</button>
+  </div>
+
+  <p class="s">A Chrono Shield Systems company · chronoshieldnetworks.com</p>
+</div>
+</div>
 <script>
+
+/* CHRONO SETTINGS FUNCTIONS */
+function openCSNSettings() {
+  var el = document.getElementById('sr');
+  if (!el) return;
+  el.style.display = 'block';
+  if (typeof csnLoadSettings === 'function') csnLoadSettings();
+}
+function closeCSNSettings() {
+  var el = document.getElementById('sr');
+  if (el) el.style.display = 'none';
+}
+function csnLoadSettings() {
+  try {
+    var name = localStorage.getItem('csn_profile_name') || '';
+    var input = document.getElementById('csn-profile-name');
+    if (input) input.value = name;
+    var light = localStorage.getItem('csn_theme') === 'light';
+    document.body.classList.toggle('csn-light', light);
+    var b = document.getElementById('csn-theme-button');
+    if (b) b.textContent = light ? 'Usar tema oscuro' : 'Usar tema claro';
+  } catch(e) {}
+}
+function csnSaveProfile() {
+  var input = document.getElementById('csn-profile-name');
+  var status = document.getElementById('csn-profile-status');
+  var value = input ? input.value.trim() : '';
+  try {
+    localStorage.setItem('csn_profile_name', value);
+    if (status) status.textContent = value ?
+      'Perfil guardado en este dispositivo.' :
+      'Nombre eliminado del perfil local.';
+  } catch(e) {
+    if (status) status.textContent = 'No fue posible guardar el perfil.';
+  }
+}
+function csnToggleTheme() {
+  var light = !document.body.classList.contains('csn-light');
+  document.body.classList.toggle('csn-light', light);
+  try { localStorage.setItem('csn_theme', light ? 'light' : 'dark'); } catch(e) {}
+  csnLoadSettings();
+}
+function csnShowAIInfo() {
+  var el = document.getElementById('csn-ai-status');
+  if (el) {
+    el.textContent =
+      'CSN IA conserva sus módulos locales. Las respuestas disponibles dependen de la biblioteca instalada, los módulos activos y la conexión con Network Brain. No se modifica la autonomía ni se ejecutan acciones de red sin autorización.';
+  }
+}
+function csnShowPrivacy() {
+  var el = document.getElementById('csn-privacy-status');
+  if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+function csnOpenGPS() {
+  closeCSNSettings();
+  if (typeof window.chronoRequestLocation === 'function') {
+    window.chronoRequestLocation();
+  } else {
+    var guide = document.getElementById('guide-location');
+    if (guide) guide.textContent = 'La función GPS no está disponible en esta versión.';
+    if (typeof tab === 'function') tab('guide');
+  }
+}
+function csnDiagnostics() {
+  var el = document.getElementById('csn-diagnostics');
+  if (!el) return;
+  var lines = [];
+  lines.push('Internet: ' + (navigator.onLine ? 'conectividad indicada' : 'sin conexión indicada'));
+  lines.push('Navegador: ' + (navigator.userAgent || 'No disponible'));
+  lines.push('Almacenamiento local: ' + (function() {
+    try { localStorage.setItem('__csn_test','1'); localStorage.removeItem('__csn_test'); return 'disponible'; }
+    catch(e) { return 'no disponible'; }
+  })());
+  lines.push('GPS: solicita permiso al utilizar la Guía.');
+  el.textContent = lines.join('\n');
+}
+function csnEnterpriseContact() {
+  location.href = 'mailto:contactochronoshield@gmail.com?subject=' +
+    encodeURIComponent('Información de servicios empresariales CSN');
+}
+function csnSupport() {
+  location.href = 'mailto:contactochronoshield@gmail.com?subject=' +
+    encodeURIComponent('Soporte CSN IA');
+}
+function csnAbout() {
+  var el = document.getElementById('csn-diagnostics');
+  if (el) {
+    el.textContent = 'CSN IA\nChrono Shield Networks\nUna empresa Chrono Shield Systems\nchronoshieldnetworks.com\ncontactochronoshield@gmail.com';
+  }
+}
+function csnClearConversation() {
+  if (confirm('¿Quieres borrar la conversación actual?')) {
+    if (typeof clr === 'function') clr();
+    closeCSNSettings();
+  }
+}
+
 function N(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim()}
 function has(t,k){return k.length<=4?(' '+t+' ').indexOf(' '+k+' ')>-1:t.indexOf(k)>-1}
 var REPOS=[],FR=[['Chrono-Shield-Onion',53],['ChronoOS-',40],['ChronoGuardians',20],['chrono-sentinel-app',16],['Sentinel-Civil',12],['chrono-sovereign-onboarding',11]];

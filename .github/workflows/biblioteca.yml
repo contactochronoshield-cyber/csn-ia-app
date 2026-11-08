@@ -17,5 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Validar biblioteca de conocimiento
         run: node scripts/validar_biblioteca.js

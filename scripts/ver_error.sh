@@ -1,32 +1,29 @@
 #!/data/data/com.termux/files/usr/bin/bash
-# ver_error.sh
-# Muestra el error real del ultimo build fallido, directo en Termux.
-set -e
 
-REPO="contactochronoshield-cyber/csn-ia-app"
+# Consulta de ejecuciones mediante GitHub CLI.
+# No solicita ni imprime tokens.
 
-pkg install -y gh > /dev/null 2>&1
+if ! command -v gh >/dev/null 2>&1; then
+    echo "GitHub CLI (gh) no esta instalado."
+    echo "Instalacion en Termux: pkg install gh"
+else
+    gh auth status
 
-# Intenta reusar el token que ya guardaste al hacer git push
-TOKEN=$(grep -oP '(?<=://)[^:]*:\K[^@]+' ~/.git-credentials 2>/dev/null | tail -n1)
+    if [ "$?" -eq 0 ]; then
+        echo
+        echo "===== ULTIMAS EJECUCIONES ====="
+        gh run list --limit 10
 
-if [ -z "$TOKEN" ]; then
-  echo "No encontre un token guardado."
-  read -s -p "Pega tu Personal Access Token de GitHub: " TOKEN
-  echo ""
+        echo
+        echo "Para ver errores de una ejecucion:"
+        echo "bash scripts/ver_error.sh ID"
+        if [ -n "$1" ]; then
+            echo
+            echo "===== LOG DE ERRORES: $1 ====="
+            gh run view "$1" --log-failed
+        fi
+    else
+        echo "Autenticacion no disponible."
+        echo "Inicia sesion con: gh auth login"
+    fi
 fi
-
-export GH_TOKEN="$TOKEN"
-
-echo "Buscando el ultimo build..."
-RUN_ID=$(gh run list --repo "$REPO" --limit 1 --json databaseId -q '.[0].databaseId')
-
-echo "Descargando el log completo..."
-gh run view "$RUN_ID" --repo "$REPO" --log > /tmp/build_log.txt 2>&1 || true
-
-echo ""
-echo "=== ESTO ES LO QUE FALLO (lineas con error) ==="
-grep -i -E "error|failed|exception" /tmp/build_log.txt | tail -n 30
-echo "================================================"
-echo ""
-echo "Log completo guardado en /tmp/build_log.txt por si necesitas mas contexto."
