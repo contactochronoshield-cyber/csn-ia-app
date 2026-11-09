@@ -1,6 +1,10 @@
 package net.chronoshield.iaapp
 
 import android.Manifest
+import android.app.DownloadManager
+import android.os.Build
+import android.os.Environment
+import android.widget.Toast
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -31,6 +35,8 @@ class MainActivity : AppCompatActivity() {
     private var locationListener: LocationListener? = null
 
     private val locationPermissionCode = 7401
+    private val wireguardDownloadPermissionCode = 7402
+    private val wireguardApkUrl = "https://download.wireguard.com/android-client/com.wireguard.android-1.0.20260315.apk"
     private val locationManager by lazy {
         getSystemService(LOCATION_SERVICE) as LocationManager
     }
@@ -92,6 +98,11 @@ class MainActivity : AppCompatActivity() {
             browser.addJavascriptInterface(
                 ChronoLocationBridge(),
                 "ChronoLocation"
+            )
+
+            browser.addJavascriptInterface(
+                CSNDownloadsBridge(),
+                "CSNDownloads"
             )
 
             val endpoint = ChronoNetworkBrainConfig.BASE_URL.trim()
@@ -297,6 +308,27 @@ class MainActivity : AppCompatActivity() {
             grantResults
         )
 
+        if (requestCode == wireguardDownloadPermissionCode) {
+            if (
+                grantResults.isNotEmpty() &&
+                grantResults[0] == PackageManager.PERMISSION_GRANTED
+            ) {
+                val result = enqueueWireGuardDownload()
+                Toast.makeText(
+                    this,
+                    result,
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(
+                    this,
+                    "Permiso rechazado. No se descargó el APK.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            return
+        }
+
         if (requestCode == locationPermissionCode) {
             val fine = checkSelfPermission(
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -313,6 +345,93 @@ class MainActivity : AppCompatActivity() {
                     "Permiso GPS rechazado. Puedes habilitarlo en los ajustes de Android."
                 )
             }
+        }
+    }
+
+
+    private inner class CSNDownloadsBridge {
+
+        @JavascriptInterface
+        fun downloadWireGuard(): String {
+            if (
+                Build.VERSION.SDK_INT <= Build.VERSION_CODES.P &&
+                checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED
+            ) {
+                runOnUiThread {
+                    requestPermissions(
+                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                        wireguardDownloadPermissionCode
+                    )
+                }
+                return "Android solicitará permiso para guardar el APK."
+            }
+
+            return enqueueWireGuardDownload()
+        }
+
+        @JavascriptInterface
+        fun openDownloads(): String {
+            runOnUiThread {
+                try {
+                    startActivity(
+                        Intent(DownloadManager.ACTION_VIEW_DOWNLOADS)
+                    )
+                } catch (_: Exception) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Abre la carpeta Descargas de Android.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+            return "Abriendo las descargas de Android."
+        }
+
+        @JavascriptInterface
+        fun openPlayStore(): String {
+            runOnUiThread {
+                openExternalUrl(
+                    "https://play.google.com/store/apps/details?id=com.wireguard.android"
+                )
+            }
+            return "Abriendo Google Play."
+        }
+    }
+
+    private fun enqueueWireGuardDownload(): String {
+        return try {
+            val filename =
+                "WireGuard-Android-1.0.20260315-" +
+                System.currentTimeMillis() + ".apk"
+
+            val request = DownloadManager.Request(
+                Uri.parse(wireguardApkUrl)
+            )
+                .setTitle("WireGuard oficial para Android")
+                .setDescription(
+                    "Descarga desde el servidor oficial de WireGuard"
+                )
+                .setMimeType(
+                    "application/vnd.android.package-archive"
+                )
+                .setNotificationVisibility(
+                    DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED
+                )
+                .setDestinationInExternalPublicDir(
+                    Environment.DIRECTORY_DOWNLOADS,
+                    filename
+                )
+                .setAllowedOverRoaming(false)
+
+            val manager =
+                getSystemService(DOWNLOAD_SERVICE) as DownloadManager
+
+            val downloadId = manager.enqueue(request)
+
+            "Descarga iniciada. ID: $downloadId. Consulta su progreso en Descargas."
+        } catch (e: Exception) {
+            "No se pudo iniciar la descarga: ${e.message ?: "error desconocido"}"
         }
     }
 

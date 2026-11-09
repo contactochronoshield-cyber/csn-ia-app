@@ -570,3 +570,180 @@ Palabras clave: recomendar la app, compartir la app, invitar amigos, quiero comp
 Palabras clave: donde estan, donde estan ubicados, donde queda csn, de que pais son, en que ciudad estan
 
 Estamos en Bogotá, Colombia, y trabajamos para toda Latinoamérica. Puedes escribirnos a contactochronoshield@gmail.com o visitar chronoshieldnetworks.com.
+
+## Qué es GitHub
+
+Palabras clave: que es github, para que sirve github, no se que es github, que es un repositorio, necesito cuenta de github, como descargo la app desde github, que es un release, que es git
+
+GitHub es una página donde se guardan proyectos de software, como una carpeta compartida en internet que recuerda cada cambio. Ahí está el código de esta app, abierto para que cualquiera lo revise.
+• Repositorio: la carpeta de un proyecto.
+• Release: la versión lista para descargar (el archivo .apk).
+• No necesitas cuenta para descargar ni usar la app; solo si quieres reportar un problema o ayudar a mejorarla.
+Para bajar la app: entra al repositorio, abre "Releases" y descarga el .apk más reciente.
+
+## Qué es el código abierto
+
+Palabras clave: que es codigo abierto, que significa codigo abierto, por que el codigo es abierto, software libre, puedo confiar en codigo abierto, open source
+
+Código abierto significa que el código del programa es público: cualquiera puede leerlo, revisarlo y proponer mejoras. Así no tienes que creernos a ciegas: puedes comprobar qué hace la app y que no te espía. Por eso CSN publica la app en GitHub y la prepara para F-Droid, una tienda de apps libres.
+
+## Qué es F-Droid
+
+Palabras clave: que es f droid, que es fdroid, tienda de apps libres, como instalo la app, como instalar la app sin play store, instalar apk
+
+F-Droid es una tienda de aplicaciones de Android que solo acepta software libre, sin anuncios ni rastreadores. Estamos preparando esta app para publicarla ahí. Mientras tanto puedes instalarla desde la sección Releases del repositorio en GitHub: descarga el .apk y ábrelo. Android te pedirá permiso para instalar desde esa fuente; acéptalo solo para archivos en los que confíes.
+
+## Qué es un router MikroTik
+
+Palabras clave: que es mikrotik, que es un router mikrotik, para que sirve mikrotik, que es routeros, que es winbox, vale la pena un mikrotik
+
+Un router reparte el internet en tu casa u oficina. MikroTik es una marca de routers potentes y económicos que usan empresas y proveedores de internet; funcionan con un sistema llamado RouterOS y se configuran con la app WinBox.
+Sirve para una red privada porque puedes:
+• Decidir quién entra a tu red.
+• Separar equipos (cámaras aparte de celulares).
+• Crear una VPN para conectarte seguro desde afuera.
+• Bloquear tráfico no deseado con su firewall.
+Tiene más opciones que un router común, así que al inicio parece mucho, pero se aprende de a poco.
+
+## Primeros pasos seguros con MikroTik
+
+Palabras clave: como configurar mikrotik, primeros pasos mikrotik, asegurar mikrotik, configurar mi mikrotik, contrasena de fabrica mikrotik, perdi acceso al mikrotik, resetear mikrotik
+
+Primeros pasos seguros, en orden:
+1. Conéctate por cable y entra con WinBox o el navegador a la dirección de fábrica (en muchos modelos es 192.168.88.1; mira la etiqueta del equipo).
+2. Cambia la contraseña de administrador: nunca dejes la de fábrica.
+3. Actualiza RouterOS a la última versión estable.
+4. Desactiva los servicios que no uses (telnet, ftp, api).
+5. No dejes la administración abierta a internet; si necesitas entrar desde afuera, hazlo por VPN.
+6. Comprueba que el firewall esté activo.
+Si te quedas sin acceso, casi todos los modelos tienen botón de reset: consulta el manual de tu modelo y vuelves a empezar sin dañar nada.
+
+## Qué es el RGPD (GDPR)
+
+Palabras clave: que es el rgpd, que es rgpd, que es gdpr, ley europea de datos personales, reglamento general de proteccion de datos, derecho al olvido, portabilidad de datos, derechos sobre mis datos
+
+El RGPD (GDPR en inglés) es la ley europea de privacidad, vigente desde 2018. Dice que tus datos personales son tuyos y que quien los use necesita una razón legítima, ser transparente y protegerlos.
+Tus derechos principales:
+• Saber qué datos tienen de ti.
+• Corregirlos si están mal.
+• Pedir que los borren (derecho al olvido).
+• Llevártelos a otro servicio (portabilidad).
+• Oponerte a ciertos usos.
+Las empresas deben pedir consentimiento claro, recoger solo lo necesario y avisar de filtraciones graves (en general dentro de 72 horas). Puede aplicar a empresas fuera de Europa que ofrezcan servicios a personas en la UE. Es información educativa, no asesoría legal.
+
+## Otras leyes digitales de la Unión Europea
+
+Palabras clave: leyes europeas de soberania digital, que es el data act, que es nis2, que es el ai act, ley de ia europea, que es la ley de servicios digitales, regulacion europea digital, que es dsa
+
+Además del RGPD, la Unión Europea tiene otras normas digitales:
+• Data Act (Ley de Datos): da más control sobre los datos que generan tus dispositivos conectados y facilita cambiar de proveedor de nube.
+• NIS2: exige más ciberseguridad a empresas de sectores importantes.
+• AI Act (Ley de IA): regula la inteligencia artificial según su nivel de riesgo, con aplicación por etapas.
+• DSA (Ley de Servicios Digitales): reglas de transparencia para plataformas en línea.
+Estas normas se están ajustando, así que conviene verificar la versión vigente en fuentes oficiales. Es información educativa, no asesoría legal.
+
+## Protección de datos en Colombia
+
+Palabras clave: ley 1581, que es habeas data, habeas data, proteccion de datos en colombia, ley colombiana de datos personales, sic datos personales, superintendencia de industria y comercio datos
+
+En Colombia, la Ley 1581 de 2012 protege tus datos personales (habeas data). Tienes derecho a conocer, actualizar, rectificar y pedir la supresión de tus datos, y a revocar la autorización que diste. La autoridad es la Superintendencia de Industria y Comercio (SIC): si una empresa no te atiende, puedes presentar un reclamo allí. Los datos financieros y crediticios tienen además la Ley 1266 de 2008. Es información educativa, no asesoría legal.
+
+## Protección de datos en Brasil (LGPD)
+
+Palabras clave: que es la lgpd, lgpd, ley brasilena de datos, ley de datos de brasil, proteccion de datos en brasil, anpd
+
+La LGPD (Lei Geral de Proteção de Dados, Ley 13.709 de 2018) es la ley brasileña de protección de datos personales. Se parece al RGPD europeo: derechos de acceso, corrección, eliminación y portabilidad, y obligaciones de transparencia para las empresas. La autoridad es la ANPD. Si una empresa ofrece servicios en Brasil, esta ley le aplica. Es información educativa, no asesoría legal.
+
+## Por qué importa dónde viven tus datos
+
+Palabras clave: donde guardan mis datos, por que importa donde estan mis datos, nube extranjera, datos en la nube extranjera, que es el cloud act, soberania de datos en la nube, servidor en otro pais
+
+Los datos que guardas en la nube están sujetos a las leyes del país donde vive la empresa y donde están sus servidores. Por ejemplo, una ley de Estados Unidos (CLOUD Act) permite que sus autoridades pidan datos a empresas estadounidenses aunque estén guardados en otro país. Por eso crece la idea de soberanía digital: elegir dónde viven tus datos y bajo qué reglas. Con infraestructura propia o local, esa decisión es tuya.
+
+## Cómo pedir que borren o corrijan tus datos
+
+Palabras clave: como pido que borren mis datos, como reclamar por mis datos, como exijo a una empresa que borre mis datos, solicitud de acceso a mis datos, como ejercer mis derechos de datos, quiero que borren mi informacion
+
+Pasos simples:
+1. Busca en la política de privacidad de la empresa el correo o formulario para datos personales.
+2. Escribe qué quieres: ver, corregir o borrar tus datos, con tu nombre y cómo contactarte.
+3. Guarda una copia del mensaje y la fecha.
+4. Espera la respuesta: en Colombia, las consultas tienen 10 días hábiles y los reclamos 15; en la UE, en general un mes.
+5. Si no responden, acude a la autoridad: la SIC en Colombia o la autoridad de protección de datos de tu país en la UE.
+Es información educativa, no asesoría legal.
+
+## What is GitHub (English)
+
+Palabras clave: what is github, what is a repository, what is git, do i need a github account, how do i download the app from github, what is a release, what is open source
+
+GitHub is a website where software projects are stored, like a shared folder on the internet that remembers every change. This app's code lives there, open for anyone to review.
+• Repository: a project's folder.
+• Release: the ready-to-download version (the .apk file).
+• You don't need an account to download or use the app, only to report a problem or help improve it.
+To get the app: open the repository, go to "Releases" and download the latest .apk. Open source means anyone can read the code, so you don't have to trust us blindly.
+
+## What is a MikroTik router (English)
+
+Palabras clave: what is mikrotik, what is a mikrotik router, what is routeros, what is winbox, how to set up mikrotik, mikrotik first steps, how to secure mikrotik, i lost access to my mikrotik, reset mikrotik
+
+A router shares the internet in your home or office. MikroTik is a brand of powerful, affordable routers used by companies and internet providers. They run RouterOS and are configured with the WinBox app.
+Safe first steps, in order:
+1. Connect by cable and open WinBox or the browser at the factory address (often 192.168.88.1; check the label).
+2. Change the admin password. Never keep the factory one.
+3. Update RouterOS to the latest stable version.
+4. Turn off services you don't use (telnet, ftp, api).
+5. Never leave administration open to the internet; use a VPN to manage it remotely.
+6. Make sure the firewall is on.
+If you lose access, most models have a reset button: check your model's manual and start over without breaking anything.
+
+## Data protection laws: GDPR, LGPD, Colombia (English)
+
+Palabras clave: what is gdpr, european data protection law, right to be forgotten, data portability, what is the data act, what is nis2, what is the ai act, colombian data protection law, what is lgpd, how do i ask a company to delete my data
+
+GDPR is the European privacy law, in force since 2018. Your personal data is yours: companies need a legitimate reason to use it, must be transparent, and must protect it.
+Your main rights:
+• Know what data they hold about you.
+• Correct it if it's wrong.
+• Ask for it to be deleted (right to be forgotten).
+• Take it to another service (portability).
+• Object to certain uses.
+Companies must ask for clear consent, collect only what's needed, and report serious breaches (generally within 72 hours). Other EU rules: the Data Act (control over data from connected devices), NIS2 (cybersecurity), the AI Act (AI by risk level) and the DSA (online platforms). Similar laws: Brazil's LGPD and Colombia's Law 1581 of 2012.
+To exercise your rights, write to the company's data contact, ask to see, correct or delete your data, keep a copy, and escalate to your data protection authority if they don't answer. This is educational information, not legal advice, and EU rules are being adjusted, so check official sources.
+
+## O que é o GitHub (Português)
+
+Palabras clave: o que e github, o que e um repositorio, preciso de conta no github, como baixar o app pelo github, o que e codigo aberto, o que e um release
+
+O GitHub é um site onde se guardam projetos de software, como uma pasta compartilhada na internet que lembra cada mudança. O código deste app fica lá, aberto para qualquer pessoa revisar.
+• Repositório: a pasta de um projeto.
+• Release: a versão pronta para baixar (o arquivo .apk).
+• Você não precisa de conta para baixar nem usar o app, só para reportar um problema ou ajudar a melhorá-lo.
+Para baixar o app: abra o repositório, entre em "Releases" e baixe o .apk mais recente. Código aberto significa que qualquer pessoa pode ler o código, então você não precisa confiar às cegas.
+
+## O que é um roteador MikroTik (Português)
+
+Palabras clave: o que e mikrotik, o que e um roteador mikrotik, o que e routeros, o que e winbox, como configurar o mikrotik, primeiros passos mikrotik, como proteger mikrotik, perdi o acesso ao mikrotik, resetar mikrotik
+
+Um roteador distribui a internet na sua casa ou escritório. A MikroTik é uma marca de roteadores potentes e acessíveis, usados por empresas e provedores de internet. Eles rodam o RouterOS e são configurados com o app WinBox.
+Primeiros passos seguros, em ordem:
+1. Conecte por cabo e abra o WinBox ou o navegador no endereço de fábrica (em muitos modelos é 192.168.88.1; veja a etiqueta do aparelho).
+2. Troque a senha de administrador. Nunca mantenha a de fábrica.
+3. Atualize o RouterOS para a última versão estável.
+4. Desative os serviços que você não usa (telnet, ftp, api).
+5. Nunca deixe a administração aberta para a internet; use uma VPN para acessar de fora.
+6. Confirme que o firewall está ativo.
+Se perder o acesso, a maioria dos modelos tem botão de reset: consulte o manual do seu modelo e recomece sem danificar nada.
+
+## Leis de proteção de dados: LGPD, GDPR, Colômbia (Português)
+
+Palabras clave: o que e lgpd, o que e gdpr, lei de protecao de dados, direito ao esquecimento, portabilidade de dados, como pedir que apaguem meus dados, lei geral de protecao de dados
+
+A LGPD (Lei Geral de Proteção de Dados, Lei 13.709 de 2018) é a lei brasileira de proteção de dados pessoais. Parece-se com o GDPR europeu, em vigor desde 2018.
+Seus principais direitos:
+• Saber quais dados têm sobre você.
+• Corrigi-los se estiverem errados.
+• Pedir que sejam apagados.
+• Levá-los a outro serviço (portabilidade).
+• Opor-se a certos usos.
+As empresas devem pedir consentimento claro, coletar apenas o necessário e ser transparentes. A autoridade no Brasil é a ANPD. Na Colômbia existe a Lei 1581 de 2012.
+Para exercer seus direitos, escreva ao contato de dados da empresa, peça para ver, corrigir ou apagar seus dados, guarde uma cópia e, se não responderem, recorra à autoridade de proteção de dados. Informação educativa, não é assessoria jurídica; as normas estão sendo ajustadas, então confira fontes oficiais.

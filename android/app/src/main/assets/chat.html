@@ -523,9 +523,26 @@ var W={s:1,who:'',dev:''};
 function opt(k,t,d){return '<button class="opt" onclick="W.'+k+'=\''+t+'\';W.s++;wz()">'+t+'<small>'+d+'</small></button>'}
 var CM=['winget install WireGuard.WireGuard\n\nLuego abre WireGuard, toca "Añadir túnel", importa tu archivo .conf y pulsa "Activar".','Instala WireGuard desde la App Store, o con:\nbrew install wireguard-tools\n\nLuego importa tu archivo .conf y activa el túnel.','sudo apt install wireguard\nsudo wg-quick up ./chrono.conf\n\n(Cambia chrono.conf por el nombre de tu archivo. Para apagar: sudo wg-quick down ./chrono.conf)'];
 function cmd(i){document.getElementById('cmd').innerHTML='<pre>'+CM[i].replace(/</g,'&lt;')+'</pre>'}
+function downloadWireGuard(){
+ var status=document.getElementById('wg-download-status');
+ try{
+  if(!window.CSNDownloads){status.textContent='Gestor de descargas no disponible en esta versión.';return}
+  status.textContent=window.CSNDownloads.downloadWireGuard();
+ }catch(e){status.textContent='No se pudo iniciar la descarga. Intenta nuevamente.'}
+}
+function openWireGuardDownloads(){
+ try{
+  if(window.CSNDownloads)window.CSNDownloads.openDownloads();
+ }catch(e){}
+}
+function openWireGuardPlayStore(){
+ try{
+  if(window.CSNDownloads)window.CSNDownloads.openPlayStore();
+ }catch(e){}
+}
 function result(){var d=W.dev,h='<h1>Listo: '+W.who.toLowerCase()+' + '+d.toLowerCase()+'</h1>';
 if(d==='Mi computador')h+='<p class="s">Tú ejecutas cada paso y ves qué hace. Nada se instala ni se abre solo.</p><div class="note"><b>Tu permiso manda.</b> La IA no entra a tu computador: te da el comando y tú decides si lo ejecutas. Puedes desinstalar WireGuard cuando quieras. Tu archivo .conf te lo entrega tu Mesh Node o tu red Chrono.</div><button class="btn g" onclick="cmd(0)">Windows</button><button class="btn g" onclick="cmd(1)">Mac</button><button class="btn g" onclick="cmd(2)">Linux</button><div id="cmd"></div>';
-else if(d==='Mi celular')h+='<p class="s">Son 3 pasos.</p><div class="note">1. Instala la app WireGuard (Play Store, App Store o F-Droid).<br>2. Toca "+" y elige "Escanear código QR".<br>3. Escanea el QR de tu nodo y activa el túnel.</div>';
+else if(d==='Mi celular')h+='<p class="s">Instala WireGuard desde su fuente oficial y conecta tu red privada Chrono.</p><div class="note"><b>Instalación oficial para Android</b><br>1. Descarga WireGuard desde su servidor oficial.<br>2. Cuando termine, abre la notificación de descarga o entra en Descargas.<br>3. Android te pedirá confirmar la instalación.<br>4. Abre WireGuard, toca + y escanea el QR de tu nodo o importa tu archivo .conf.<br>5. Activa el túnel cuando tengas tu configuración.</div><button class="btn" onclick="downloadWireGuard()">Descargar APK oficial de WireGuard</button><button class="btn g" onclick="openWireGuardDownloads()">Ver descargas</button><button class="btn g" onclick="openWireGuardPlayStore()">Instalar desde Google Play</button><p id="wg-download-status" class="s" aria-live="polite">Descarga directa desde download.wireguard.com mediante Android.</p><div class="note">La instalación siempre requiere tu confirmación en Android. CSN IA no instala aplicaciones sin tu autorización.</div>';
 else h+='<p class="s">Son 4 pasos.</p><div class="note">1. Conecta el Mesh Node a tu router con el cable.<br>2. Enciéndelo y espera a que quede estable.<br>3. Sigue el video guía de YouTube que viene con tu compra.<br>4. Escanea el QR del nodo desde WireGuard y activa el túnel.</div>';
 return h+'<button class="btn" onclick="tab(\'chat\');ask(\'Necesito ayuda con mi red privada\')">Preguntarle a la IA</button><button class="btn g" onclick="W.s=1;wz()">Empezar de nuevo</button>'}
 function wz(){var p=Math.round(W.s/3*100),h='<div style="color:var(--muted);font-size:14px">Paso '+W.s+' de 3</div><div class="prog"><div style="width:'+p+'%"></div></div>';
