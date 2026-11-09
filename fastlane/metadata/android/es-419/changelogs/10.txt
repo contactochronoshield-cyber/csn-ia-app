@@ -1,0 +1,5 @@
+Primera versión pública.
+- Asistente con biblioteca de guías sobre redes privadas, estafas y privacidad.
+- Buscador con Escudo de enlaces y Escudo anti-estafa.
+- Noticias de ciberseguridad.
+- Guías de GitHub, MikroTik y leyes de datos (RGPD, Ley 1581, LGPD).

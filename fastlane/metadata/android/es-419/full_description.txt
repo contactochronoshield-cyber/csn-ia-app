@@ -1,12 +1,17 @@
-CSN IA es el asistente educativo de Chrono Shield Networks (CSN). Responde en lenguaje
-sencillo preguntas como "¿qué es una red privada?", "¿para qué sirve un nodo mesh?" o
-"¿cómo empiezo con mi Chrono Mesh Node?".
+CSN IA es el asistente educativo de Chrono Shield Networks. Te explica, en palabras simples y sin tecnicismos, qué es una red privada, cómo protegerte de estafas y cómo cuidar tu celular, tu wifi y tus datos.
 
-La app se conecta a un backend con IA que corre en infraestructura propia (self-hosted,
-sin depender de servicios de terceros), en línea con la filosofía de soberanía digital
-de CSN.
+Qué incluye:
+• Asistente de conversación con una biblioteca de guías: GitHub, routers MikroTik, VPN, contraseñas, verificación en dos pasos, estafas y qué hacer si te roban el celular.
+• Leyes de datos personales explicadas fácil: RGPD (Unión Europea), Ley 1581 (Colombia) y LGPD (Brasil).
+• Buscador con Escudo de enlaces y Escudo anti-estafa para revisar un mensaje o enlace antes de abrirlo.
+• Noticias de ciberseguridad de fuentes públicas.
+• Guías para conectar tu red privada con WireGuard.
+• Algunas guías también están en inglés y portugués.
 
-- 100% software libre
-- Sin trackers ni analytics
-- Sin SDKs propietarios
-- El backend puede correr en tu propio servidor
+Privacidad y transparencia:
+• Código abierto bajo GPL-3.0. Sin anuncios, sin rastreadores y sin servicios de Google.
+• Algunas funciones se conectan a internet (buscador, noticias, lista de proyectos en GitHub); esos servicios ven tu dirección IP.
+• El permiso de ubicación es opcional y solo se pide cuando una función lo necesita.
+• La sección Pro ofrece pagos opcionales fuera de la app (PayPal).
+
+Hecha en Bogotá, Colombia, para Latinoamérica y el mundo. Más información: chronoshieldnetworks.com

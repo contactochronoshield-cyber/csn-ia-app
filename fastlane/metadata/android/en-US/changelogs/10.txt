@@ -1,0 +1,5 @@
+First public release.
+- Assistant with a library of guides on private networks, scams and privacy.
+- Search with Link Shield and Anti-scam Shield.
+- Cybersecurity news.
+- Guides on GitHub, MikroTik and data laws (GDPR, Law 1581, LGPD).

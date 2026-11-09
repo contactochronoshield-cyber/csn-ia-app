@@ -11,8 +11,8 @@ android {
         applicationId "net.chronoshield.iaapp"
         minSdk 24
         targetSdk 34
-        versionCode 4
-        versionName "0.9.4"
+        versionCode 10
+        versionName "1.0.0"
     }
 
     buildTypes {

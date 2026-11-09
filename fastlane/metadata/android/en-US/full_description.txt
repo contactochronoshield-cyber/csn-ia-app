@@ -1,0 +1,17 @@
+CSN IA is the educational assistant from Chrono Shield Networks. It explains, in plain words and without jargon, what a private network is, how to protect yourself from scams and how to look after your phone, your wifi and your data.
+
+What's inside:
+• A chat assistant with a library of guides: GitHub, MikroTik routers, VPNs, passwords, two-step verification, scams and what to do if your phone is stolen.
+• Data protection laws made easy: GDPR (European Union), Law 1581 (Colombia) and LGPD (Brazil).
+• A search tool with a Link Shield and an Anti-scam Shield to check a message or link before opening it.
+• Cybersecurity news from public sources.
+• Guides to connect your private network with WireGuard.
+• Some guides are also available in English and Portuguese; the interface is currently in Spanish.
+
+Privacy and transparency:
+• Open source under GPL-3.0. No ads, no trackers and no Google services.
+• Some features connect to the internet (search, news, list of projects on GitHub); those services see your IP address.
+• The location permission is optional and only requested when a feature needs it.
+• The Pro section offers optional payments outside the app (PayPal).
+
+Made in Bogotá, Colombia, for Latin America and the world. More information: chronoshieldnetworks.com

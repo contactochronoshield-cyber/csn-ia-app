@@ -1,0 +1,17 @@
+O CSN IA é o assistente educativo da Chrono Shield Networks. Ele explica, em palavras simples e sem jargão, o que é uma rede privada, como se proteger de golpes e como cuidar do seu celular, do seu wifi e dos seus dados.
+
+O que inclui:
+• Assistente de conversa com uma biblioteca de guias: GitHub, roteadores MikroTik, VPN, senhas, verificação em duas etapas, golpes e o que fazer se roubarem seu celular.
+• Leis de proteção de dados explicadas de forma fácil: GDPR (União Europeia), Lei 1581 (Colômbia) e LGPD (Brasil).
+• Buscador com Escudo de links e Escudo antigolpe para conferir uma mensagem ou link antes de abrir.
+• Notícias de cibersegurança de fontes públicas.
+• Guias para conectar sua rede privada com o WireGuard.
+• Algumas guias também estão em inglês e português; a interface está, por enquanto, em espanhol.
+
+Privacidade e transparência:
+• Código aberto sob GPL-3.0. Sem anúncios, sem rastreadores e sem serviços do Google.
+• Algumas funções se conectam à internet (busca, notícias, lista de projetos no GitHub); esses serviços veem seu endereço IP.
+• A permissão de localização é opcional e só é pedida quando uma função precisa dela.
+• A seção Pro oferece pagamentos opcionais fora do app (PayPal).
+
+Feito em Bogotá, Colômbia, para a América Latina e o mundo. Mais informações: chronoshieldnetworks.com

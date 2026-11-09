@@ -1,0 +1,5 @@
+Primeira versão pública.
+- Assistente com biblioteca de guias sobre redes privadas, golpes e privacidade.
+- Busca com Escudo de links e Escudo antigolpe.
+- Notícias de cibersegurança.
+- Guias sobre GitHub, MikroTik e leis de dados (GDPR, Lei 1581, LGPD).
