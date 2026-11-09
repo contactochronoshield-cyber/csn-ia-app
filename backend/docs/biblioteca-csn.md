@@ -103,11 +103,18 @@ Palabras clave: seguridad, ciberseguridad, guardian, chrono guardian, anomalias,
 
 Tenemos herramientas de código abierto para detectar comportamientos raros en la red y señales de ataques, incluidos ataques físicos. También la app incluye un buscador con Escudo de enlaces y Escudo anti-estafa para que navegues con más tranquilidad.
 
-## Respuesta ante robo de celular
+## Qué hacer si te roban o pierdes el celular
 
-Palabras clave: robo de celular, me robaron el celular, celular robado, perdi mi celular, localizar celular, emergencia celular
+Palabras clave: me robaron el celular, robo de celular, perdi mi celular, que hago si me roban el telefono, celular robado, celular perdido
 
-Si te robaron el celular, tenemos un servicio de pago de respuesta de seguridad: localización y acciones para proteger tu información. Escríbenos cuanto antes a contactochronoshield@gmail.com y te guiamos.
+Lamento que te haya pasado. Hazlo en este orden, con calma:
+1. Llama a tu operador: pide bloquear la SIM y el equipo (IMEI).
+2. Desde otro dispositivo, usa la función de localizar tu celular (Google o Apple): bloquéalo y, si hace falta, borra los datos.
+3. Cambia ya las claves de tu correo, banco y redes; empieza por el correo.
+4. Avisa a tu banco para bloquear tarjetas y apps de pago.
+5. Denuncia ante la autoridad de tu país (en Colombia, la Policía Nacional o el CAI Virtual).
+6. Avisa a tus contactos por si alguien se hace pasar por ti.
+No pagues a quien te ofrezca "recuperarlo" por adelantado: suelen ser estafas. Si necesitas acompañamiento, escríbenos.
 
 ## Pestaña Buscar
 
@@ -747,3 +754,174 @@ Seus principais direitos:
 • Opor-se a certos usos.
 As empresas devem pedir consentimento claro, coletar apenas o necessário e ser transparentes. A autoridade no Brasil é a ANPD. Na Colômbia existe a Lei 1581 de 2012.
 Para exercer seus direitos, escreva ao contato de dados da empresa, peça para ver, corrigir ou apagar seus dados, guarde uma cópia e, se não responderem, recorra à autoridade de proteção de dados. Informação educativa, não é assessoria jurídica; as normas estão sendo ajustadas, então confira fontes oficiais.
+
+## Reto de ciberseguridad de 7 días
+
+Palabras clave: reto de 7 dias, reto de ciberseguridad, reto de seguridad, quiero mejorar mi seguridad poco a poco, plan de seguridad paso a paso, por donde empiezo con mi seguridad
+
+Un reto de 7 días, 10 minutos por día:
+1. Día 1: cambia la contraseña de tu correo principal por una larga y única.
+2. Día 2: activa la verificación en dos pasos en correo y banco.
+3. Día 3: actualiza tu celular y tus apps principales.
+4. Día 4: revisa los permisos de tus apps y desinstala las que no uses.
+5. Día 5: haz una copia de seguridad de tus fotos y archivos importantes.
+6. Día 6: revisa quién está conectado a tu wifi y cambia la clave si hace falta.
+7. Día 7: enséñale un truco a alguien de tu familia, sobre todo a un adulto mayor.
+Si lo completas, ya estás por delante de la mayoría. Cuéntale a un amigo y háganlo juntos.
+
+## Revisión de seguridad en 10 minutos
+
+Palabras clave: checklist de seguridad, lista de seguridad rapida, que hago en 10 minutos para estar mas seguro, revisar mi seguridad, que tan seguro estoy, revision de seguridad personal
+
+Revisión rápida de 10 minutos:
+• Contraseña larga y distinta en el correo.
+• Verificación en dos pasos activada.
+• Celular y apps actualizados.
+• Bloqueo de pantalla con PIN o huella.
+• Copia de seguridad reciente.
+• Wifi con contraseña propia, no la de fábrica.
+• Solo apps que realmente usas, con permisos mínimos.
+• Nunca compartes los códigos que te llegan por mensaje.
+Si cumples 7 u 8, vas muy bien. Si cumples menos de 5, empieza por las dos primeras: son las que más protegen.
+
+## Glosario de términos técnicos
+
+Palabras clave: glosario de terminos, no entiendo los terminos tecnicos, que es un firewall, que es una direccion ip, que es un nodo, que es un cortafuegos, diccionario tecnologico
+
+Glosario rápido:
+• Router: el aparato que reparte el internet.
+• Firewall (cortafuegos): el portero que decide qué tráfico entra y sale.
+• Dirección IP: el "número de casa" de un dispositivo en una red.
+• VPN: un túnel cifrado hacia otra red.
+• Nodo: cada dispositivo que forma parte de una red.
+• Red mesh: una red donde los nodos se conectan entre sí para cubrir más espacio.
+• Cifrado: mezclar la información para que solo quien tiene la llave la entienda.
+• Phishing: engaño para que entregues claves o dinero.
+• Verificación en dos pasos: una segunda prueba, además de la clave, para entrar.
+Pregúntame por cualquier otro término.
+
+## Cómo saber si alguien usa tu wifi
+
+Palabras clave: alguien usa mi wifi, como saber quien esta en mi wifi, me roban el wifi, mi wifi esta lento y no se por que, ver dispositivos conectados al wifi, como saco a alguien de mi wifi
+
+Cómo comprobarlo:
+1. Entra al panel de tu router (la dirección y la clave suelen estar en la etiqueta) y busca "dispositivos conectados" o "clientes".
+2. Compara la lista con tus equipos; un nombre raro puede ser el televisor o un electrodoméstico, así que revisa bien.
+3. Cambia la contraseña del wifi por una larga y propia, con cifrado WPA2 o WPA3.
+4. Desactiva WPS y actualiza el firmware del router.
+5. Crea una red de invitados para visitas y aparatos inteligentes.
+Al cambiar la clave, todos tus dispositivos tendrán que volver a conectarse.
+
+## Cómo proteger tus cámaras de seguridad
+
+Palabras clave: como proteger mis camaras, camaras de seguridad hackeadas, ver mis camaras desde afuera, seguridad de camaras ip, me pueden espiar por la camara, proteger camaras de mi casa
+
+Muchas cámaras caseras se hackean por claves de fábrica o por quedar expuestas a internet. Para protegerlas:
+• Cambia el usuario y la contraseña de fábrica.
+• Actualiza el firmware.
+• No abras puertos del router hacia la cámara.
+• Para verlas desde afuera, usa una VPN en vez de exponerlas.
+• Ponlas en una red aparte (invitados o VLAN).
+• Apaga funciones que no uses, como el acceso remoto por nube.
+Así ves tus cámaras sin que las vea el mundo. Es justo lo que permite una red privada.
+
+## Seguridad básica para un negocio pequeño
+
+Palabras clave: proteger mi negocio, seguridad para pymes, ciberseguridad para mi empresa, seguridad para mi negocio, por donde empiezo a proteger mi empresa, que le pasa a un negocio si lo hackean
+
+Cinco bases para un negocio pequeño:
+1. Copias de seguridad: regla 3-2-1 (3 copias, 2 tipos de medio, 1 fuera de la oficina) y prueba de restaurarlas.
+2. Verificación en dos pasos para correo, banco y sistemas.
+3. Actualizaciones al día en equipos, router y programas.
+4. Red separada: invitados y cámaras aparte de los equipos de trabajo.
+5. Capacitar al equipo: la mayoría de ataques empiezan con un correo falso.
+Además, anota qué harías si hoy pierdes todos los datos: ese plan hace la diferencia. Si quieres ayuda para armar la red de tu negocio, escríbenos.
+
+## Verificación en dos pasos
+
+Palabras clave: verificacion en dos pasos, autenticacion de dos factores, que es 2fa, como activar el doble factor, codigo por sms o app, que es un autenticador
+
+La verificación en dos pasos pide algo más que la contraseña para entrar, por ejemplo un código. Así, aunque roben tu clave, no pueden entrar.
+• Mejor opción: app autenticadora o llave de seguridad.
+• Aceptable: código por SMS; es mejor que nada, pero vulnerable al robo de SIM.
+Actívala primero en tu correo, luego en banco y redes. Y nunca compartas esos códigos con nadie, ni con alguien que diga ser de soporte.
+
+## 10-minute security check (English)
+
+Palabras clave: security checklist, quick security check, how secure am i, 10 minute security check, personal security review
+
+Quick 10-minute review:
+• A long, unique password on your email.
+• Two-step verification turned on.
+• Phone and apps up to date.
+• Screen lock with a PIN or fingerprint.
+• A recent backup.
+• Your own wifi password, not the factory one.
+• Only apps you really use, with minimal permissions.
+• You never share the codes you receive by message.
+If you meet 7 or 8 of these, you're doing well. If you meet fewer than 5, start with the first two: they protect the most.
+
+## Is someone using my wifi? (English)
+
+Palabras clave: someone is using my wifi, how to see who is on my wifi, how do i kick someone off my wifi, my wifi is slow and i dont know why, see devices connected to wifi
+
+How to check:
+1. Open your router's panel (the address and password are usually on its label) and look for "connected devices" or "clients".
+2. Compare the list with your own devices; an odd name may be your TV or an appliance, so look closely.
+3. Change the wifi password to a long one of your own, with WPA2 or WPA3 encryption.
+4. Turn off WPS and update the router's firmware.
+5. Create a guest network for visitors and smart devices.
+After changing the password, all your devices will need to reconnect.
+
+## What to do if your phone is stolen or lost (English)
+
+Palabras clave: my phone was stolen, stolen phone, i lost my phone, what to do if my phone is stolen
+
+I'm sorry this happened. Do this in order, calmly:
+1. Call your carrier: ask them to block the SIM and the device (IMEI).
+2. From another device, use your phone's locate feature (Google or Apple): lock it and, if needed, erase it.
+3. Change your email, bank and social passwords right away; start with email.
+4. Tell your bank to block cards and payment apps.
+5. Report it to the authorities in your country (in Colombia, the National Police or CAI Virtual).
+6. Warn your contacts in case someone impersonates you.
+Don't pay anyone who offers to "recover" it up front: it's usually a scam. If you need support, write to us.
+
+## Revisão de segurança em 10 minutos (Português)
+
+Palabras clave: checklist de seguranca, verificacao rapida de seguranca, qual o meu nivel de seguranca, revisao de seguranca pessoal
+
+Revisão rápida de 10 minutos:
+• Senha longa e única no e-mail.
+• Verificação em duas etapas ativada.
+• Celular e apps atualizados.
+• Bloqueio de tela com PIN ou digital.
+• Backup recente.
+• Senha própria no wifi, não a de fábrica.
+• Só apps que você realmente usa, com permissões mínimas.
+• Você nunca compartilha os códigos que chegam por mensagem.
+Se cumprir 7 ou 8, está indo muito bem. Se cumprir menos de 5, comece pelos dois primeiros: são os que mais protegem.
+
+## Alguém está usando meu wifi? (Português)
+
+Palabras clave: alguem esta usando meu wifi, como saber quem esta no meu wifi, como tirar alguem do meu wifi, ver dispositivos conectados no wifi
+
+Como verificar:
+1. Entre no painel do roteador (o endereço e a senha costumam estar na etiqueta) e procure "dispositivos conectados" ou "clientes".
+2. Compare a lista com os seus aparelhos; um nome estranho pode ser a TV ou um eletrodoméstico, então confira bem.
+3. Troque a senha do wifi por uma longa e só sua, com criptografia WPA2 ou WPA3.
+4. Desative o WPS e atualize o firmware do roteador.
+5. Crie uma rede de convidados para visitas e aparelhos inteligentes.
+Ao trocar a senha, todos os seus aparelhos precisarão se reconectar.
+
+## O que fazer se roubarem ou perder seu celular (Português)
+
+Palabras clave: roubaram meu celular, celular roubado, perdi meu celular, o que fazer se roubarem meu celular
+
+Sinto muito que isso tenha acontecido. Faça nesta ordem, com calma:
+1. Ligue para a operadora: peça para bloquear o chip e o aparelho (IMEI).
+2. Em outro aparelho, use o recurso de localizar o celular (Google ou Apple): bloqueie e, se precisar, apague os dados.
+3. Troque já as senhas do e-mail, do banco e das redes; comece pelo e-mail.
+4. Avise o banco para bloquear cartões e apps de pagamento.
+5. Registre a ocorrência (no Brasil, um boletim de ocorrência, e use o programa Celular Seguro).
+6. Avise seus contatos, caso alguém se passe por você.
+Não pague a quem oferecer "recuperar" o aparelho adiantado: costuma ser golpe. Se precisar de apoio, escreva para nós.
