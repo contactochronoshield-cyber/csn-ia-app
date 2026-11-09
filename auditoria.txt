@@ -1,0 +1,192 @@
+== LICENSE ==
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+== TAGS Y ULTIMO COMMIT ==
+build-44
+build-45
+build-46
+build-47
+build-6
+2164332 Biblioteca: reto 7 dias, checklist, glosario, robo de celular, wifi, camaras, negocio, 2FA y EN/PT
+== GRADLE ==
+7:    namespace 'net.chronoshield.iaapp'
+8:    compileSdk 34
+11:        applicationId "net.chronoshield.iaapp"
+12:        minSdk 24
+13:        targetSdk 34
+14:        versionCode 4
+15:        versionName "0.9.4"
+== DEPENDENCIAS ==
+34:    implementation 'androidx.appcompat:appcompat:1.6.1'
+35:    implementation 'androidx.core:core-ktx:1.12.0'
+== PROPIETARIO (debe salir vacio) ==
+== MODELO DE IA ==
+android/app/build/intermediates/assets/debug/mergeDebugAssets/buscador.js:86: [/(mam[aá]|pap[aá]|hijo|hija|abuel[oa]).{0,60}(nuevo n[uú]mero|cambi[eé] de n[uú]mero|este es mi n[uú]mero)/i,'bad','Parece la estafa del familiar con número nuevo. Llama al número que ya tenías.'],
+android/app/build/intermediates/assets/debug/mergeDebugAssets/buscador.js:92: [/(bancolombia|nequi|daviplata|davivienda|dian|polic[ií]a|fiscal[ií]a|registradur[ií]a)/i,'info','Menciona una entidad conocida. Verifica llamando al número oficial, no al del mensaje.']
+android/app/build/intermediates/assets/debug/mergeDebugAssets/buscador.js:111:  v.appendChild(el('p','','Ante la duda: no respondas, no abras el enlace y no compartas códigos. Llama al número oficial de la entidad.'));
+android/app/build/intermediates/assets/debug/mergeDebugAssets/conv.js:13:S('como te llamas|tu nombre|como te digo','Soy CSN IA, el asistente de Chrono Shield Networks.');
+android/app/build/intermediates/assets/debug/mergeDebugAssets/conversacion.js:118:        decir(hora() + (n ? ", " + n : "") + "! Qué gusto verte por aquí." + (n ? "" : " ¿Cómo te llamas? Así te hablo por tu nombre.") + " ¿Qué te gustaría hacer hoy?", chipsInicio());
+android/app/build/intermediates/assets/debug/mergeDebugAssets/conversacion.js:126:    { re: /(quien eres|como te llamas|que eres|quien te creo)/, max: 6, fn: function () {
+android/app/build/intermediates/assets/debug/mergeDebugAssets/conversacion.js:152:    var m = t.toLowerCase().match(/(?:me llamo|mi nombre es|puedes llamarme|llamame|llámame) ([a-záéíóúñü]{2,20})/);
+android/app/build/intermediates/assets/debug/mergeDebugAssets/conversacion.js:257:    ["WhatsApp de un número nuevo: «Hola mamá, cambié de celular. ¿Me haces un favor urgente? Necesito que me prestes plata»", true, "Es la estafa del «soy tu hijo». Antes de enviar dinero, llama a la persona a su número de siempre."],
+android/app/build/intermediates/assets/debug/mergeDebugAssets/conversacion.js:259:    ["Llamada: «Le habla su banco. Le llegó un código al celular, ¿me lo dicta para cancelar un cargo sospechoso?»", true, "Nadie legítimo te pide códigos. Ese código es la llave de tu cuenta: cuelga y llama tú al banco."],
+android/app/build/intermediates/assets/debug/mergeDebugAssets/conversacion.js:288:    "Los bancos nunca te piden códigos por llamada ni por mensaje.",
+android/app/build/intermediates/assets/debug/mergeDebugAssets/biblioteca-data.js:56:{"id": "phishing", "titulo": "Phishing y estafas por mensaje", "claves": ["phishing", "que es phishing", "smishing", "vishing", "mensaje falso", "enlace sospechoso", "me llego un mensaje raro", "fraude por internet", "como evitar fraudes", "correo falso"], "respuesta": "El phishing es un engaño para que entregues claves o datos. Llega por correo (phishing), SMS (smishing) o llamada (vishing).\nSeñales: urgencia, amenazas, remitente raro, enlace que no coincide con la empresa. Regla de oro: nadie legítimo te pide códigos de verificación ni claves. Ante la duda, no toques el enlace: entra tú mismo a la página oficial. El buscador de esta app incluye Escudo de enlaces y Escudo anti-estafa.", "relacionados": ["buscar", "que_hacer_infectado", "sim_swap"]},
+android/app/build/intermediates/assets/debug/mergeDebugAssets/biblioteca-data.js:57:{"id": "sim_swap", "titulo": "Robo de línea (SIM swap)", "claves": ["sim swap", "clonaron mi sim", "robaron mi numero", "me quede sin senal de repente", "clonacion de sim", "duplicado de sim", "robo de linea", "cambio de sim fraudulento"], "respuesta": "En el SIM swap un delincuente convence al operador de pasar tu número a otra SIM y así recibe tus códigos por SMS. Señal típica: te quedas sin señal de repente.\nSi pasa: llama ya a tu operador, avisa a tus bancos y cambia claves.\nPara prevenir: usa una app autenticadora en vez de SMS cuando puedas, pide a tu operador un PIN o bloqueo para cambios de SIM, y no compartas tus datos personales.", "relacionados": ["contrasenas", "phishing", "robo_celular"]},
+android/app/build/intermediates/assets/debug/mergeDebugAssets/biblioteca-data.js:71:{"id": "deepfake_ia", "titulo": "Estafas con inteligencia artificial", "claves": ["deepfake", "estafa con ia", "voz clonada", "clonacion de voz", "video falso", "estafas con inteligencia artificial"], "respuesta": "Hoy, con pocos segundos de audio, se puede imitar una voz, y existen videos falsos muy creíbles. Defensas simples: acuerden en la familia una palabra clave para emergencias, cuelga y devuelve la llamada al número de siempre, y desconfía de cualquier urgencia que pida dinero o códigos, aunque la voz suene conocida.", "relacionados": ["phishing", "adultos_mayores"]},
+android/app/build/intermediates/assets/debug/mergeDebugAssets/biblioteca-data.js:73:{"id": "adultos_mayores", "titulo": "Proteger a los adultos mayores", "claves": ["adultos mayores", "proteger a mis papas", "abuelos y estafas", "mis papas caen en estafas", "tecnologia para mayores"], "respuesta": "Los mayores son blanco frecuente de estafas por llamada y mensaje. Lo que más ayuda: repasar con ellos la estafa del \"soy tu hijo o nieto\", acordar una palabra clave familiar, activar alertas del banco en tu teléfono también, y la regla de oro: antes de transferir dinero o dar un código, consultar con un familiar.", "relacionados": ["phishing", "deepfake_ia", "sim_swap"]},
+android/app/build/intermediates/assets/debug/mergeDebugAssets/biblioteca-data.js:76:{"id": "fui_estafado", "titulo": "Si caíste en una estafa", "claves": ["me estafaron", "caí en una estafa", "me robaron plata", "me hicieron una transferencia", "me quitaron plata", "estafa bancaria"], "respuesta": "Lamento que te haya pasado. Actúa rápido:\n1. Llama a tu banco ya y pide bloquear cuentas y tarjetas.\n2. Cambia tus claves desde un equipo seguro.\n3. Guarda capturas, números y mensajes como prueba.\n4. Denuncia ante la autoridad de tu país (en Colombia, el CAI Virtual de la Policía Nacional).\n5. Avisa a tus contactos si usaron tu cuenta.\nNadie está libre de caer: lo importante es reaccionar pronto.", "relacionados": ["que_hacer_infectado", "contrasenas", "sim_swap"]},
+android/app/src/main/assets/conv.js:13:S('como te llamas|tu nombre|como te digo','Soy CSN IA, el asistente de Chrono Shield Networks.');
+android/app/src/main/assets/buscador.js:86: [/(mam[aá]|pap[aá]|hijo|hija|abuel[oa]).{0,60}(nuevo n[uú]mero|cambi[eé] de n[uú]mero|este es mi n[uú]mero)/i,'bad','Parece la estafa del familiar con número nuevo. Llama al número que ya tenías.'],
+android/app/src/main/assets/buscador.js:92: [/(bancolombia|nequi|daviplata|davivienda|dian|polic[ií]a|fiscal[ií]a|registradur[ií]a)/i,'info','Menciona una entidad conocida. Verifica llamando al número oficial, no al del mensaje.']
+android/app/src/main/assets/buscador.js:111:  v.appendChild(el('p','','Ante la duda: no respondas, no abras el enlace y no compartas códigos. Llama al número oficial de la entidad.'));
+android/app/src/main/assets/conversacion.js:118:        decir(hora() + (n ? ", " + n : "") + "! Qué gusto verte por aquí." + (n ? "" : " ¿Cómo te llamas? Así te hablo por tu nombre.") + " ¿Qué te gustaría hacer hoy?", chipsInicio());
+== BINARIOS ==
+-rw-------. 1 u0_a196 u0_a196 1000K Nov  6 16:37 ./android/.gradle/9.8.0/executionHistory/executionHistory.bin
+-rw-------. 1 u0_a196 u0_a196 1 Nov  6 16:37 ./android/.gradle/9.8.0/fileChanges/last-build.bin
+-rw-------. 1 u0_a196 u0_a196 128K Nov  6 16:37 ./android/.gradle/9.8.0/fileHashes/fileHashes.bin
+-rw-------. 1 u0_a196 u0_a196 129K Nov  6 16:08 ./android/.gradle/9.8.0/fileHashes/resourceHashesCache.bin
+-rw-------. 1 u0_a196 u0_a196 66K Nov  8 06:41 ./android/.gradle/buildOutputCleanup/outputFiles.bin
+-rw-------. 1 u0_a196 u0_a196 1 Nov  7 07:18 ./android/.gradle/8.6/fileChanges/last-build.bin
+-rw-------. 1 u0_a196 u0_a196 107K Nov  7 06:34 ./android/.gradle/8.6/checksums/sha1-checksums.bin
+-rw-------. 1 u0_a196 u0_a196 34K Nov  7 06:34 ./android/.gradle/8.6/checksums/md5-checksums.bin
+-rw-------. 1 u0_a196 u0_a196 75K Nov  7 07:18 ./android/.gradle/8.6/fileHashes/fileHashes.bin
+-rw-------. 1 u0_a196 u0_a196 20K Nov  7 07:01 ./android/.gradle/8.6/fileHashes/resourceHashesCache.bin
+-rw-------. 1 u0_a196 u0_a196 717K Nov  7 07:18 ./android/.gradle/8.6/executionHistory/executionHistory.bin
+-rw-------. 1 u0_a196 u0_a196 230K Nov  8 06:41 ./android/.gradle/9.8.2/fileHashes/fileHashes.bin
+-rw-------. 1 u0_a196 u0_a196 193K Nov  8 06:41 ./android/.gradle/9.8.2/fileHashes/resourceHashesCache.bin
+-rw-------. 1 u0_a196 u0_a196 1 Nov  8 06:41 ./android/.gradle/9.8.2/fileChanges/last-build.bin
+-rw-------. 1 u0_a196 u0_a196 64K Nov  8 06:33 ./android/.gradle/9.8.2/checksums/sha1-checksums.bin
+-rw-------. 1 u0_a196 u0_a196 64K Nov  8 06:33 ./android/.gradle/9.8.2/checksums/md5-checksums.bin
+-rw-------. 1 u0_a196 u0_a196 902K Nov  8 06:41 ./android/.gradle/9.8.2/executionHistory/executionHistory.bin
+-rw-------. 1 u0_a196 u0_a196 1 Nov  8 05:55 ./android/.gradle/8.5/fileChanges/last-build.bin
+-rw-------. 1 u0_a196 u0_a196 22K Nov  7 22:55 ./android/.gradle/8.5/checksums/sha1-checksums.bin
+-rw-------. 1 u0_a196 u0_a196 20K Nov  7 22:55 ./android/.gradle/8.5/checksums/md5-checksums.bin
+-rw-------. 1 u0_a196 u0_a196 72K Nov  8 05:55 ./android/.gradle/8.5/fileHashes/fileHashes.bin
+-rw-------. 1 u0_a196 u0_a196 20K Nov  8 05:46 ./android/.gradle/8.5/fileHashes/resourceHashesCache.bin
+-rw-------. 1 u0_a196 u0_a196 699K Nov  8 05:55 ./android/.gradle/8.5/executionHistory/executionHistory.bin
+-rw-------. 1 u0_a196 u0_a196 2.5K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/auth.js.jar
+-rw-------. 1 u0_a196 u0_a196 18K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/biblioteca-data.js.jar
+-rw-------. 1 u0_a196 u0_a196 1.8K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/biblioteca.js.jar
+-rw-------. 1 u0_a196 u0_a196 4.6K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/buscador.js.jar
+-rw-------. 1 u0_a196 u0_a196 15K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.jar
+-rw-------. 1 u0_a196 u0_a196 12K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.backup-20261107-202240.jar
+-rw-------. 1 u0_a196 u0_a196 12K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.backup-20261107-211654.jar
+-rw-------. 1 u0_a196 u0_a196 10K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.gps-backup.jar
+-rw-------. 1 u0_a196 u0_a196 10K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.guide-backup.jar
+-rw-------. 1 u0_a196 u0_a196 12K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.integral-backup-20261107-202518.jar
+-rw-------. 1 u0_a196 u0_a196 9.1K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.navigation-backup.jar
+-rw-------. 1 u0_a196 u0_a196 12K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.pre-fallback-20261107-202047.jar
+-rw-------. 1 u0_a196 u0_a196 12K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.pre-fallback-20261107-202111.jar
+-rw-------. 1 u0_a196 u0_a196 12K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/chat.html.settings-backup-20261107-213024.jar
+-rw-------. 1 u0_a196 u0_a196 3.3K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/conv.js.jar
+-rw-------. 1 u0_a196 u0_a196 9.9K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/conversacion.js.jar
+-rw-------. 1 u0_a196 u0_a196 2.3K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/nodo.js.jar
+-rw-------. 1 u0_a196 u0_a196 1.3K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/noticias.js.jar
+-rw-------. 1 u0_a196 u0_a196 3.1K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/pro.js.jar
+-rw-------. 1 u0_a196 u0_a196 1.6K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/pro.js.backup-planes-20261107-214044.jar
+-rw-------. 1 u0_a196 u0_a196 1.1K Nov  8 06:39 ./android/app/build/intermediates/compressed_assets/debug/compressDebugAssets/out/assets/puente-biblioteca.js.jar
+-rw-------. 1 u0_a196 u0_a196 198K Nov  8 06:33 ./android/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar
+-rw-------. 1 u0_a196 u0_a196 5.0K Nov  8 06:39 ./android/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/c9a0e8f32a7ebd9083e4c36087caac31a552980db5cc8ed45f62a437db924220_0.jar
+-rw-------. 1 u0_a196 u0_a196 26K Nov  8 06:39 ./android/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/c9a0e8f32a7ebd9083e4c36087caac31a552980db5cc8ed45f62a437db924220_1.jar
+-rw-------. 1 u0_a196 u0_a196 4.6K Nov  8 06:39 ./android/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/c9a0e8f32a7ebd9083e4c36087caac31a552980db5cc8ed45f62a437db924220_2.jar
+-rw-------. 1 u0_a196 u0_a196 7.8K Nov  8 06:39 ./android/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/c9a0e8f32a7ebd9083e4c36087caac31a552980db5cc8ed45f62a437db924220_3.jar
+-rw-------. 1 u0_a196 u0_a196 235 Nov  8 06:39 ./android/app/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/dirs_bucket_0/graph.bin
+-rw-------. 1 u0_a196 u0_a196 235 Nov  8 06:39 ./android/app/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/dirs_bucket_1/graph.bin
+-rw-------. 1 u0_a196 u0_a196 235 Nov  8 06:39 ./android/app/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/dirs_bucket_2/graph.bin
+-rw-------. 1 u0_a196 u0_a196 235 Nov  8 06:39 ./android/app/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/dirs_bucket_3/graph.bin
+-rw-------. 1 u0_a196 u0_a196 235 Nov  8 06:39 ./android/app/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/jar_5ecbb53cad6f79eb72e6cd53d5d1513897d91f168d5a998260abc6870e34e4c9_bucket_0/graph.bin
+-rw-------. 1 u0_a196 u0_a196 235 Nov  8 06:39 ./android/app/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/jar_5ecbb53cad6f79eb72e6cd53d5d1513897d91f168d5a998260abc6870e34e4c9_bucket_1/graph.bin
+-rw-------. 1 u0_a196 u0_a196 235 Nov  8 06:39 ./android/app/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/jar_5ecbb53cad6f79eb72e6cd53d5d1513897d91f168d5a998260abc6870e34e4c9_bucket_2/graph.bin
+-rw-------. 1 u0_a196 u0_a196 235 Nov  8 06:39 ./android/app/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/jar_5ecbb53cad6f79eb72e6cd53d5d1513897d91f168d5a998260abc6870e34e4c9_bucket_3/graph.bin
+-rw-------. 1 u0_a196 u0_a196 18K Nov  8 06:41 ./android/app/build/intermediates/merged_java_res/debug/mergeDebugJavaResource/base.jar
+-rw-------. 1 u0_a196 u0_a196 62K Nov  8 06:36 ./android/app/build/kotlin/compileDebugKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin
+-rw-------. 1 u0_a196 u0_a196 18 Nov  8 06:36 ./android/app/build/kotlin/compileDebugKotlin/cacheable/last-build.bin
+-rw-------. 1 u0_a196 u0_a196 31 Nov  8 06:36 ./android/app/build/kotlin/compileDebugKotlin/local-state/build-history.bin
+== ASSETS ==
+total 440K
+-rw-------. 1 u0_a196 u0_a196 8.2K Nov  6 13:11 auth.js
+-rw-------. 1 u0_a196 u0_a196  74K Nov  8 20:16 biblioteca-data.js
+-rw-------. 1 u0_a196 u0_a196 3.7K Nov  7 08:15 biblioteca.js
+-rw-------. 1 u0_a196 u0_a196 9.6K Nov  6 20:14 buscador.js
+-rw-------. 1 u0_a196 u0_a196  39K Nov  8 06:25 chat.html
+-rw-------. 1 u0_a196 u0_a196  27K Nov  7 20:22 chat.html.backup-20261107-202240
+-rw-------. 1 u0_a196 u0_a196  28K Nov  7 21:16 chat.html.backup-20261107-211654
+-rw-------. 1 u0_a196 u0_a196  23K Nov  6 16:28 chat.html.gps-backup
+-rw-------. 1 u0_a196 u0_a196  23K Nov  6 16:30 chat.html.guide-backup
+-rw-------. 1 u0_a196 u0_a196  28K Nov  7 20:25 chat.html.integral-backup-20261107-202518
+-rw-------. 1 u0_a196 u0_a196  20K Nov  6 20:14 chat.html.navigation-backup
+-rw-------. 1 u0_a196 u0_a196  27K Nov  7 20:20 chat.html.pre-fallback-20261107-202047
+-rw-------. 1 u0_a196 u0_a196  27K Nov  7 20:21 chat.html.pre-fallback-20261107-202111
+-rw-------. 1 u0_a196 u0_a196  28K Nov  7 21:30 chat.html.settings-backup-20261107-213024
+-rw-------. 1 u0_a196 u0_a196 6.2K Nov  6 12:24 conv.js
+-rw-------. 1 u0_a196 u0_a196  23K Nov  7 17:59 conversacion.js
+-rw-------. 1 u0_a196 u0_a196 4.7K Nov  6 12:24 nodo.js
+-rw-------. 1 u0_a196 u0_a196 2.4K Nov  6 20:14 noticias.js
+-rw-------. 1 u0_a196 u0_a196 7.5K Nov  7 21:40 pro.js
+-rw-------. 1 u0_a196 u0_a196 2.7K Nov  7 21:40 pro.js.backup-planes-20261107-214044
+-rw-------. 1 u0_a196 u0_a196 2.0K Nov  7 17:59 puente-biblioteca.js
+== MANIFEST ==
+3:    <uses-permission android:name="android.permission.INTERNET" />
+4:    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+5:    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+6:    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+9:        android:allowBackup="false"
+10:        android:label="@string/app_name"
+11:        android:icon="@drawable/ic_launcher"
+13:        android:usesCleartextTraffic="true">
+14:        <activity android:name=".MainActivity" android:exported="true">
+22:            android:exported="false"
+== SECRETOS ==
+== URLS EN LA APP ==
+http://schemas.android.com/apk/res-auto
+http://schemas.android.com/apk/res/android
+http://tu-servidor:8095
+http://www.w3.org/1999/xlink
+http://www.w3.org/2000/svg
+https://api.github.com/users/contactochronoshield-cyber/repos?per_page=100
+https://assets.gradle.com/lato/fonts/lato-bold/lato-bold.woff
+https://assets.gradle.com/lato/fonts/lato-bold/lato-bold.woff2
+https://assets.gradle.com/lato/fonts/lato-semibold/lato-semibold.woff
+https://assets.gradle.com/lato/fonts/lato-semibold/lato-semibold.woff2
+https://docs.gradle.org/9.8.2/userguide/reporting_problems.html
+https://docs.gradle.org/9.8.2/userguide/upgrading_version_8.html#groovy_boolean_properties
+https://docs.gradle.org/9.8.2/userguide/upgrading_version_8.html#groovy_space_assignment_syntax
+https://docs.gradle.org/9.8.2/userguide/upgrading_version_9.html#dependency_multi_string_notation
+https://docs.gradle.org/9.8.2/userguide/upgrading_version_9.html#dependency_project_notation
+https://docs.gradle.org/9.8.2/userguide/upgrading_version_9.html#deprecate-visible-property
+https://docs.gradle.org/9.8.2/userguide/upgrading_version_9.html#kgp_native_bundle_attribute_enum
+https://download.wireguard.com/android-client/com.wireguard.android-1.0.20260315.apk
+https://duckduckgo.com/?q=
+https://feeds.feedburner.com/TheHackersNews
+https://fonts.googleapis.com/css?family=Inconsolata:400,700
+https://html.duckduckgo.com/html/
+https://krebsonsecurity.com/feed/
+https://lite.duckduckgo.com/lite/?q=
+https://play.google.com/store/apps/details?id=com.wireguard.android
+https://www.bleepingcomputer.com/feed/
+https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+https://www.paypal.com/send
+https://www.welivesecurity.com/es/feed/
+== IDIOMAS APP ==
+values
+== FASTLANE ==
+fastlane/metadata/android/es-419/full_description.txt
+fastlane/metadata/android/es-419/short_description.txt
+== WORKFLOWS ==
+biblioteca.yml
+build-apk.yml
+codeql.yml
+guardian.yml
+integridad.yml
+== SCRIPTS EN RAIZ ==
+1
+== VALIDADOR ==
+Biblioteca con problemas:
+- Clave repetida 'open source' en repos y codigo_abierto
+- entrada 91 (privacy_laws_en): respuesta muy larga (1014)
+- Clave repetida 'que es un firewall' en firewall y glosario
+- Clave repetida 'seguridad para mi negocio' en proteger_empresa y proteger_negocio
+- Clave repetida 'verificacion en dos pasos' en contrasenas y dos_pasos
+- Prueba fallida: 'verificacion en dos pasos' esperaba dos_pasos, dio contrasenas

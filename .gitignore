@@ -45,3 +45,8 @@ CSN_IA_AUDIT_REPORT.txt
 
 # Guardian CI local backups
 .guardian-backups/
+
+android/app/src/main/assets/*backup*
+android/app/src/main/assets/*pre-fallback*
+android/.gradle/
+android/app/build/
