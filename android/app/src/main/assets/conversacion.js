@@ -117,6 +117,12 @@
         var n = nombre();
         decir(hora() + (n ? ", " + n : "") + "! Qué gusto verte por aquí." + (n ? "" : " ¿Cómo te llamas? Así te hablo por tu nombre.") + " ¿Qué te gustaría hacer hoy?", chipsInicio());
       } },
+    { re: /^(ok|okey|okay|oki|vale|listo|perfecto|dale|entendido|claro|super|genial|bien|buenisimo|alright|got it|cool|great|sure|beleza|certo|entendi|otimo|ta bom|tudo bem)( [a-z]+)?$/, max: 3, fn: function () { /* CSN-OKEY */
+        var L = "es"; try { L = localStorage.getItem("csn_lang") || "es"; } catch (e) {}
+        if (L === "en") { decir(pick(["Great! 😊 What else would you like to know? I can explain private networks, scam protection, or how to secure your phone and wifi.", "Perfect! I am here for whatever you need. Want me to guide you on one of these topics?"]), chipsInicio()); return; }
+        if (L === "pt") { decir(pick(["Perfeito! 😊 O que mais você gostaria de saber? Posso explicar redes privadas, como evitar golpes ou como proteger seu celular e seu wifi.", "Ótimo! Estou aqui para o que precisar. Quer que eu te oriente em algum destes temas?"]), chipsInicio()); return; }
+        decir(pick(["¡Perfecto! 😊 Cuéntame, ¿qué más te gustaría saber? Puedo explicarte qué es una red privada, cómo protegerte de estafas o cómo cuidar tu celular y tu wifi.", "¡Genial! Estoy aquí para lo que necesites. ¿Quieres que te oriente con alguno de estos temas?", "¡Muy bien! Si quieres, seguimos: dime qué te interesa y lo vemos juntos."]), chipsInicio());
+    } },
     { re: /(gracias|te agradezco|muy amable)/, max: 6, fn: function () {
         decir(pick(["¡Con mucho gusto! Si te surge otra duda, aquí estoy.", "¡A ti! Para eso estoy. ¿Te ayudo con algo más?", "¡Un placer! Cuando quieras seguimos."]), [{ titulo: "Consejo del día", fn: function () { consejo(true); } }]);
       } },

@@ -189,6 +189,7 @@ Consultar sobre Chrono Offline Guide
   </div>
   <p class="s">Tu cuenta, tu privacidad y el control de tu experiencia CSN.</p>
 
+  <div class="csn-settings-section"><h3>Idioma / Language / Idioma</h3><div class="csn-actions"><button class="csn-action" onclick="csnSetLang('es')">Español</button><button class="csn-action" onclick="csnSetLang('en')">English</button><button class="csn-action" onclick="csnSetLang('pt')">Português</button></div><div class="csn-status" id="csn-lang-status"></div></div>
   <div class="csn-settings-section">
     <h3>Mi perfil</h3>
     <div class="csn-setting-copy">
@@ -316,8 +317,15 @@ Consultar sobre Chrono Offline Guide
 function openCSNSettings() {
   var el = document.getElementById('sr');
   if (!el) return;
-  el.style.display = 'block';
+  if (el.parentNode !== document.body) document.body.appendChild(el); /* CSN-LANG */
+  el.style.zIndex = '99999'; el.style.display = 'block';
   if (typeof csnLoadSettings === 'function') csnLoadSettings();
+}
+function csnSetLang(l) {
+  try { localStorage.setItem('csn_lang', l); } catch(e) {}
+  document.documentElement.lang = l;
+  var s = document.getElementById('csn-lang-status');
+  if (s) s.textContent = {es:'Idioma: Español',en:'Language: English',pt:'Idioma: Português'}[l];
 }
 function closeCSNSettings() {
   var el = document.getElementById('sr');
