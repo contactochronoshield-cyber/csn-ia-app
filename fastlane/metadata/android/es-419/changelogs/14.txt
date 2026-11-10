@@ -1,0 +1,6 @@
+- Universal multilingual user-name recognition
+- Local user profile and privacy controls
+- Chrono Security Quest with daily challenges and XP
+- Daily progress and learning streaks
+- Informational network connectivity diagnostics
+- Improved settings panel

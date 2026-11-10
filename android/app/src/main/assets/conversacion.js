@@ -283,6 +283,8 @@
       { titulo: "Mini diagnóstico", fn: diag },
       { titulo: "¿Cómo me protege Chrono?", fn: function () { tema("proteccion_chrono"); } },
       { titulo: "🏆 Reto diario", fn: quest },
+      { titulo: "Mi perfil", fn: perfilLocal },
+      { titulo: "🏆 Reto diario", fn: quest },
       { titulo: "Mi perfil", fn: perfilLocal }
     ];
   }
