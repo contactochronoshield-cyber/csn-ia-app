@@ -1,0 +1,3 @@
+- Respuestas amables a 'okey' y similares (ES/EN/PT)
+- Selector de idioma en Configuración
+- Botón de Configuración corregido
