@@ -86,7 +86,7 @@ jobs:
 
     steps:
       - name: Descargar APK
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: csn-ia-${{ github.ref_name }}
           path: guardian-artifact
@@ -109,7 +109,7 @@ jobs:
 
     steps:
       - name: Descargar APK y checksum
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: csn-ia-${{ github.ref_name }}
           path: release-assets
