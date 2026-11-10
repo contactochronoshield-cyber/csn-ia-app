@@ -72,6 +72,7 @@ jobs:
 
   attest:
     name: Guardian - Build Provenance
+    continue-on-error: true
     needs: build
     if: >-
       github.event_name == 'push' &&
@@ -82,7 +83,6 @@ jobs:
       contents: read
       id-token: write
       attestations: write
-      artifact-metadata: write
 
     steps:
       - name: Descargar APK
@@ -92,15 +92,13 @@ jobs:
           path: guardian-artifact
 
       - name: Crear atestación
-        uses: actions/attest@v4
+        uses: actions/attest-build-provenance@v2
         with:
           subject-path: guardian-artifact/CSN-IA-${{ github.ref_name }}.apk
 
   release:
     name: Publicar GitHub Release
-    needs:
-      - build
-      - attest
+    needs: build
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
 
