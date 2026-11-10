@@ -63,7 +63,7 @@ jobs:
           cat SHA256SUMS.txt
 
       - name: Subir artefacto
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: csn-ia-${{ github.ref_name }}
           path: guardian-artifact/
