@@ -1,350 +1,378 @@
 [
-[
-"que es una red privada",
-"red_privada"
-],
-[
-"dame ejemplos de uso",
-"usos_red_privada"
-],
-[
-"dime mas sobre esta empresa",
-"empresa"
-],
-[
-"cuanto cuesta",
-"precios"
-],
-[
-"que es una red mesh",
-"mesh"
-],
-[
-"me robaron el celular",
-"robo_celular"
-],
-[
-"hola",
-"saludo"
-],
-[
-"que es termux",
-"termux"
-],
-[
-"como verificar mi red privada",
-"verificar_mi_red"
-],
-[
-"como verifico la red de ustedes",
-"verificar_red_csn"
-],
-[
-"como asegurar mi wifi",
-"wifi_casa"
-],
-[
-"que es un firewall",
-"firewall"
-],
-[
-"que es el cifrado",
-"cifrado"
-],
-[
-"diferencia entre vpn y red privada",
-"diferencias_redes"
-],
-[
-"tipos de redes privadas",
-"tipos_redes_privadas"
-],
-[
-"como me protege chrono mi casa",
-"proteger_casa"
-],
-[
-"como protege chrono mi empresa",
-"proteger_empresa"
-],
-[
-"como protege chrono mi infraestructura",
-"proteger_infra"
-],
-[
-"como me protege chrono mi telefono",
-"proteger_telefono"
-],
-[
-"seguridad de camaras",
-"camaras_iot"
-],
-[
-"diferencia entre mesh y repetidor",
-"mesh_vs_repetidor"
-],
-[
-"ventajas de la red mesh",
-"mesh_ventajas"
-],
-[
-"comunicacion sin internet",
-"mesh_emergencias"
-],
-[
-"vpn para empresas",
-"privada_empresas"
-],
-[
-"que hacen en telecomunicaciones",
-"telco"
-],
-[
-"que es bgp",
-"backbone"
-],
-[
-"internet de respaldo",
-"failover"
-],
-[
-"divisiones",
-"divisiones"
-],
-[
-"que es lwt",
-"lwt"
-],
-[
-"como funciona el asistente",
-"ia_app"
-],
-[
-"que tipos de virus hay",
-"tipos_virus"
-],
-[
-"como saber si tengo virus",
-"senales_infeccion"
-],
-[
-"me hackearon",
-"que_hacer_infectado"
-],
-[
-"que es phishing",
-"phishing"
-],
-[
-"clonaron mi sim",
-"sim_swap"
-],
-[
-"como creo una contrasena",
-"contrasenas"
-],
-[
-"que es ransomware",
-"ransomware"
-],
-[
-"como hago una copia de seguridad",
-"backups"
-],
-[
-"que es la ciberseguridad",
-"ciberseguridad"
-],
-[
-"por que elegir chrono",
-"por_que_chrono"
-],
-[
-"diferencia con nordvpn",
-"comparacion_vpn"
-],
-[
-"es caro",
-"es_caro"
-],
-[
-"ya tengo antivirus",
-"ya_tengo_antivirus"
-],
-[
-"no soy tecnico",
-"no_soy_tecnico"
-],
-[
-"por que actualizar",
-"actualizaciones"
-],
-[
-"estafa con qr",
-"qr_falsos"
-],
-[
-"wifi publico",
-"wifi_publico"
-],
-[
-"cargador publico",
-"cargadores_publicos"
-],
-[
-"voz clonada",
-"deepfake_ia"
-],
-[
-"control parental",
-"control_parental"
-],
-[
-"proteger a mis papas",
-"adultos_mayores"
-],
-[
-"compras seguras",
-"compras_seguras"
-],
-[
-"proteger mi whatsapp",
-"privacidad_redes"
-],
-[
-"me estafaron",
-"fui_estafado"
-],
-[
-"me extorsionan",
-"extorsion"
-],
-[
-"quiero compartir esto",
-"recomendar"
-],
-[
-"donde estan ubicados",
-"donde_estan"
-],
-[
-"que es github",
-"github"
-],
-[
-"que es codigo abierto",
-"codigo_abierto"
-],
-[
-"que es f droid",
-"f_droid"
-],
-[
-"que es mikrotik",
-"mikrotik"
-],
-[
-"como configurar mikrotik",
-"mikrotik_primeros_pasos"
-],
-[
-"que es el rgpd",
-"rgpd"
-],
-[
-"que es nis2",
-"leyes_ue_digital"
-],
-[
-"ley 1581",
-"ley_1581"
-],
-[
-"que es la lgpd",
-"lgpd_brasil"
-],
-[
-"que es el cloud act",
-"datos_en_la_nube"
-],
-[
-"como pido que borren mis datos",
-"ejercer_derechos_datos"
-],
-[
-"what is github",
-"github_en"
-],
-[
-"what is mikrotik",
-"mikrotik_en"
-],
-[
-"what is gdpr",
-"privacy_laws_en"
-],
-[
-"o que e github",
-"github_pt"
-],
-[
-"o que e mikrotik",
-"mikrotik_pt"
-],
-[
-"o que e lgpd",
-"privacy_laws_pt"
-],
-[
-"reto de 7 dias",
-"reto_7_dias"
-],
-[
-"checklist de seguridad",
-"checklist_10_min"
-],
-[
-"glosario de terminos",
-"glosario"
-],
-[
-"alguien usa mi wifi",
-"wifi_intrusos"
-],
-[
-"como proteger mis camaras",
-"camaras_seguras"
-],
-[
-"proteger mi negocio",
-"proteger_negocio"
-],
-[
-"verificacion en dos pasos",
-"dos_pasos"
-],
-[
-"security checklist",
-"security_checklist_en"
-],
-[
-"someone is using my wifi",
-"wifi_intruders_en"
-],
-[
-"my phone was stolen",
-"stolen_phone_en"
-],
-[
-"checklist de seguranca",
-"checklist_seguranca_pt"
-],
-[
-"alguem esta usando meu wifi",
-"wifi_intrusos_pt"
-],
-[
-"roubaram meu celular",
-"celular_roubado_pt"
-]
+ [
+  "que es una red privada",
+  "red_privada"
+ ],
+ [
+  "dame ejemplos de uso",
+  "usos_red_privada"
+ ],
+ [
+  "dime mas sobre esta empresa",
+  "empresa"
+ ],
+ [
+  "cuanto cuesta",
+  "precios"
+ ],
+ [
+  "que es una red mesh",
+  "mesh"
+ ],
+ [
+  "me robaron el celular",
+  "robo_celular"
+ ],
+ [
+  "hola",
+  "saludo"
+ ],
+ [
+  "que es termux",
+  "termux"
+ ],
+ [
+  "como verificar mi red privada",
+  "verificar_mi_red"
+ ],
+ [
+  "como verifico la red de ustedes",
+  "verificar_red_csn"
+ ],
+ [
+  "como asegurar mi wifi",
+  "wifi_casa"
+ ],
+ [
+  "que es un firewall",
+  "firewall"
+ ],
+ [
+  "que es el cifrado",
+  "cifrado"
+ ],
+ [
+  "diferencia entre vpn y red privada",
+  "diferencias_redes"
+ ],
+ [
+  "tipos de redes privadas",
+  "tipos_redes_privadas"
+ ],
+ [
+  "como me protege chrono mi casa",
+  "proteger_casa"
+ ],
+ [
+  "como protege chrono mi empresa",
+  "proteger_empresa"
+ ],
+ [
+  "como protege chrono mi infraestructura",
+  "proteger_infra"
+ ],
+ [
+  "como me protege chrono mi telefono",
+  "proteger_telefono"
+ ],
+ [
+  "seguridad de camaras",
+  "camaras_iot"
+ ],
+ [
+  "diferencia entre mesh y repetidor",
+  "mesh_vs_repetidor"
+ ],
+ [
+  "ventajas de la red mesh",
+  "mesh_ventajas"
+ ],
+ [
+  "comunicacion sin internet",
+  "mesh_emergencias"
+ ],
+ [
+  "vpn para empresas",
+  "privada_empresas"
+ ],
+ [
+  "que hacen en telecomunicaciones",
+  "telco"
+ ],
+ [
+  "que es bgp",
+  "backbone"
+ ],
+ [
+  "internet de respaldo",
+  "failover"
+ ],
+ [
+  "divisiones",
+  "divisiones"
+ ],
+ [
+  "que es lwt",
+  "lwt"
+ ],
+ [
+  "como funciona el asistente",
+  "ia_app"
+ ],
+ [
+  "que tipos de virus hay",
+  "tipos_virus"
+ ],
+ [
+  "como saber si tengo virus",
+  "senales_infeccion"
+ ],
+ [
+  "me hackearon",
+  "que_hacer_infectado"
+ ],
+ [
+  "que es phishing",
+  "phishing"
+ ],
+ [
+  "clonaron mi sim",
+  "sim_swap"
+ ],
+ [
+  "como creo una contrasena",
+  "contrasenas"
+ ],
+ [
+  "que es ransomware",
+  "ransomware"
+ ],
+ [
+  "como hago una copia de seguridad",
+  "backups"
+ ],
+ [
+  "que es la ciberseguridad",
+  "ciberseguridad"
+ ],
+ [
+  "por que elegir chrono",
+  "por_que_chrono"
+ ],
+ [
+  "diferencia con nordvpn",
+  "comparacion_vpn"
+ ],
+ [
+  "es caro",
+  "es_caro"
+ ],
+ [
+  "ya tengo antivirus",
+  "ya_tengo_antivirus"
+ ],
+ [
+  "no soy tecnico",
+  "no_soy_tecnico"
+ ],
+ [
+  "por que actualizar",
+  "actualizaciones"
+ ],
+ [
+  "estafa con qr",
+  "qr_falsos"
+ ],
+ [
+  "wifi publico",
+  "wifi_publico"
+ ],
+ [
+  "cargador publico",
+  "cargadores_publicos"
+ ],
+ [
+  "voz clonada",
+  "deepfake_ia"
+ ],
+ [
+  "control parental",
+  "control_parental"
+ ],
+ [
+  "proteger a mis papas",
+  "adultos_mayores"
+ ],
+ [
+  "compras seguras",
+  "compras_seguras"
+ ],
+ [
+  "proteger mi whatsapp",
+  "privacidad_redes"
+ ],
+ [
+  "me estafaron",
+  "fui_estafado"
+ ],
+ [
+  "me extorsionan",
+  "extorsion"
+ ],
+ [
+  "quiero compartir esto",
+  "recomendar"
+ ],
+ [
+  "donde estan ubicados",
+  "donde_estan"
+ ],
+ [
+  "que es github",
+  "github"
+ ],
+ [
+  "que es codigo abierto",
+  "codigo_abierto"
+ ],
+ [
+  "que es f droid",
+  "f_droid"
+ ],
+ [
+  "que es mikrotik",
+  "mikrotik"
+ ],
+ [
+  "como configurar mikrotik",
+  "mikrotik_primeros_pasos"
+ ],
+ [
+  "que es el rgpd",
+  "rgpd"
+ ],
+ [
+  "que es nis2",
+  "leyes_ue_digital"
+ ],
+ [
+  "ley 1581",
+  "ley_1581"
+ ],
+ [
+  "que es la lgpd",
+  "lgpd_brasil"
+ ],
+ [
+  "que es el cloud act",
+  "datos_en_la_nube"
+ ],
+ [
+  "como pido que borren mis datos",
+  "ejercer_derechos_datos"
+ ],
+ [
+  "what is github",
+  "github_en"
+ ],
+ [
+  "what is mikrotik",
+  "mikrotik_en"
+ ],
+ [
+  "what is gdpr",
+  "privacy_laws_en"
+ ],
+ [
+  "o que e github",
+  "github_pt"
+ ],
+ [
+  "o que e mikrotik",
+  "mikrotik_pt"
+ ],
+ [
+  "o que e lgpd",
+  "privacy_laws_pt"
+ ],
+ [
+  "reto de 7 dias",
+  "reto_7_dias"
+ ],
+ [
+  "checklist de seguridad",
+  "checklist_10_min"
+ ],
+ [
+  "glosario de terminos",
+  "glosario"
+ ],
+ [
+  "alguien usa mi wifi",
+  "wifi_intrusos"
+ ],
+ [
+  "como proteger mis camaras",
+  "camaras_seguras"
+ ],
+ [
+  "proteger mi negocio",
+  "proteger_negocio"
+ ],
+ [
+  "verificacion en dos pasos",
+  "dos_pasos"
+ ],
+ [
+  "security checklist",
+  "security_checklist_en"
+ ],
+ [
+  "someone is using my wifi",
+  "wifi_intruders_en"
+ ],
+ [
+  "my phone was stolen",
+  "stolen_phone_en"
+ ],
+ [
+  "checklist de seguranca",
+  "checklist_seguranca_pt"
+ ],
+ [
+  "alguem esta usando meu wifi",
+  "wifi_intrusos_pt"
+ ],
+ [
+  "roubaram meu celular",
+  "celular_roubado_pt"
+ ],
+ [
+  "que es la computacion cuantica",
+  "cuantica"
+ ],
+ [
+  "que es la criptografia poscuantica",
+  "poscuantica"
+ ],
+ [
+  "quien es asml",
+  "asml"
+ ],
+ [
+  "van a hacer chips",
+  "chips_csn"
+ ],
+ [
+  "quiero colaborar con ustedes",
+  "colaborar"
+ ],
+ [
+  "que es chrono shield onion",
+  "onion"
+ ],
+ [
+  "que es chrono sovereign cloud",
+  "cloud"
+ ]
 ]
