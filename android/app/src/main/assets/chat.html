@@ -119,7 +119,18 @@ body.csn-light #sr .csn-action {
   background:#f1f5f9!important;color:#172033!important
 }
 
-</style></head><body>
+</style>
+<style id="csn-fix-settings">
+#sr{position:fixed!important;inset:0!important;z-index:2147483000!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch;background:rgba(7,16,30,.6)!important;padding:12px!important;box-sizing:border-box!important}
+#sr #sp{position:relative!important;display:block!important;inset:auto!important;transform:none!important;opacity:1!important;visibility:visible!important;width:auto!important;max-width:560px!important;height:auto!important;max-height:none!important;margin:12px auto!important;padding:16px!important;background:#fff!important;color:#0b2342!important;border-radius:16px!important;box-shadow:0 10px 40px rgba(0,0,0,.45)!important;overflow:visible!important}
+#sr #sp *{visibility:visible!important;opacity:1!important}
+#sr #sp h1,#sr #sp h3,#sr #sp strong{color:#0b2342!important}
+#sr #sp small,#sr #sp .csn-status{color:#4a5a70!important}
+#sr #sp .csn-action{background:#eaf3ff!important;color:#0b2342!important;border:1px solid #b9d4f5!important;border-radius:10px!important;padding:10px 14px!important;margin:4px!important}
+#sr #sp .csn-primary{background:#2358e8!important;color:#fff!important;border-color:#2358e8!important}
+#sr #sp input[type=text]{background:#f3f7fc!important;color:#0b2342!important;border:1px solid #b9d4f5!important;border-radius:10px!important;padding:10px!important;width:100%!important;box-sizing:border-box!important}
+</style>
+</head><body>
 <header><svg viewBox="0 0 120 140" width="28" height="33" aria-label="CSN"><path d="M60 6 108 24v44c0 30-22 54-48 66C34 122 12 98 12 68V24z" fill="#0B2342" stroke="#19B6FF" stroke-width="6" stroke-linejoin="round"/><path d="M60 66C68 50 90 50 90 66C90 82 68 82 60 66C52 50 30 50 30 66C30 82 52 82 60 66" fill="none" stroke="#19B6FF" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="66" r="9" fill="#17B26A"/></svg><b>CSN IA</b><span class="sp"></span><span class="chip"><i></i>Red protegida</span><button class="ib" aria-label="Configuración" onclick="openCSNSettings()">&#9881;</button></header>
 <nav><button class="on" id="n-chat" onclick="tab('chat')">Chat</button><button id="n-red" onclick="tab('red')">Mi red</button><button id="n-web" onclick="tab('web')">Buscar</button><button id="n-guide" onclick="tab('guide')">Guía</button><button id="n-nodo" onclick="tab('nodo')">Nodo</button><button id="n-pro" onclick="tab('pro')">Pro</button></nav>
 <div class="tab on" id="t-chat"><div id="msgs"></div><div class="chips" id="qc"></div><div id="bar"><input id="q" aria-label="Escribe tu pregunta" placeholder="Escribe tu pregunta"><button aria-label="Enviar" onclick="send()">&#10148;</button></div></div>

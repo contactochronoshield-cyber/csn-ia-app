@@ -10,6 +10,178 @@
   function norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim(); }
   function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
   function nombre() { return ls("csn_nombre") || ""; }
+
+  /* CSN-PERFIL-QUEST */
+  function extraerNombre(texto) {
+    var rx = /^\s*(?:(?:hola|buenas|hey|hi|hello)[,!\s]+)?(?:me llamo|mi nombre es|puedes llamarme|ll[aá]mame|my name is|i am|i'm|call me|me chamo|meu nome (?:é|e)|eu sou|je m'appelle|soy)\s+([\p{L}\p{M}][\p{L}\p{M}'’\-]*(?:\s+[\p{L}\p{M}][\p{L}\p{M}'’\-]*){0,3})\s*[.!?]*\s*$/iu;
+    var m = String(texto || "").match(rx);
+    if (!m) return "";
+
+    var candidato = m[1].trim();
+    var prohibidos = /^(nuevo|nueva|cliente|usuario|estudiante|ingeniero|ingeniera|doctor|doctora|abogado|abogada|profesor|profesora|trabajador|trabajadora|de|del|en|aqui|aquí|new|customer|user|student|engineer|doctor|teacher|fine|happy|tired|novo|nova|cliente|estudante|engenheiro)$/iu;
+
+    if (prohibidos.test(candidato.split(/\s+/)[0])) return "";
+
+    return candidato.split(/\s+/).map(function(w) {
+      return w.replace(/^./u, function(c) {
+        return c.toLocaleUpperCase();
+      });
+    }).join(" ");
+  }
+
+  function guardarNombre(n) {
+    if (!n) return false;
+    ls("csn_nombre", n);
+    ls("csn_profile_name", n);
+    return true;
+  }
+
+  function fechaLocal() {
+    var d = new Date();
+    return d.getFullYear() + "-" +
+      String(d.getMonth() + 1).padStart(2, "0") + "-" +
+      String(d.getDate()).padStart(2, "0");
+  }
+
+  function estadoQuest() {
+    try {
+      return JSON.parse(ls("csn_quest") || "{}") || {};
+    } catch(e) {
+      return {};
+    }
+  }
+
+  function perfilLocal() {
+    var q = estadoQuest();
+    var n = nombre() || "Todavía no configurado";
+    var lang = ls("csn_lang") || "es";
+
+    decir(
+      "👤 TU PERFIL CHRONO\n\n" +
+      "Nombre: " + n + "\n" +
+      "Idioma: " + lang + "\n" +
+      "Experiencia Security Quest: " + (q.xp || 0) + " XP\n" +
+      "Racha de retos: " + (q.streak || 0) + " días\n\n" +
+      "Tus datos de perfil y progreso se guardan localmente en este dispositivo.",
+      [
+        { titulo: "Cambiar mi nombre", fn: function() {
+          decir("Escribe: Me llamo seguido de tu nombre.");
+        }},
+        { titulo: "Borrar mi nombre", fn: borrarNombre },
+        { titulo: "Chrono Security Quest", fn: quest },
+        { titulo: "Diagnóstico de red", fn: diagnosticoRed }
+      ]
+    );
+  }
+
+  function borrarNombre() {
+    try {
+      localStorage.removeItem("csn_nombre");
+      localStorage.removeItem("csn_profile_name");
+    } catch(e) {}
+
+    decir("He eliminado el nombre guardado en este dispositivo. Puedes presentarte de nuevo cuando quieras.", chipsInicio());
+  }
+
+  /* Diagnóstico informativo: no realiza escaneos ni pruebas intrusivas. */
+  function diagnosticoRed() {
+    var msg = "DIAGNÓSTICO DE CONECTIVIDAD\n\n";
+    var online = navigator.onLine;
+
+    msg += "Indicador del sistema: " +
+      (online ? "conectividad disponible" : "sin conexión") + "\n";
+
+    var c = navigator.connection ||
+            navigator.mozConnection ||
+            navigator.webkitConnection;
+
+    if (c) {
+      if (c.effectiveType) msg += "Tipo estimado: " + c.effectiveType + "\n";
+      if (typeof c.rtt === "number") msg += "RTT reportado: " + c.rtt + " ms\n";
+      if (typeof c.downlink === "number") msg += "Descarga estimada: " + c.downlink + " Mbps\n";
+      if (typeof c.saveData === "boolean") msg += "Ahorro de datos: " + (c.saveData ? "activo" : "inactivo") + "\n";
+    } else {
+      msg += "Detalles de velocidad: no disponibles en este dispositivo.\n";
+    }
+
+    msg += "\nEstos datos son indicadores del navegador y no garantizan acceso a Internet ni sustituyen una medición técnica.";
+
+    decir(msg, [
+      { titulo: "Revisar seguridad", fn: diag },
+      { titulo: "Mi perfil", fn: perfilLocal }
+    ]);
+  }
+
+  /* CHRONO SECURITY QUEST: retos diarios, XP y rachas locales. */
+  function quest() {
+    var q = estadoQuest();
+    var hoy = fechaLocal();
+
+    if (q.lastCompleted === hoy) {
+      decir(
+        "🏆 ¡Reto de hoy completado!\n\n" +
+        "Experiencia acumulada: " + (q.xp || 0) + " XP\n" +
+        "Racha actual: " + (q.streak || 0) + " días\n\n" +
+        "Vuelve mañana para un nuevo reto. También puedes practicar con el juego completo.",
+        [
+          { titulo: "Practicar: estafa o real", fn: juego },
+          { titulo: "Mi perfil", fn: perfilLocal }
+        ]
+      );
+      return;
+    }
+
+    var d = new Date();
+    var inicio = new Date(d.getFullYear(), 0, 0);
+    var dia = Math.floor((d - inicio) / 86400000);
+    var indice = dia % JQ.length;
+    var reto = JQ[indice];
+
+    add("🏆 CHRONO SECURITY QUEST\n\nReto diario " +
+      (indice + 1) + " de " + JQ.length +
+      "\n\n" + reto[0], "bot");
+
+    function responder(esEstafa) {
+      var correcto = esEstafa === reto[1];
+      var anterior = q.lastCompleted || "";
+
+      var ayer = new Date();
+      ayer.setDate(ayer.getDate() - 1);
+      var ayerKey = ayer.getFullYear() + "-" +
+        String(ayer.getMonth() + 1).padStart(2, "0") + "-" +
+        String(ayer.getDate()).padStart(2, "0");
+
+      q.xp = (q.xp || 0) + (correcto ? 10 : 2);
+      q.streak = anterior === ayerKey
+        ? (q.streak || 0) + 1 : 1;
+      q.lastCompleted = hoy;
+
+      ls("csn_quest", JSON.stringify(q));
+
+      var mensaje = correcto
+        ? "✅ ¡Correcto! Has ganado 10 XP."
+        : "📚 Esta vez no. Has ganado 2 XP por participar.";
+
+      mensaje += "\n\n" + (reto[1] ? "Era una estafa. " : "Era legítimo. ");
+      mensaje += reto[2];
+      mensaje += "\n\nTotal: " + q.xp + " XP";
+      mensaje += "\nRacha: " + q.streak + " días";
+
+      if (q.xp >= 100) mensaje += "\n🏅 Insignia: Guardián Chrono";
+      else if (q.xp >= 30) mensaje += "\n🥇 Insignia: Aprendiz Chrono";
+
+      decir(mensaje, [
+        { titulo: "Mi progreso", fn: perfilLocal },
+        { titulo: "Practicar más", fn: juego }
+      ]);
+    }
+
+    chips([
+      { titulo: "Es estafa", fn: function() { responder(true); } },
+      { titulo: "Es legítimo", fn: function() { responder(false); } }
+    ]);
+  }
+
   function hora() { var h = new Date().getHours(); return h < 12 ? "¡Buenos días" : h < 19 ? "¡Buenas tardes" : "¡Buenas noches"; }
   function titulo(id) {
     var t = window.CSNBiblioteca.temas().filter(function (x) { return x.id === id; })[0];
@@ -109,7 +281,9 @@
     return [
       { titulo: "Consejo del día", fn: function () { consejo(true); } },
       { titulo: "Mini diagnóstico", fn: diag },
-      { titulo: "¿Cómo me protege Chrono?", fn: function () { tema("proteccion_chrono"); } }
+      { titulo: "¿Cómo me protege Chrono?", fn: function () { tema("proteccion_chrono"); } },
+      { titulo: "🏆 Reto diario", fn: quest },
+      { titulo: "Mi perfil", fn: perfilLocal }
     ];
   }
   var CHARLA = [
@@ -155,13 +329,20 @@
 
   function manejar(t) {
     var n = norm(t), palabras = n ? n.split(" ").length : 0;
-    var m = t.toLowerCase().match(/(?:me llamo|mi nombre es|puedes llamarme|llamame|llámame) ([a-záéíóúñü]{2,20})/);
-    if (m) {
-      var nom = m[1].charAt(0).toUpperCase() + m[1].slice(1);
-      ls("csn_nombre", nom);
-      decir("Mucho gusto, " + nom + ". ¿En qué te puedo ayudar hoy?", chipsInicio());
+    /* CSN-NOMBRE-UNIVERSAL */
+    var nom = extraerNombre(t);
+    if (nom) {
+      guardarNombre(nom);
+      decir("¡Mucho gusto, " + nom + "! 😊 Ya puedes contar conmigo. ¿En qué te ayudo hoy?", chipsInicio());
       return;
     }
+
+    /* CSN-COMANDOS-PERFIL-QUEST */
+    if (/^(mi perfil|ver mi perfil|mis datos|mi progreso)$/.test(n)) return perfilLocal();
+    if (/^(borrar mi nombre|olvidar mi nombre|eliminar mi nombre)$/.test(n)) return borrarNombre();
+    if (/^(reto diario|reto de hoy|chrono security quest|security quest|quest)$/.test(n)) return quest();
+    if (/^(diagnostico de red|diagnostico de conexion|estado de mi red|estado de conexion)$/.test(n)) return diagnosticoRed();
+
     for (var i = 0; i < CHARLA.length; i++) {
       if (palabras <= CHARLA[i].max && CHARLA[i].re.test(n)) { CHARLA[i].fn(); return; }
     }
@@ -340,6 +521,6 @@
   }
 
   window.localAsk = function (t) { setTimeout(function () { manejar(t); }, 180); };
-  window.CSNConversacion = { manejar: manejar, diario: diario };
+  window.CSNConversacion = { manejar: manejar, diario: diario, perfil: perfilLocal, quest: quest, diagnosticoRed: diagnosticoRed };
   setTimeout(function () { try { diario(); } catch (e) {} }, 900);
 })();
