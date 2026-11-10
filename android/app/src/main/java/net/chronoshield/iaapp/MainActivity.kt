@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
 
     private val locationPermissionCode = 7401
     private val wireguardDownloadPermissionCode = 7402
-    private val wireguardApkUrl = "https://download.wireguard.com/android-client/com.wireguard.android-1.0.20260315.apk"
     private val locationManager by lazy {
         getSystemService(LOCATION_SERVICE) as LocationManager
     }
@@ -353,20 +352,6 @@ class MainActivity : AppCompatActivity() {
 
         @JavascriptInterface
         fun downloadWireGuard(): String {
-            if (
-                Build.VERSION.SDK_INT <= Build.VERSION_CODES.P &&
-                checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED
-            ) {
-                runOnUiThread {
-                    requestPermissions(
-                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                        wireguardDownloadPermissionCode
-                    )
-                }
-                return "Android solicitará permiso para guardar el APK."
-            }
-
             return enqueueWireGuardDownload()
         }
 
@@ -392,47 +377,18 @@ class MainActivity : AppCompatActivity() {
         fun openPlayStore(): String {
             runOnUiThread {
                 openExternalUrl(
-                    "https://play.google.com/store/apps/details?id=com.wireguard.android"
+                    "https://www.wireguard.com/install/"
                 )
             }
-            return "Abriendo Google Play."
+            return "Abriendo la página oficial de instalación de WireGuard."
         }
     }
 
     private fun enqueueWireGuardDownload(): String {
-        return try {
-            val filename =
-                "WireGuard-Android-1.0.20260315-" +
-                System.currentTimeMillis() + ".apk"
-
-            val request = DownloadManager.Request(
-                Uri.parse(wireguardApkUrl)
-            )
-                .setTitle("WireGuard oficial para Android")
-                .setDescription(
-                    "Descarga desde el servidor oficial de WireGuard"
-                )
-                .setMimeType(
-                    "application/vnd.android.package-archive"
-                )
-                .setNotificationVisibility(
-                    DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED
-                )
-                .setDestinationInExternalPublicDir(
-                    Environment.DIRECTORY_DOWNLOADS,
-                    filename
-                )
-                .setAllowedOverRoaming(false)
-
-            val manager =
-                getSystemService(DOWNLOAD_SERVICE) as DownloadManager
-
-            val downloadId = manager.enqueue(request)
-
-            "Descarga iniciada. ID: $downloadId. Consulta su progreso en Descargas."
-        } catch (e: Exception) {
-            "No se pudo iniciar la descarga: ${e.message ?: "error desconocido"}"
+        runOnUiThread {
+            openExternalUrl("https://f-droid.org/packages/com.wireguard.android/")
         }
+        return "Abriendo la página de WireGuard en F-Droid."
     }
 
     private fun openExternalUrl(url: String): Boolean {

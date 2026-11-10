@@ -188,5 +188,5 @@ Biblioteca con problemas:
 - entrada 91 (privacy_laws_en): respuesta muy larga (1014)
 - Clave repetida 'que es un firewall' en firewall y glosario
 - Clave repetida 'seguridad para mi negocio' en proteger_empresa y proteger_negocio
-- Clave repetida 'verificacion en dos pasos' en contrasenas y dos_pasos
-- Prueba fallida: 'verificacion en dos pasos' esperaba dos_pasos, dio contrasenas
+- Clave repetida 'como activar el doble factor' en contrasenas y dos_pasos
+- Prueba fallida: 'como activar el doble factor' esperaba dos_pasos, dio contrasenas
