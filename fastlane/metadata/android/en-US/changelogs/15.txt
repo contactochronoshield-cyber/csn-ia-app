@@ -1,0 +1,2 @@
+- Settings panel fixed
+- The assistant learns your name and chats about cybersecurity, networks, internet and studies
