@@ -29,6 +29,27 @@ import java.io.PrintWriter
 import java.io.StringWriter
 
 class MainActivity : AppCompatActivity() {
+    // --- CSN: puente de versión y apertura de enlaces para el aviso de actualización ---
+    class CsnVersionBridge(private val act: android.app.Activity, private val v: String) {
+        @android.webkit.JavascriptInterface
+        fun version(): String = v
+
+        @android.webkit.JavascriptInterface
+        fun abrir(url: String) {
+            if (url.startsWith("https://github.com/contactochronoshield-cyber/csn-ia-app/")) {
+                act.runOnUiThread {
+                    try {
+                        act.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url)))
+                    } catch (e: Exception) { }
+                }
+            }
+        }
+    }
+
+    private fun csnVersionName(): String = try {
+        packageManager.getPackageInfo(packageName, 0).versionName ?: "0"
+    } catch (e: Exception) { "0" }
+
     // --- CSN: selector de archivos para el botón + (analizar PDF) ---
     private var csnFileCallback: android.webkit.ValueCallback<Array<android.net.Uri>>? = null
     private val csnFileRequest = 7421
@@ -183,6 +204,7 @@ class MainActivity : AppCompatActivity() {
             )
 
             setContentView(browser)
+            browser.addJavascriptInterface(CsnVersionBridge(this@MainActivity, csnVersionName()), "CSNVersion")
             browser.webChromeClient = csnChromeClient
             browser.loadUrl("file:///android_asset/chat.html")
 
