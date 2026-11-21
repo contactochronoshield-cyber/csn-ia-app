@@ -29,6 +29,43 @@ import java.io.PrintWriter
 import java.io.StringWriter
 
 class MainActivity : AppCompatActivity() {
+    // --- CSN: selector de archivos para el botón + (analizar PDF) ---
+    private var csnFileCallback: android.webkit.ValueCallback<Array<android.net.Uri>>? = null
+    private val csnFileRequest = 7421
+
+    private val csnChromeClient = object : android.webkit.WebChromeClient() {
+        override fun onShowFileChooser(
+            webView: android.webkit.WebView?,
+            filePathCallback: android.webkit.ValueCallback<Array<android.net.Uri>>?,
+            fileChooserParams: android.webkit.WebChromeClient.FileChooserParams?
+        ): Boolean {
+            csnFileCallback?.onReceiveValue(null)
+            csnFileCallback = filePathCallback
+            return try {
+                val i = android.content.Intent(android.content.Intent.ACTION_GET_CONTENT)
+                i.addCategory(android.content.Intent.CATEGORY_OPENABLE)
+                i.type = "application/pdf"
+                startActivityForResult(i, csnFileRequest)
+                true
+            } catch (e: Exception) {
+                csnFileCallback?.onReceiveValue(null)
+                csnFileCallback = null
+                false
+            }
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: android.content.Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == csnFileRequest) {
+            val uri = data?.data
+            val r: Array<android.net.Uri>? = if (resultCode == RESULT_OK && uri != null) arrayOf(uri) else null
+            csnFileCallback?.onReceiveValue(r)
+            csnFileCallback = null
+        }
+    }
+
 
     private var networkBrainBridge: ChronoNetworkBrainBridge? = null
     private var webView: WebView? = null
@@ -146,6 +183,7 @@ class MainActivity : AppCompatActivity() {
             )
 
             setContentView(browser)
+            browser.webChromeClient = csnChromeClient
             browser.loadUrl("file:///android_asset/chat.html")
 
         } catch (e: Throwable) {
