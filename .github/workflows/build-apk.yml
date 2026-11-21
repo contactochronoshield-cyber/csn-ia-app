@@ -48,24 +48,48 @@ jobs:
       - name: Validar biblioteca
         run: node scripts/validar_biblioteca.js
 
+      - name: Preparar llave de firma
+        env:
+          CSN_KEYSTORE_B64: ${{ secrets.CSN_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$CSN_KEYSTORE_B64" ]; then
+            echo "$CSN_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/csn-release.jks"
+            echo "CSN_KEYSTORE_PATH=$RUNNER_TEMP/csn-release.jks" >> "$GITHUB_ENV"
+            echo "CSN_SIGNED=1" >> "$GITHUB_ENV"
+          fi
+
       - name: Compilar APK
         working-directory: android
-        run: gradle --no-daemon --max-workers=2 clean assembleDebug --stacktrace
+        env:
+          CSN_KEYSTORE_PASSWORD: ${{ secrets.CSN_KEYSTORE_PASSWORD }}
+          CSN_KEY_ALIAS: ${{ secrets.CSN_KEY_ALIAS }}
+          CSN_KEY_PASSWORD: ${{ secrets.CSN_KEY_PASSWORD }}
+        run: |
+          if [ "$CSN_SIGNED" = "1" ]; then
+            gradle --no-daemon --max-workers=2 clean assembleRelease --stacktrace
+          else
+            gradle --no-daemon --max-workers=2 clean assembleDebug --stacktrace
+          fi
 
       - name: Generar SHA-256
         run: |
-          APK="android/app/build/outputs/apk/debug/app-debug.apk"
+          if [ "$CSN_SIGNED" = "1" ]; then
+            APK="android/app/build/outputs/apk/release/app-release.apk"
+          else
+            APK="android/app/build/outputs/apk/debug/app-debug.apk"
+          fi
+          NAME="${GITHUB_REF_NAME//\//-}"
           test -s "$APK"
           mkdir -p guardian-artifact
-          cp "$APK" "guardian-artifact/CSN-IA-${GITHUB_REF_NAME}.apk"
+          cp "$APK" "guardian-artifact/CSN-IA-${NAME}.apk"
           cd guardian-artifact
-          sha256sum "CSN-IA-${GITHUB_REF_NAME}.apk" > SHA256SUMS.txt
+          sha256sum "CSN-IA-${NAME}.apk" > SHA256SUMS.txt
           cat SHA256SUMS.txt
 
       - name: Subir artefacto
         uses: actions/upload-artifact@v4
         with:
-          name: csn-ia-${{ github.ref_name }}
+          name: csn-ia-${{ contains(github.ref_name, '/') && github.run_id || github.ref_name }}
           path: guardian-artifact/
           if-no-files-found: error
           retention-days: 30
@@ -88,7 +112,7 @@ jobs:
       - name: Descargar APK
         uses: actions/download-artifact@v4
         with:
-          name: csn-ia-${{ github.ref_name }}
+          name: csn-ia-${{ contains(github.ref_name, '/') && github.run_id || github.ref_name }}
           path: guardian-artifact
 
       - name: Crear atestación
@@ -109,7 +133,7 @@ jobs:
       - name: Descargar APK y checksum
         uses: actions/download-artifact@v4
         with:
-          name: csn-ia-${{ github.ref_name }}
+          name: csn-ia-${{ contains(github.ref_name, '/') && github.run_id || github.ref_name }}
           path: release-assets
 
       - name: Crear Release oficial

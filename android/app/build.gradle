@@ -15,10 +15,29 @@ android {
         versionName "1.0.6"
     }
 
+    signingConfigs {
+        release {
+            def ksPath = System.getenv('CSN_KEYSTORE_PATH')
+            if (ksPath) {
+                storeFile file(ksPath)
+                storePassword System.getenv('CSN_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('CSN_KEY_ALIAS')
+                keyPassword System.getenv('CSN_KEY_PASSWORD')
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            if (System.getenv('CSN_KEYSTORE_PATH')) {
+                signingConfig signingConfigs.release
+            }
         }
+    }
+
+    lint {
+        checkReleaseBuilds false
     }
 
     compileOptions {

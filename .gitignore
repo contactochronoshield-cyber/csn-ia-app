@@ -54,3 +54,5 @@ android/app/build/
 auditoria*.txt
 android/.kotlin/
 android/build/
+*.jks
+*.keystore
