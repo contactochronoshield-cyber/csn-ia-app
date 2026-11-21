@@ -132,3 +132,33 @@ async def reload_docs():
 @app.get("/health")
 async def health():
     return {"status": "ok", "model": OLLAMA_MODEL, "chunks_indexed": len(index.chunks)}
+
+
+# --- Análisis estático de PDF (CSN) ---
+from fastapi import UploadFile, File, HTTPException
+from pdf_analisis import analizar_pdf, resumen_para_ia, MAX_BYTES
+
+
+@app.post("/analizar-pdf")
+async def analizar_pdf_endpoint(archivo: UploadFile = File(...)):
+    data = await archivo.read(MAX_BYTES + 1)
+    if len(data) > MAX_BYTES:
+        raise HTTPException(413, "Archivo demasiado grande")
+    resultado = analizar_pdf(data)
+    resultado["resumen_para_ia"] = resumen_para_ia(resultado)
+    return resultado
+
+
+# --- Análisis estático de PDF (CSN) ---
+from fastapi import UploadFile, File, HTTPException
+from pdf_analisis import analizar_pdf, resumen_para_ia, MAX_BYTES
+
+
+@app.post("/analizar-pdf")
+async def analizar_pdf_endpoint(archivo: UploadFile = File(...)):
+    data = await archivo.read(MAX_BYTES + 1)
+    if len(data) > MAX_BYTES:
+        raise HTTPException(413, "Archivo demasiado grande")
+    resultado = analizar_pdf(data)
+    resultado["resumen_para_ia"] = resumen_para_ia(resultado)
+    return resultado
