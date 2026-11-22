@@ -1,0 +1,62 @@
+name: Llama Android - binarios de prueba
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/biblioteca-ia]
+    paths: ['.github/workflows/llama-android.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variante: generico
+            arch: armv8-a
+          - variante: dotprod
+            arch: armv8.2-a+dotprod
+    steps:
+      - name: Clonar llama.cpp
+        run: |
+          git clone --depth 1 https://github.com/ggml-org/llama.cpp
+          echo "LLAMA_COMMIT=$(git -C llama.cpp rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Compilar (NDK, arm64, estatico)
+        run: |
+          NDK="${ANDROID_NDK_HOME:-$ANDROID_NDK_LATEST_HOME}"
+          cmake -S llama.cpp -B build \
+            -DCMAKE_TOOLCHAIN_FILE="$NDK/build/cmake/android.toolchain.cmake" \
+            -DANDROID_ABI=arm64-v8a \
+            -DANDROID_PLATFORM=android-28 \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DBUILD_SHARED_LIBS=OFF \
+            -DGGML_OPENMP=OFF \
+            -DGGML_LLAMAFILE=OFF \
+            -DLLAMA_CURL=OFF \
+            -DCMAKE_C_FLAGS="-march=${{ matrix.arch }}" \
+            -DCMAKE_CXX_FLAGS="-march=${{ matrix.arch }}"
+          cmake --build build --config Release -j4 --target llama-cli llama-bench
+
+      - name: Empaquetar
+        run: |
+          NDK="${ANDROID_NDK_HOME:-$ANDROID_NDK_LATEST_HOME}"
+          STRIP="$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip"
+          mkdir out
+          for b in llama-cli llama-bench; do
+            cp "build/bin/$b" out/
+            "$STRIP" "out/$b"
+          done
+          echo "llama.cpp $LLAMA_COMMIT arch=${{ matrix.arch }}" > out/VERSION.txt
+          (cd out && sha256sum llama-cli llama-bench > SHA256SUMS.txt)
+
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: llama-android-${{ matrix.variante }}
+          path: out/
+          if-no-files-found: error
