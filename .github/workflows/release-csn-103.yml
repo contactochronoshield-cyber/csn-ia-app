@@ -17,7 +17,7 @@ jobs:
           ref: feature/biblioteca-ia
 
       - name: Java 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: '17'
