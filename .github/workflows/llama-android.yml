@@ -55,7 +55,7 @@ jobs:
           (cd out && sha256sum llama-cli llama-bench > SHA256SUMS.txt)
 
       - name: Subir artefacto
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: llama-android-${{ matrix.variante }}
           path: out/
