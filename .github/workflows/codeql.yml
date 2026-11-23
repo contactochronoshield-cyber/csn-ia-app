@@ -51,7 +51,7 @@ jobs:
 
       - name: Configurar Gradle 8.5
         if: matrix.language == 'java-kotlin'
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v6
         with:
           gradle-version: '8.5'
 
