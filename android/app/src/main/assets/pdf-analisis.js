@@ -230,7 +230,7 @@
     var b = el('button', 'Explícamelo', 'margin-top:10px;padding:8px 14px;border-radius:10px;border:1px solid var(--line,#2a3444);background:transparent;color:inherit');
     b.onclick = function () {
       if (typeof window.send === 'function') {
-        q.value = 'Explícame en lenguaje simple este análisis de un PDF. ' + resumenSeguro(r);
+        q.value = 'Explícame el resultado: riesgo ' + r.riesgo + ' de mi PDF';
         window.send();
       }
     };
