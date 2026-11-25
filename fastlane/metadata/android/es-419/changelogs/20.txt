@@ -1,0 +1,3 @@
+Nuevo: biblioteca ampliada con ciberseguridad, grupos de amenazas, Tor y privacidad, Bogotá, Estonia, GitHub, F-Droid y código abierto.
+Nuevo: comparativas con otras soluciones y guía de Sentinel.
+Mejoras en cómo la IA encuentra las respuestas.
