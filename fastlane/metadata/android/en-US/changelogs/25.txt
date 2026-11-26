@@ -1,0 +1,1 @@
+Version 1.6: expanded library, PDF analysis, programming lab and stability improvements.

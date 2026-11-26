@@ -14,14 +14,14 @@ RepoType: git
 Repo: https://github.com/contactochronoshield-cyber/csn-ia-app.git
 
 Builds:
-  - versionName: 1.4
-    versionCode: 24
-    commit: v1.4
+  - versionName: 1.6
+    versionCode: 25
+    commit: v1.6
     subdir: android/app
     gradle:
       - yes
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.4
-CurrentVersionCode: 24
+CurrentVersion: 1.6
+CurrentVersionCode: 25

@@ -15,9 +15,10 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.5'
       - name: Compilar
-        working-directory: android
-        run: chmod +x gradlew && ./gradlew --no-daemon assembleRelease bundleRelease
+        run: gradle --no-daemon -p android assembleRelease bundleRelease
       - name: Firmar (si existen los secretos)
         env:
           KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}

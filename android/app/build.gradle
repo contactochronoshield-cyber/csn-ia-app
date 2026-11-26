@@ -5,14 +5,14 @@ plugins {
 
 android {
     namespace 'net.chronoshield.iaapp'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "net.chronoshield.iaapp"
         minSdk 24
-        targetSdk 34
-        versionCode 24
-        versionName "1.4"
+        targetSdk 35
+        versionCode 25
+        versionName "1.6"
     }
 
     signingConfigs {

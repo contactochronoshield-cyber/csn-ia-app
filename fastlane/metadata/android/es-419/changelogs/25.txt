@@ -1,0 +1,1 @@
+Versión 1.6: biblioteca ampliada, análisis de PDF, laboratorio para aprender y mejoras de estabilidad.
