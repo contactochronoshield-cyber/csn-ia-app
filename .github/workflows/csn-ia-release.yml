@@ -28,14 +28,9 @@ jobs:
         with:
           accept-android-sdk-licenses: true
           packages: platform-tools
-      - name: Instalar Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '9.9'
-
       - name: Compilar CSN IA
         working-directory: android
-        run: gradle --no-daemon assembleDebug
+        run: bash ./gradlew --no-daemon assembleDebug
 
       - name: Preparar APK
         run: |
