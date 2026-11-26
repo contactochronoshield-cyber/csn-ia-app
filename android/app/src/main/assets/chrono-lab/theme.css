@@ -1,0 +1,190 @@
+:root {
+  --csn-primary: #2563EB;
+  --csn-secondary: #0EA5E9;
+  --csn-background: #F5F8FC;
+}
+
+body {
+  background: var(--csn-background);
+}
+
+button,
+.primary,
+.send-button,
+.tab.active {
+  background: var(--csn-primary);
+}
+
+a {
+  color: var(--csn-primary);
+}
+
+.csn-secondary {
+  color: var(--csn-secondary);
+}
+
+/* ================================
+   CHRONO LAB SYSTEM SELECTOR
+================================ */
+
+.chrono-panel {
+  margin: 12px;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--csn-background);
+  border: 1px solid rgba(100,116,139,.20);
+}
+
+.chrono-panel-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.chrono-panel-title span {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.chrono-panel-title small {
+  opacity: .65;
+}
+
+.chrono-system-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+}
+
+.chrono-system-grid button {
+  min-height: 70px;
+  border: 1px solid rgba(100,116,139,.25);
+  border-radius: 15px;
+  background: white;
+  color: inherit;
+  padding: 12px;
+  text-align: left;
+}
+
+.chrono-system-grid button strong,
+.chrono-system-grid button small {
+  display: block;
+}
+
+.chrono-system-grid button small {
+  opacity: .65;
+  margin-top: 4px;
+}
+
+.chrono-system-grid button:active {
+  transform: scale(.98);
+}
+
+.chrono-system-selected {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(37,99,235,.07);
+}
+
+.chrono-system-selected strong {
+  display: block;
+  font-size: 17px;
+}
+
+.chrono-system-selected span {
+  display: block;
+  opacity: .65;
+  margin: 4px 0 10px;
+}
+
+.chrono-system-selected code {
+  display: block;
+  padding: 8px;
+  border-radius: 8px;
+  background: #07101f;
+  color: #7CFFB2;
+}
+
+.chrono-command-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.chrono-command-list span {
+  font-family: monospace;
+  padding: 5px 8px;
+  border-radius: 7px;
+  background: rgba(100,116,139,.10);
+  opacity: 1;
+}
+
+/* ================================
+   PREFERENCES
+================================ */
+
+#chrono-preferences {
+  position: fixed;
+  right: 16px;
+  bottom: 90px;
+  z-index: 99999;
+}
+
+#chrono-preferences-button {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--csn-primary);
+  color: white;
+  font-size: 21px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+
+#chrono-preferences-panel {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 58px;
+  width: 250px;
+  padding: 16px;
+  border-radius: 16px;
+  background: white;
+  color: #111827;
+  box-shadow: 0 12px 40px rgba(0,0,0,.25);
+}
+
+#chrono-preferences-panel.open {
+  display: block;
+}
+
+#chrono-preferences-panel h3 {
+  margin-top: 0;
+}
+
+#chrono-preferences-panel label {
+  display: block;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#chrono-preferences-panel select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 9px;
+  border: 1px solid #CBD5E1;
+  background: white;
+}
+
+@media (max-width: 480px) {
+
+  .chrono-system-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
