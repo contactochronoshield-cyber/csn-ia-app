@@ -24,8 +24,10 @@ jobs:
           java-version: '21'
 
       - name: Configurar Android SDK
-        uses: android-actions/setup-android@v3
-
+        uses: android-actions/setup-android@v4
+        with:
+          accept-android-sdk-licenses: true
+          packages: platform-tools
       - name: Instalar Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
