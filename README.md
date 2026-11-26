@@ -305,3 +305,9 @@ Incluye:
 Esta primera versión utiliza ejercicios controlados y simulados. No ejecuta comandos arbitrarios del sistema Android ni sustituye un intérprete completo de Python o JavaScript.
 
 El objetivo es ampliar progresivamente el laboratorio con prácticas aisladas, contenidos offline, seguimiento del aprendizaje y simulaciones técnicas autorizadas.
+
+## Última versión
+
+**CSN IA v1.6.1**
+
+Descarga el APK desde [GitHub Releases](https://github.com/contactochronoshield-cyber/csn-ia-app/releases/latest).

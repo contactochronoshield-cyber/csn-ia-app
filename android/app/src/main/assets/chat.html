@@ -130,14 +130,10 @@ body.csn-light #sr .csn-action {
 #sr #sp .csn-primary{background:#2358e8!important;color:#fff!important;border-color:#2358e8!important}
 #sr #sp input[type=text]{background:#f3f7fc!important;color:#0b2342!important;border:1px solid #b9d4f5!important;border-radius:10px!important;padding:10px!important;width:100%!important;box-sizing:border-box!important}
 </style>
-<link rel="stylesheet" href="chrono-lab.css">
+
 </head><body>
-<header><svg viewBox="0 0 120 140" width="28" height="33" aria-label="CSN"><path d="M60 6 108 24v44c0 30-22 54-48 66C34 122 12 98 12 68V24z" fill="#0B2342" stroke="#19B6FF" stroke-width="6" stroke-linejoin="round"/><path d="M60 66C68 50 90 50 90 66C90 82 68 82 60 66C52 50 30 50 30 66C30 82 52 82 60 66" fill="none" stroke="#19B6FF" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="66" r="9" fill="#17B26A"/></svg><b>CSN IA</b><span class="sp"></span><span class="chip"><i></i>Red protegida</span><button class="ib csn-settings-trigger" aria-label="Configuración" onclick="openCSNSettings()">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm8.2 3.8c0-.5-.1-1-.2-1.5l1.5-1.1-1.8-3.1-1.8.7a8.1 8.1 0 0 0-2.5-1.5L15.1 3h-3.6l-.3 2.5a8.1 8.1 0 0 0-2.5 1.5l-1.8-.7-1.8 3.1 1.5 1.1a7.8 7.8 0 0 0 0 3L5.1 14.6l1.8 3.1 1.8-.7a8.1 8.1 0 0 0 2.5 1.5l.3 2.5h3.6l.3-2.5a8.1 8.1 0 0 0 2.5-1.5l1.8.7 1.8-3.1-1.5-1.1c.1-.5.2-1 .2-1.5Z"/>
-</svg>
-</button></header>
-<nav><button class="on" id="n-chat" onclick="tab('chat')">Chat</button><button id="n-red" onclick="tab('red')">Mi red</button><button id="n-web" onclick="tab('web')">Buscar</button><button id="n-guide" onclick="tab('guide')">Guía</button><button id="n-nodo" onclick="tab('nodo')">Nodo</button><button id="n-pro" onclick="tab('pro')">Pro</button><button id="n-lab" onclick="tab('lab')">LAB</button></nav>
+<header><svg viewBox="0 0 120 140" width="28" height="33" aria-label="CSN"><path d="M60 6 108 24v44c0 30-22 54-48 66C34 122 12 98 12 68V24z" fill="#0B2342" stroke="#19B6FF" stroke-width="6" stroke-linejoin="round"/><path d="M60 66C68 50 90 50 90 66C90 82 68 82 60 66C52 50 30 50 30 66C30 82 52 82 60 66" fill="none" stroke="#19B6FF" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="66" r="9" fill="#17B26A"/></svg><b>CSN IA</b><span class="sp"></span><span class="chip"><i></i>Red protegida</span></header>
+<nav><button class="on" id="n-chat" onclick="tab('chat')">Chat</button><button id="n-red" onclick="tab('red')">Mi red</button><button id="n-web" onclick="tab('web')">Buscar</button><button id="n-guide" onclick="tab('guide')">Guía</button><button id="n-nodo" onclick="tab('nodo')">Nodo</button><button id="n-pro" onclick="tab('pro')">Pro</button></nav>
 <div class="tab on" id="t-chat"><div id="msgs"></div><div class="chips" id="qc"></div><div id="bar"><input id="q" aria-label="Escribe tu pregunta" placeholder="Escribe tu pregunta"><button aria-label="Enviar" onclick="send()">&#10148;</button></div></div>
 <div class="tab" id="t-red"><div class="pad" id="wz"></div></div>
 <div class="tab" id="t-guide">
@@ -196,77 +192,6 @@ Consultar sobre Chrono Offline Guide
 </button>
 </div>
 </div>
-<div class="tab" id="t-lab">
- <div class="lab-wrap">
-  <div class="lab-title">CHRONO LAB</div>
-  <p class="lab-sub">Laboratorio tecnológico de Chrono Shield Networks</p>
-  <div class="lab-card">
-   <strong>Centro de aprendizaje</strong>
-   <p class="lab-sub">Practica programación, Linux, redes y ciberseguridad en ejercicios controlados.</p>
-   <span class="lab-warning">Entorno educativo simulado. No ejecuta comandos del sistema.</span>
-  </div>
-  <div class="lab-menu">
-   <button class="active" onclick="labShow('terminal',this)">Terminal</button>
-   <button onclick="labShow('python',this)">Python</button>
-   <button onclick="labShow('javascript',this)">JavaScript</button>
-   <button onclick="labShow('network',this)">Redes</button>
-   <button onclick="labShow('security',this)">Ciberseguridad</button>
-  </div>
-  <section class="lab-panel active" id="lab-terminal">
-   <h3>Terminal educativa</h3>
-   <div class="lab-terminal">
-    <div id="lab-output">CHRONO LAB [versión educativa]
-Escribe help para ver los comandos disponibles.
-$ </div>
-    <div class="lab-input">
-     <input id="lab-command" placeholder="Escribe help..." autocomplete="off">
-     <button onclick="labCommand()">Ejecutar</button>
-    </div>
-   </div>
-  </section>
-  <section class="lab-panel" id="lab-python">
-   <h3>Python: primeros pasos</h3>
-   <div class="lab-card">Ejercicio: imprime un mensaje y aprende cómo funciona print().</div>
-   <textarea class="lab-code" id="lab-python-code">print("Hola desde CHRONO LAB")
-print(2 + 3)</textarea>
-   <button class="lab-action" onclick="labPython()">Ejecutar ejemplo</button>
-   <div class="lab-result" id="lab-python-result">Resultado de la práctica.</div>
-   <p class="lab-warning">Intérprete educativo limitado; no ejecuta Python arbitrario.</p>
-  </section>
-  <section class="lab-panel" id="lab-javascript">
-   <h3>JavaScript: fundamentos</h3>
-   <textarea class="lab-code" id="lab-js-code">let empresa = "Chrono Shield Networks";
-let resultado = 2 + 3;
-console.log(empresa);
-console.log(resultado);</textarea>
-   <button class="lab-action" onclick="labJavaScript()">Ejecutar ejemplo</button>
-   <div class="lab-result" id="lab-js-result">Resultado de la práctica.</div>
-  </section>
-  <section class="lab-panel" id="lab-network">
-   <h3>Laboratorio de redes</h3>
-   <div class="lab-card">
-    <strong>Práctica: conceptos de red</strong>
-    <p class="lab-sub">IP, DNS, gateway, máscara de red y conexiones privadas.</p>
-    <button class="lab-action" onclick="labLesson('ip')">Dirección IP</button>
-    <button class="lab-action" onclick="labLesson('dns')">DNS</button>
-    <button class="lab-action" onclick="labLesson('vpn')">VPN</button>
-    <div class="lab-result" id="lab-network-result">Selecciona una práctica.</div>
-   </div>
-  </section>
-  <section class="lab-panel" id="lab-security">
-   <h3>Ciberseguridad defensiva</h3>
-   <div class="lab-card">
-    <strong>Práctica: reconocer amenazas</strong>
-    <p class="lab-sub">Aprende a identificar phishing, enlaces sospechosos y redes Wi-Fi falsas.</p>
-    <button class="lab-action" onclick="labLesson('phishing')">Phishing</button>
-    <button class="lab-action" onclick="labLesson('wifi')">Wi-Fi falsa</button>
-    <button class="lab-action" onclick="labLesson('password')">Contraseñas</button>
-    <div class="lab-result" id="lab-security-result">Selecciona una práctica.</div>
-   </div>
-  </section>
- </div>
-</div>
-
 <div class="tab" id="t-web"><div id="web-bar" style="border-top:0;border-bottom:1px solid var(--line)"><input id="wq" aria-label="Buscar en internet" placeholder="Buscar en internet"><button aria-label="Buscar" onclick="web()">&#8594;</button></div><iframe id="bf" src="about:blank"></iframe></div>
 <div id="sr" aria-hidden="true" onclick="if(event.target===this)closeCSNSettings()">
 <div id="sp" class="csn-settings">
@@ -557,17 +482,67 @@ function localAsk(t){
  },180);
 }
 
-function ask(t){
+
+var csnChatHistory = window.csnChatHistory || [];
+window.csnChatHistory = csnChatHistory;
+
+function ask(t) {
  add(t,'usr');
- if(window.ChronoNetworkBrain && typeof window.ChronoNetworkBrain.analyze==='function'){
-  var id='csn_'+(++csnRequestCounter)+'_'+Date.now();
-  csnPendingRequests[id] = t;
-  add('Consultando Chrono Network Brain…','bot');
-  window.ChronoNetworkBrain.analyze(t,id);
+
+ csnChatHistory.push({role:'user',content:String(t)});
+ if(csnChatHistory.length > 24){
+  csnChatHistory.splice(0,csnChatHistory.length-24);
+ }
+
+ if(window.ChronoNetworkBrain &&
+    typeof window.ChronoNetworkBrain.chat === 'function'){
+  var id='csn_chat_'+Date.now()+'_'+Math.floor(Math.random()*100000);
+  csnPendingRequests[id]=t;
+  add('CSN IA está pensando…','bot');
+
+  try{
+   window.ChronoNetworkBrain.chat(
+    String(t),
+    JSON.stringify(csnChatHistory.slice(-12)),
+    id
+   );
+  }catch(e){
+   csnLocalFallback(t);
+  }
  }else{
   localAsk(t);
  }
 }
+
+window.onChronoChatResult=function(id,success,value){
+ var question=csnPendingRequests[id]||'';
+ delete csnPendingRequests[id];
+
+ if(!success){
+  csnLocalFallback(question);
+  return;
+ }
+
+ try{
+  var data=JSON.parse(value);
+  var answer=String(data.response||'').trim();
+
+  if(!answer){
+   csnLocalFallback(question);
+   return;
+  }
+
+  csnChatHistory.push({role:'assistant',content:answer});
+  if(csnChatHistory.length>24){
+   csnChatHistory.splice(0,csnChatHistory.length-24);
+  }
+
+  add(answer,'bot');
+ }catch(e){
+  csnLocalFallback(question);
+ }
+};
+
 
 function csnLocalFallback(question) {
  add('Chrono Network Brain no está disponible. Continúo con el motor local.', 'bot');
@@ -609,7 +584,7 @@ window.onChronoNetworkBrainResult=function(id,success,value){
 
 function send(){var t=Q.value.trim();if(!t)return;Q.value='';ask(t)}
 Q.addEventListener('keypress',function(e){if(e.key==='Enter')send()});
-function tab(n){['chat','red','nodo','pro','web','guide','lab'].forEach(function(x){document.getElementById('t-'+x).classList.toggle('on',x===n);document.getElementById('n-'+x).classList.toggle('on',x===n)})}
+function tab(n){['chat','red','nodo','pro','web','guide'].forEach(function(x){document.getElementById('t-'+x).classList.toggle('on',x===n);document.getElementById('n-'+x).classList.toggle('on',x===n)})}
 function web(){var q=document.getElementById('wq').value.trim();if(q)document.getElementById('bf').src='https://lite.duckduckgo.com/lite/?q='+encodeURIComponent(q)}
 function clr(){M.innerHTML='';add('Conversación borrada. ¿En qué te ayudo?','bot');document.getElementById('sr').style.display='none'}
 var QC=['Qué es una red privada','Conectar mi computador','Nuestros repos','Precios'];
@@ -730,11 +705,13 @@ window.onChronoLocationResult = function (raw) {
 </script>
 <script src="pdf-analisis.js"></script>
 <script src="csn-update.js"></script>
-<script src="chrono-lab.js"></script>
-<script src="chrono-lab/csn-lab-final.js"></script>
+
+
 <script src="csn-global-ui.js"></script>
 <script src="csn-ui-final.js"></script>
 <script src="csn-global-ui.js"></script>
+<style id="csn-sin-lab-tab">.csn-settings-trigger{display:none!important}</style>
+<script id="csn-sin-lab-tab-js">(function(){function q(){var e=document.getElementById("n-lab");if(e){var t=e.closest("button,a,li,[role=tab],[data-v],[data-tab]")||e;t.style.display="none";}}document.addEventListener("DOMContentLoaded",q);q();new MutationObserver(q).observe(document.documentElement,{childList:true,subtree:true});})();</script>
 </body></html>
 <style id="csn-ui-final-fix">
 /* CSN IA — FINAL UI FIX */

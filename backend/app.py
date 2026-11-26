@@ -100,12 +100,22 @@ async def chat(req: ChatRequest):
     context_chunks = index.retrieve(req.message)
     context_block = "\n\n".join(context_chunks) if context_chunks else "(sin contexto específico encontrado)"
 
+    # Historial conversacional limitado y validado.
+    history_lines = []
+    for item in (req.history or [])[-12:]:
+        role = str(item.get("role", ""))
+        content = str(item.get("content", "")).strip()[:3000]
+        if role in ("user", "assistant") and content:
+            label = "Usuario" if role == "user" else "CSN IA"
+            history_lines.append(f"{label}: {content}")
+    history_block = "\\n".join(history_lines) if history_lines else "(inicio de conversación)"
+
     prompt = f"""{SYSTEM_PROMPT}
 
 Contexto de documentación de CSN:
 {context_block}
 
-Pregunta del usuario: {req.message}
+Historial reciente:\n{history_block}\n\nPregunta del usuario: {req.message}
 
 Respuesta:"""
 

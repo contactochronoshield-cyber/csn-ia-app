@@ -1,10 +1,16 @@
 package net.chronoshield.iaapp.bridge
+import kotlin.concurrent.thread
+import java.net.URL
+import java.net.HttpURLConnection
+import org.json.JSONArray
 
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import net.chronoshield.iaapp.ai.ChronoNetworkBrainClient
 import net.chronoshield.iaapp.ai.ChronoSessionStore
-import org.json.JSONObject
+impor
+    private val csnChatBaseUrl = baseUrl.trim().trimEnd('/')
+t org.json.JSONObject
 
 class ChronoNetworkBrainBridge(
     private val webView: WebView,
@@ -160,4 +166,88 @@ class ChronoNetworkBrainBridge(
     fun shutdown() {
         client.shutdown()
     }
+
+    /**
+     * Conversación natural con el backend CSN IA.
+     * El historial se limita y se envía únicamente al servidor configurado.
+     */
+    @JavascriptInterface
+    fun chat(message: String, historyJson: String, callbackId: String) {
+        thread {
+            var connection: HttpURLConnection? = null
+            try {
+                if (csnChatBaseUrl.isBlank()) {
+                    throw IllegalStateException("Backend CSN IA no configurado")
+                }
+
+                val url = URL("$"+"csnChatBaseUrl/chat")
+                connection = url.openConnection() as HttpURLConnection
+                connection.requestMethod = "POST"
+                connection.connectTimeout = 15000
+                connection.readTimeout = 60000
+                connection.doOutput = true
+                connection.setRequestProperty("Content-Type", "application/json; charset=utf-8")
+                connection.setRequestProperty("Accept", "application/json")
+
+                val history = try {
+                    JSONArray(historyJson)
+                } catch (_: Exception) {
+                    JSONArray()
+                }
+
+                val payload = JSONObject()
+                    .put("message", message.take(4000))
+                    .put("history", history)
+
+                connection.outputStream.use {
+                    it.write(payload.toString().toByteArray(Charsets.UTF_8))
+                }
+
+                val code = connection.responseCode
+                val stream = if (code in 200..299) {
+                    connection.inputStream
+                } else {
+                    connection.errorStream
+                }
+
+                val raw = stream?.bufferedReader(Charsets.UTF_8)?.use { it.readText() } ?: ""
+                if (code !in 200..299) {
+                    throw IllegalStateException("Backend HTTP $"+ "code")
+                }
+
+                val parsed = JSONObject(raw)
+                val answer = parsed.optString("response", "").trim()
+                if (answer.isBlank()) {
+                    throw IllegalStateException("El backend devolvió una respuesta vacía")
+                }
+
+                val envelope = JSONObject()
+                    .put("response", answer)
+                    .put("sources_used", parsed.optJSONArray("sources_used") ?: JSONArray())
+
+                val quotedId = JSONObject.quote(callbackId)
+                val quotedValue = JSONObject.quote(envelope.toString())
+                val script = "window.onChronoChatResult && window.onChronoChatResult($"+ "quotedId,true,$"+ "quotedValue);"
+
+                webView.post {
+                    webView.evaluateJavascript(script, null)
+                }
+            } catch (e: Exception) {
+                val error = JSONObject()
+                    .put("error", e.message ?: "Error de conexión")
+                    .toString()
+
+                val quotedId = JSONObject.quote(callbackId)
+                val quotedValue = JSONObject.quote(error)
+                val script = "window.onChronoChatResult && window.onChronoChatResult($"+ "quotedId,false,$"+ "quotedValue);"
+
+                webView.post {
+                    webView.evaluateJavascript(script, null)
+                }
+            } finally {
+                connection?.disconnect()
+            }
+        }
+    }
+
 }
