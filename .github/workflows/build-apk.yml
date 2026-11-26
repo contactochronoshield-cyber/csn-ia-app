@@ -123,7 +123,9 @@ jobs:
   release:
     name: Publicar GitHub Release
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
 
     permissions:
@@ -139,8 +141,8 @@ jobs:
       - name: Crear Release oficial
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
-          name: CSN IA ${{ github.ref_name }}
+          tag_name: ${{ github.event_name == 'workflow_dispatch' && format('v1.1.0-build-{0}', github.run_number) || github.ref_name }}
+          name: ${{ github.event_name == 'workflow_dispatch' && format('CSN IA v1.1.0 Build {0}', github.run_number) || format('CSN IA {0}', github.ref_name) }}
           generate_release_notes: true
           draft: false
           prerelease: false
