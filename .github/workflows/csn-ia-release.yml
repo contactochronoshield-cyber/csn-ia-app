@@ -1,0 +1,53 @@
+name: CSN IA 1.7 Android Release
+
+on:
+  push:
+    branches:
+      - feature/lab-limpieza
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Instalar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Configurar Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Instalar Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.9'
+
+      - name: Compilar CSN IA
+        working-directory: android
+        run: gradle --no-daemon assembleDebug
+
+      - name: Preparar APK
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk CSN-IA-v1.7.apk
+
+      - name: Publicar en GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.7
+          name: CSN IA 1.7
+          body: |
+            CSN IA 1.7
+            Actualización del laboratorio educativo.
+            Incluye 34 nuevas lecciones verificadas.
+          files: CSN-IA-v1.7.apk
+          overwrite_files: true
+          make_latest: true
