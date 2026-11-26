@@ -554,3 +554,8 @@ async def network_analyze(
         "execution_performed": False,
         "result": result
     }
+
+
+# CHRONO MESH V2: identidad criptográfica y nodos empresariales
+from chrono_mesh_v2 import router as chrono_mesh_v2_router
+app.include_router(chrono_mesh_v2_router)
