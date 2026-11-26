@@ -204,7 +204,12 @@
     M.appendChild(box);
     M.scrollTop = M.scrollHeight;
   }
-  function decir(texto, lista) { add(texto, "bot"); chips(lista); }
+  function decir(texto, lista) {
+    var L = window.CSNIdioma ? window.CSNIdioma.idioma("") : "es";
+    if (window.CSNIdioma) texto = window.CSNIdioma.traducir(texto, L);
+    add(texto, "bot");
+    chips(lista);
+  }
   function chipsTema(rel) {
     return (rel || []).map(function (c) { return { titulo: c.titulo, fn: function () { tema(c.id); } }; });
   }
@@ -330,6 +335,7 @@
   var RE_MAS = /^(cuentame mas|dime mas|mas detalles?|mas informacion|profundiza|dame un ejemplo|un ejemplo|ejemplo|no entiendo|no entendi|no comprendo|explicame mejor|explicame mas facil|explicame facil|mas facil|y eso|como asi)$/;
 
   function manejar(t) {
+    if (window.CSNIdioma) window.CSNIdioma.idioma(t);
     var n = norm(t), palabras = n ? n.split(" ").length : 0;
     /* CSN-NOMBRE-UNIVERSAL */
     var nom = extraerNombre(t);
@@ -359,8 +365,17 @@
   }
   function mostrar(res, previo) {
     if (res.encontrado) { E.ultimo = res.id; E.n++; }
-    var extra = res.encontrado ? sugerencia(res.id) : null;
-    decir((previo || "") + res.texto + (extra ? "\n\n" + extra.texto : ""), (extra ? [extra.chip] : []).concat(chipsTema(res.relacionados)));
+
+    var L = window.CSNIdioma ? window.CSNIdioma.idioma("") : "es";
+    var texto = res.texto;
+    if (window.CSNIdioma && window.CSNIdioma.traducirTema) {
+      texto = window.CSNIdioma.traducirTema(res.id, texto, L);
+    }
+
+    // Las sugerencias y chips existentes siguen disponibles en español.
+    var extra = (L === "es" && res.encontrado) ? sugerencia(res.id) : null;
+    decir((previo || "") + texto + (extra ? "\n\n" + extra.texto : ""),
+      (extra ? [extra.chip] : []).concat(L === "es" ? chipsTema(res.relacionados) : []));
   }
   function tema(id) {
     var r = window.CSNBiblioteca.porTema(id);
