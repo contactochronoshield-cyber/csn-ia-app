@@ -1,0 +1,149 @@
+name: CSN IA - Build, Guardian and Release
+
+on:
+  push:
+    branches:
+      - main
+      - feature/biblioteca-ia
+      - feature/csn-ia-02-local-engine
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: csn-ia-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and validate Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Gradle 8.5
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.5'
+
+      - name: Precheck
+        run: bash scripts/precheck.sh
+
+      - name: Validar biblioteca
+        run: node scripts/validar_biblioteca.js
+
+      - name: Preparar llave de firma
+        env:
+          CSN_KEYSTORE_B64: ${{ secrets.CSN_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$CSN_KEYSTORE_B64" ]; then
+            echo "$CSN_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/csn-release.jks"
+            echo "CSN_KEYSTORE_PATH=$RUNNER_TEMP/csn-release.jks" >> "$GITHUB_ENV"
+            echo "CSN_SIGNED=1" >> "$GITHUB_ENV"
+          fi
+
+      - name: Compilar APK
+        working-directory: android
+        env:
+          CSN_KEYSTORE_PASSWORD: ${{ secrets.CSN_KEYSTORE_PASSWORD }}
+          CSN_KEY_ALIAS: ${{ secrets.CSN_KEY_ALIAS }}
+          CSN_KEY_PASSWORD: ${{ secrets.CSN_KEY_PASSWORD }}
+        run: |
+          if [ "$CSN_SIGNED" = "1" ]; then
+            gradle --no-daemon --max-workers=2 clean assembleRelease --stacktrace
+          else
+            gradle --no-daemon --max-workers=2 clean assembleDebug --stacktrace
+          fi
+
+      - name: Generar SHA-256
+        run: |
+          if [ "$CSN_SIGNED" = "1" ]; then
+            APK="android/app/build/outputs/apk/release/app-release.apk"
+          else
+            APK="android/app/build/outputs/apk/debug/app-debug.apk"
+          fi
+          NAME="${GITHUB_REF_NAME//\//-}"
+          test -s "$APK"
+          mkdir -p guardian-artifact
+          cp "$APK" "guardian-artifact/CSN-IA-${NAME}.apk"
+          cd guardian-artifact
+          sha256sum "CSN-IA-${NAME}.apk" > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: csn-ia-${{ contains(github.ref_name, '/') && github.run_id || github.ref_name }}
+          path: guardian-artifact/
+          if-no-files-found: error
+          retention-days: 30
+
+  attest:
+    name: Guardian - Build Provenance
+    continue-on-error: true
+    needs: build
+    if: >-
+      github.event_name == 'push' &&
+      (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+
+    steps:
+      - name: Descargar APK
+        uses: actions/download-artifact@v4
+        with:
+          name: csn-ia-${{ contains(github.ref_name, '/') && github.run_id || github.ref_name }}
+          path: guardian-artifact
+
+      - name: Crear atestación
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: guardian-artifact/CSN-IA-${{ github.ref_name }}.apk
+
+  release:
+    name: Publicar GitHub Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Descargar APK y checksum
+        uses: actions/download-artifact@v4
+        with:
+          name: csn-ia-${{ contains(github.ref_name, '/') && github.run_id || github.ref_name }}
+          path: release-assets
+
+      - name: Crear Release oficial
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: CSN IA ${{ github.ref_name }}
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+          files: |
+            release-assets/*.apk
+            release-assets/SHA256SUMS.txt

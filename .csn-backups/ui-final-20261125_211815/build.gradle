@@ -1,0 +1,55 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'net.chronoshield.iaapp'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "net.chronoshield.iaapp"
+        minSdk 24
+        targetSdk 34
+        versionCode 22
+        versionName "1.1.2"
+    }
+
+    signingConfigs {
+        release {
+            def ksPath = System.getenv('CSN_KEYSTORE_PATH')
+            if (ksPath) {
+                storeFile file(ksPath)
+                storePassword System.getenv('CSN_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('CSN_KEY_ALIAS')
+                keyPassword System.getenv('CSN_KEY_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (System.getenv('CSN_KEYSTORE_PATH')) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    lint {
+        checkReleaseBuilds false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
+}

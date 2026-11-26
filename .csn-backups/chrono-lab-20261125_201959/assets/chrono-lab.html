@@ -1,0 +1,70 @@
+<div class="tab" id="t-lab">
+ <div class="lab-wrap">
+  <div class="lab-title">CHRONO LAB</div>
+  <p class="lab-sub">Laboratorio tecnológico de Chrono Shield Networks</p>
+  <div class="lab-card">
+   <strong>Centro de aprendizaje</strong>
+   <p class="lab-sub">Practica programación, Linux, redes y ciberseguridad en ejercicios controlados.</p>
+   <span class="lab-warning">Entorno educativo simulado. No ejecuta comandos del sistema.</span>
+  </div>
+  <div class="lab-menu">
+   <button class="active" onclick="labShow('terminal',this)">Terminal</button>
+   <button onclick="labShow('python',this)">Python</button>
+   <button onclick="labShow('javascript',this)">JavaScript</button>
+   <button onclick="labShow('network',this)">Redes</button>
+   <button onclick="labShow('security',this)">Ciberseguridad</button>
+  </div>
+  <section class="lab-panel active" id="lab-terminal">
+   <h3>Terminal educativa</h3>
+   <div class="lab-terminal">
+    <div id="lab-output">CHRONO LAB [versión educativa]
+Escribe help para ver los comandos disponibles.
+$ </div>
+    <div class="lab-input">
+     <input id="lab-command" placeholder="Escribe help..." autocomplete="off">
+     <button onclick="labCommand()">Ejecutar</button>
+    </div>
+   </div>
+  </section>
+  <section class="lab-panel" id="lab-python">
+   <h3>Python: primeros pasos</h3>
+   <div class="lab-card">Ejercicio: imprime un mensaje y aprende cómo funciona print().</div>
+   <textarea class="lab-code" id="lab-python-code">print("Hola desde CHRONO LAB")
+print(2 + 3)</textarea>
+   <button class="lab-action" onclick="labPython()">Ejecutar ejemplo</button>
+   <div class="lab-result" id="lab-python-result">Resultado de la práctica.</div>
+   <p class="lab-warning">Intérprete educativo limitado; no ejecuta Python arbitrario.</p>
+  </section>
+  <section class="lab-panel" id="lab-javascript">
+   <h3>JavaScript: fundamentos</h3>
+   <textarea class="lab-code" id="lab-js-code">let empresa = "Chrono Shield Networks";
+let resultado = 2 + 3;
+console.log(empresa);
+console.log(resultado);</textarea>
+   <button class="lab-action" onclick="labJavaScript()">Ejecutar ejemplo</button>
+   <div class="lab-result" id="lab-js-result">Resultado de la práctica.</div>
+  </section>
+  <section class="lab-panel" id="lab-network">
+   <h3>Laboratorio de redes</h3>
+   <div class="lab-card">
+    <strong>Práctica: conceptos de red</strong>
+    <p class="lab-sub">IP, DNS, gateway, máscara de red y conexiones privadas.</p>
+    <button class="lab-action" onclick="labLesson('ip')">Dirección IP</button>
+    <button class="lab-action" onclick="labLesson('dns')">DNS</button>
+    <button class="lab-action" onclick="labLesson('vpn')">VPN</button>
+    <div class="lab-result" id="lab-network-result">Selecciona una práctica.</div>
+   </div>
+  </section>
+  <section class="lab-panel" id="lab-security">
+   <h3>Ciberseguridad defensiva</h3>
+   <div class="lab-card">
+    <strong>Práctica: reconocer amenazas</strong>
+    <p class="lab-sub">Aprende a identificar phishing, enlaces sospechosos y redes Wi-Fi falsas.</p>
+    <button class="lab-action" onclick="labLesson('phishing')">Phishing</button>
+    <button class="lab-action" onclick="labLesson('wifi')">Wi-Fi falsa</button>
+    <button class="lab-action" onclick="labLesson('password')">Contraseñas</button>
+    <div class="lab-result" id="lab-security-result">Selecciona una práctica.</div>
+   </div>
+  </section>
+ </div>
+</div>

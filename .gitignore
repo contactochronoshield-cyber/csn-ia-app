@@ -56,3 +56,7 @@ android/.kotlin/
 android/build/
 *.jks
 *.keystore
+keystore.properties
+*.aab
+build_release.log
+REPORTE_LANZAMIENTO.md

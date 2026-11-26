@@ -1,0 +1,46 @@
+name: Release APK + AAB
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Compilar
+        working-directory: android
+        run: chmod +x gradlew && ./gradlew --no-daemon assembleRelease bundleRelease
+      - name: Firmar (si existen los secretos)
+        env:
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        run: |
+          mkdir -p out
+          cp android/app/build/outputs/bundle/release/*.aab out/ || true
+          cp android/app/build/outputs/apk/release/*.apk out/ || true
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > up.jks
+            for f in out/*.aab; do jarsigner -keystore up.jks -storepass "$KEYSTORE_PASS" "$f" "$KEY_ALIAS"; done
+            BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+            for f in out/*.apk; do "$BT/apksigner" sign --ks up.jks --ks-pass pass:"$KEYSTORE_PASS" --ks-key-alias "$KEY_ALIAS" "$f"; done
+            rm -f up.jks
+          else
+            echo "::warning::Sin secretos de firma: artefactos sin firmar"
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csn-ia-release
+          path: out/*
+      - uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          files: out/*

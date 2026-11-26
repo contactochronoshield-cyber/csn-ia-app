@@ -1,0 +1,27 @@
+Categories:
+  - Security
+  - Internet
+License: GPL-3.0-or-later
+AuthorName: Chrono Shield Networks
+AuthorWebSite: https://chronoshieldnetworks.com
+WebSite: https://chronoshieldnetworks.com
+SourceCode: https://github.com/contactochronoshield-cyber/csn-ia-app
+IssueTracker: https://github.com/contactochronoshield-cyber/csn-ia-app/issues
+
+AutoName: CSN IA
+
+RepoType: git
+Repo: https://github.com/contactochronoshield-cyber/csn-ia-app.git
+
+Builds:
+  - versionName: 1.4
+    versionCode: 24
+    commit: v1.4
+    subdir: android/app
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 1.4
+CurrentVersionCode: 24
