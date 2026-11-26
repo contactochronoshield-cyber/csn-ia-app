@@ -267,7 +267,7 @@ console.log(resultado);</textarea>
  </div>
 </div>
 
-<div class="tab" id="t-web"><div id="bar" style="border-top:0;border-bottom:1px solid var(--line)"><input id="wq" aria-label="Buscar en internet" placeholder="Buscar en internet"><button aria-label="Buscar" onclick="web()">&#8594;</button></div><iframe id="bf" src="about:blank"></iframe></div>
+<div class="tab" id="t-web"><div id="web-bar" style="border-top:0;border-bottom:1px solid var(--line)"><input id="wq" aria-label="Buscar en internet" placeholder="Buscar en internet"><button aria-label="Buscar" onclick="web()">&#8594;</button></div><iframe id="bf" src="about:blank"></iframe></div>
 <div id="sr" aria-hidden="true" onclick="if(event.target===this)closeCSNSettings()">
 <div id="sp" class="csn-settings">
   <div class="csn-settings-head">
@@ -293,6 +293,7 @@ console.log(resultado);</textarea>
 
   <div class="csn-settings-section">
     <h3>Experiencia</h3>
+    <div id="csn-theme-grid" class="csn-theme-grid" aria-label="Temas visuales"></div>
     <div class="csn-setting-row">
       <div class="csn-setting-copy">
         <strong>Apariencia clara / oscura</strong>
@@ -730,6 +731,8 @@ window.onChronoLocationResult = function (raw) {
 <script src="csn-update.js"></script>
 <script src="chrono-lab.js"></script>
 <script src="chrono-lab/csn-lab-final.js"></script>
+<script src="csn-global-ui.js"></script>
+<script src="csn-ui-final.js"></script>
 <script src="csn-global-ui.js"></script>
 </body></html>
 <style id="csn-ui-final-fix">
