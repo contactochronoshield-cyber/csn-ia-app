@@ -132,7 +132,11 @@ body.csn-light #sr .csn-action {
 </style>
 <link rel="stylesheet" href="chrono-lab.css">
 </head><body>
-<header><svg viewBox="0 0 120 140" width="28" height="33" aria-label="CSN"><path d="M60 6 108 24v44c0 30-22 54-48 66C34 122 12 98 12 68V24z" fill="#0B2342" stroke="#19B6FF" stroke-width="6" stroke-linejoin="round"/><path d="M60 66C68 50 90 50 90 66C90 82 68 82 60 66C52 50 30 50 30 66C30 82 52 82 60 66" fill="none" stroke="#19B6FF" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="66" r="9" fill="#17B26A"/></svg><b>CSN IA</b><span class="sp"></span><span class="chip"><i></i>Red protegida</span><button class="ib" aria-label="Configuración" onclick="openCSNSettings()">&#9881;</button></header>
+<header><svg viewBox="0 0 120 140" width="28" height="33" aria-label="CSN"><path d="M60 6 108 24v44c0 30-22 54-48 66C34 122 12 98 12 68V24z" fill="#0B2342" stroke="#19B6FF" stroke-width="6" stroke-linejoin="round"/><path d="M60 66C68 50 90 50 90 66C90 82 68 82 60 66C52 50 30 50 30 66C30 82 52 82 60 66" fill="none" stroke="#19B6FF" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="66" r="9" fill="#17B26A"/></svg><b>CSN IA</b><span class="sp"></span><span class="chip"><i></i>Red protegida</span><button class="ib csn-settings-trigger" aria-label="Configuración" onclick="openCSNSettings()">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm8.2 3.8c0-.5-.1-1-.2-1.5l1.5-1.1-1.8-3.1-1.8.7a8.1 8.1 0 0 0-2.5-1.5L15.1 3h-3.6l-.3 2.5a8.1 8.1 0 0 0-2.5 1.5l-1.8-.7-1.8 3.1 1.5 1.1a7.8 7.8 0 0 0 0 3L5.1 14.6l1.8 3.1 1.8-.7a8.1 8.1 0 0 0 2.5 1.5l.3 2.5h3.6l.3-2.5a8.1 8.1 0 0 0 2.5-1.5l1.8.7 1.8-3.1-1.5-1.1c.1-.5.2-1 .2-1.5Z"/>
+</svg>
+</button></header>
 <nav><button class="on" id="n-chat" onclick="tab('chat')">Chat</button><button id="n-red" onclick="tab('red')">Mi red</button><button id="n-web" onclick="tab('web')">Buscar</button><button id="n-guide" onclick="tab('guide')">Guía</button><button id="n-nodo" onclick="tab('nodo')">Nodo</button><button id="n-pro" onclick="tab('pro')">Pro</button><button id="n-lab" onclick="tab('lab')">LAB</button></nav>
 <div class="tab on" id="t-chat"><div id="msgs"></div><div class="chips" id="qc"></div><div id="bar"><input id="q" aria-label="Escribe tu pregunta" placeholder="Escribe tu pregunta"><button aria-label="Enviar" onclick="send()">&#10148;</button></div></div>
 <div class="tab" id="t-red"><div class="pad" id="wz"></div></div>
@@ -264,7 +268,7 @@ console.log(resultado);</textarea>
 </div>
 
 <div class="tab" id="t-web"><div id="bar" style="border-top:0;border-bottom:1px solid var(--line)"><input id="wq" aria-label="Buscar en internet" placeholder="Buscar en internet"><button aria-label="Buscar" onclick="web()">&#8594;</button></div><iframe id="bf" src="about:blank"></iframe></div>
-<div id="sr" onclick="if(event.target===this)closeCSNSettings()">
+<div id="sr" aria-hidden="true" onclick="if(event.target===this)closeCSNSettings()">
 <div id="sp" class="csn-settings">
   <div class="csn-settings-head">
     <h1>Configuración</h1>
@@ -272,7 +276,7 @@ console.log(resultado);</textarea>
   </div>
   <p class="s">Tu cuenta, tu privacidad y el control de tu experiencia CSN.</p>
 
-  <div class="csn-settings-section"><h3>Idioma / Language / Idioma</h3><div class="csn-actions"><button class="csn-action" onclick="csnSetLang('es')">Español</button><button class="csn-action" onclick="csnSetLang('en')">English</button><button class="csn-action" onclick="csnSetLang('pt')">Português</button></div><div class="csn-status" id="csn-lang-status"></div></div>
+  <div class="csn-settings-section"><h3>Idioma / Language / Idioma</h3><div class="csn-actions"><button class="csn-action" onclick="csnSetLang('es')">Español</button><button class="csn-action" onclick="csnSetLang('en')">English</button><button class="csn-action" onclick="csnSetLang('pt')">Português</button><button class="csn-action" onclick="csnSetLang('et')">Eesti</button></div><div class="csn-status" id="csn-lang-status"></div></div>
   <div class="csn-settings-section">
     <h3>Mi perfil</h3>
     <div class="csn-setting-copy">
@@ -726,4 +730,143 @@ window.onChronoLocationResult = function (raw) {
 <script src="csn-update.js"></script>
 <script src="chrono-lab.js"></script>
 <script src="chrono-lab/csn-lab-final.js"></script>
+<script src="csn-global-ui.js"></script>
 </body></html>
+<style id="csn-ui-final-fix">
+/* CSN IA — FINAL UI FIX */
+
+#sr {
+  display: none !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483000 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 18px !important;
+  background: rgba(7,16,30,.58) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
+#sr.open {
+  display: flex !important;
+}
+
+#sr #sp {
+  position: relative !important;
+  width: min(92vw, 520px) !important;
+  max-width: 520px !important;
+  max-height: 86vh !important;
+  margin: 0 !important;
+  padding: 20px !important;
+  overflow-y: auto !important;
+  background: #ffffff !important;
+  color: #0F172A !important;
+  border: 1px solid #DCE5F2 !important;
+  border-radius: 22px !important;
+  box-shadow: 0 24px 80px rgba(0,0,0,.35) !important;
+}
+
+#sr #sp h1,
+#sr #sp h3,
+#sr #sp strong {
+  color: #0F172A !important;
+}
+
+#sr #sp small,
+#sr #sp .s {
+  color: #64748B !important;
+}
+
+#sr #sp .csn-action {
+  background: #F4F7FB !important;
+  color: #0F172A !important;
+  border: 1px solid #D4DEEC !important;
+  border-radius: 12px !important;
+}
+
+#sr #sp .csn-primary {
+  background: var(--blue,#2563EB) !important;
+  color: white !important;
+  border-color: var(--blue,#2563EB) !important;
+}
+
+.csn-settings-trigger {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+}
+
+.csn-settings-trigger svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.csn-settings-trigger:active {
+  transform: scale(.94);
+}
+
+body.csn-dark {
+  background: #080D18 !important;
+  color: #F8FAFC !important;
+}
+
+body.csn-dark header,
+body.csn-dark nav,
+body.csn-dark #bar {
+  background: #0D1524 !important;
+  color: #F8FAFC !important;
+  border-color: #263246 !important;
+}
+
+body.csn-dark .bot,
+body.csn-dark .chips button {
+  background: #121D30 !important;
+  color: #F8FAFC !important;
+  border-color: #263246 !important;
+}
+
+body.csn-dark #bar input {
+  background: #121D30 !important;
+  color: #F8FAFC !important;
+  border-color: #334155 !important;
+}
+
+body.csn-dark #sr #sp {
+  background: #101827 !important;
+  color: #F8FAFC !important;
+  border-color: #263246 !important;
+}
+
+body.csn-dark #sr #sp h1,
+body.csn-dark #sr #sp h3,
+body.csn-dark #sr #sp strong {
+  color: #F8FAFC !important;
+}
+
+body.csn-dark #sr #sp small,
+body.csn-dark #sr #sp .s {
+  color: #94A3B8 !important;
+}
+
+body.csn-dark #sr #sp .csn-action {
+  background: #172033 !important;
+  color: #F8FAFC !important;
+  border-color: #334155 !important;
+}
+
+body.csn-dark #sr #sp input {
+  background: #172033 !important;
+  color: #F8FAFC !important;
+  border-color: #334155 !important;
+}
+</style>
